@@ -14,3 +14,8 @@ source venv/Scripts/activate
 ```bash
 pip install -r requirements.txt
 ```
+
+## How to Work
+
+1. 이슈를 등록한다
+2. 브랜치를 만든다
