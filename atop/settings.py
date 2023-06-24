@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'base',
-    'userAccount',
+    'account',
     'consulting',
     'matching',
     'myProfile',

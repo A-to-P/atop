@@ -23,6 +23,6 @@ urlpatterns = [
     path('', include("matching.urls")),
     path('', include("myProfile.urls")),
     path('', include("point.urls")),
-    path('', include("userAccount.urls")),
+    path('', include("account.urls")),
     path('admin/', admin.site.urls),
 ]
