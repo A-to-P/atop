@@ -18,6 +18,11 @@ from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
-    path('', include("atop_app.urls")),
+    path('', include("base.urls")),
+    path('', include("consulting.urls")),
+    path('', include("matching.urls")),
+    path('', include("myProfile.urls")),
+    path('', include("point.urls")),
+    path('', include("userAccount.urls")),
     path('admin/', admin.site.urls),
 ]
