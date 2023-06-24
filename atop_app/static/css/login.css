@@ -1,0 +1,126 @@
+*{
+  margin:0 0;
+
+}
+/* 내비게이션 바 */
+.login_nav{
+  background-color: gray;
+  height:30px;
+  padding:10px 30px;
+  margin-bottom: 90px;
+  display: flex;
+  justify-content: space-between;
+}
+.login_nav span{
+  margin-right: 15px;
+  display: inline-block;
+  height: 20px;
+  width:fit-content; 
+  padding: 10px;
+  
+}
+.login_nav a{
+  margin-left: 15px;
+  display: inline-block;
+  height: 20px;
+  width:fit-content; 
+  padding: 10px;
+}
+
+a{
+  text-decoration-line: none;
+}
+a:visited{
+  color:black;
+}
+
+/* 로그인 폼 구역 */
+.login_wrapper{
+  margin-bottom: 200px;
+  background-color: rgb(216, 216, 216);
+}
+
+.login_container{
+  height:600px;
+  width:400px;
+  border-radius: 30px;
+  background-color: rgb(189, 189, 189);
+  margin: 0 auto; 
+  padding: 50px;
+}
+.login_title{
+  text-align: center;
+  background-color:rgb(255, 255, 255);
+  margin-bottom: 20px;
+}
+
+
+.id{
+  height: 70px;
+  background-color: gray;
+  padding: 20px 0;
+  margin-bottom: 40px;
+}
+.pw{
+  height: 70px;
+  background-color: gray;
+  padding: 20px 0;
+  margin-bottom: 40px;
+}
+
+
+.login_input{
+  /* margin-top: 10px; */
+  margin: 10px auto;
+  height:50px;
+  width: 396px;
+  border-radius: 10px;
+  border: none;
+}
+
+#login_form label{
+  height: 20px;
+  font-size: large;
+  padding: 0 20px; 
+}
+
+#login_btn{
+  height:50px;
+  border: none;
+  border-radius: 10px;
+  background-color: rgb(255, 255, 255);
+  width:400px; 
+  margin-bottom: 10px;
+}
+
+
+/* 로그인 폼 하단 부분 */
+footer{
+  padding: 20px 20px;
+  display:flex;
+  justify-content: space-between;
+  margin: 0 200px;
+  background-color: rgb(224, 224, 224);
+}
+
+
+
+
+
+/* Signup.html */
+.signup_wrapper{
+  margin-bottom: 200px;
+  background-color: rgb(216, 216, 216);
+}
+.signup_container
+.signup_choice{
+  display:flex;
+  justify-content: space-between;
+}
+
+
+a .consultant{
+  height:100px;
+  width: 100px;
+  background-color: rgb(188, 188, 188);
+}
