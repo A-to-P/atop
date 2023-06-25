@@ -4,12 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   {% load static %}
-  <link rel="stylesheet" href="{% static 'css\login.css' %}"> 
-  <title>로그인</title>
-  
+  <link rel="stylesheet" href="{% static 'css\signup.css' %}"> 
+  <title>회원가입</title>
 </head>
 <body>
-  <!-- nav bar -> base.html에 옮기기 -->
+  <!-- nav bar -->
   <div class="nav">
     <div class="nav_left">
       <span> 카테고리 </span>
@@ -23,34 +22,38 @@
   </div>
 
 
-  <!-- 로그인 폼 -->
-  <div class="login_wrapper">
-  <div class="login_container">
-    <div class="login_title">
-      <h1> 로그인 </h1>
-    </div>
+  <!-- 회원가입 선택 폼 -->
+  <div class="signup_wrapper">
+    <div class="signup_container">
+      <p class="signup_title" >
+        <h1 style="text-align:center;margin-bottom: 20px;"> 회원가입 </h1>
+      </p>
+      <p class="choice">
+        어떤 서비스 이용을 원하시나요?<br>
+        회원 유형별 맞춤형 서비스를 제공해드립니다. 
+      </p>
 
-    <form id="login_form" >
-      <div class="id">
-        <label for="user_id"> ID </label><br>
-        <input type="text" class="login_input" placeholder="아이디를 입력하세요." id="user_id" name="id"/>
+      <div class="signup_choice">
+        <div class="restaurant">
+          <p>컨설팅을 받고 싶다면</p>
+          <div class= "restaurant_choice">
+            <a href="{% url 'signup_restaurant' %}" class="restaurant"> 요식업자<br>회원가입 </a>
+          </div>
+        </div>
+        <div class="consultant">
+          <p>컨설팅을 하고 싶다면</p>
+          <div class="consultant_choice">
+            <a href="{% url 'signup_consultant' %}" class="consultant"> 컨설턴트<br>회원가입 </a>
+          </div>
+        </div>
       </div>
-      
-      <div class="pw">
-        <label for="user_pw"> PW </label><br>
-        <input type="password" class="login_input" placeholder="비밀번호를 입력하세요." name="pw" id="user_pw"/>
-      </div>
-  
-      <p><button id="login_btn">로그인</button></p>
-      <a href="{% url 'signup' %}" style="float:right;" > 회원가입 하기 </a>
-    </form>
+
+    </div>
   </div>
-</div>
 
 
   <!-- 하단 -->
   <footer>
-    <!--  -->
     <div class="footer_left">
       <p>회사 정보 </p><br>
       <p>주소/전화번호: </p>
@@ -62,7 +65,7 @@
         <span>트위터</span>
       </p>
     </div>
-    <div class="footer_right1">
+    <div class="footer_middle">
       <div>
         <a href="">AtoP</a><br><br>
         <a href="">About Us</a><br>
@@ -70,7 +73,7 @@
         <a href="">사용자 가이드 </a>
       </div>
     </div>
-    <div class="footer_right2">
+    <div class="footer_right">
       <a href="">고객센터</a><br><br>
       <a href="">QnA</a><br>
     </div>
