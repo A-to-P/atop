@@ -44,62 +44,50 @@ a:visited{
 }
 
 
-
-/* 로그인 폼 구역 */
-.login_wrapper{
+/* 회원가입 폼 */
+.wrapper{
   margin-bottom: 200px;
-  background-color: rgb(216, 216, 216);
 }
 
-.login_container{
-  height:600px;
-  width:400px;
-  border-radius: 30px;
-  background-color: rgb(189, 189, 189);
-  margin: 0 auto; 
+
+.signup_container{
+  background-color: #d6d6d6;
+  width: 500px;
+  height: 700px;
+  margin: 0 auto;
+  border-radius: 20px;
   padding: 50px;
 }
-.login_title{
+
+.signup_title{
   text-align: center;
-  background-color:rgb(255, 255, 255);
+ 
   margin-bottom: 20px;
 }
 
-
-.id{
-  height: 70px;
-  background-color: gray;
-  padding: 20px 0;
-  margin-bottom: 40px;
-}
-.pw{
-  height: 70px;
-  background-color: gray;
-  padding: 20px 0;
-  margin-bottom: 40px;
-}
-
-
-.login_input{
+.signup_input, select{
   /* margin-top: 10px; */
   margin: 10px auto;
   height:50px;
-  width: 396px;
+  width: 435px;
   border-radius: 10px;
   border: none;
 }
 
-#login_form label{
+#signup_form{
+  padding: 0 30px;
+}
+#signup_form label{
   height: 20px;
   font-size: large;
-  padding: 0 20px; 
 }
 
-#login_btn{
+#signup_btn{
   height:50px;
   border: none;
   border-radius: 10px;
-  background-color: rgb(255, 255, 255);
-  width:400px; 
-  margin-bottom: 10px;
+  background-color: rgb(145, 145, 145);
+  width:200px; 
+  display: block;
+  margin: 20px auto;
 }
