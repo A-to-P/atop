@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     {% load static %}
     <link rel="stylesheet" href="{% static 'css\point.css' %}"> 
     <title>chargePoint</title>
@@ -23,37 +23,61 @@
 
     <div class="main_content">
       <div class="main_content_header">
-        <h1 class="title">충전하기</h1>
+        <h1 class="title"> {% block title %}충전하기{% endblock title %}</h1>
         <hr>
-        <h4 class="info"> 충전금액을 선택해주세요.</h4>
+        <h6 class="info"> 충전금액을 선택해주세요.</h6>
       </div>
       <div class="current_point">
         {{username}}님의 현재 point <span style="color:red">포인트금액</span>
       </div>
-  
-      <div class="point_choice">
-        <div class="choice_field" >
-          <div class="point_field">1,000p</div>
-        </div>
-        <div class="choice_field">
-          <div class="point_field"> 5,000p</div>
-        </div>
-        <div class="choice_field">
-          <div class="point_field">10,000p</div>
-        </div>
-      </div>
-      <!-- 결제하기 버튼 클릭 시 모달창 -->
+      
+      <!-- 포인트 선택 -->
+      <form class="point_container">
+          <button type="button" class="point_field non-click" name="point" value="">1,000p</button>
+          <button type="button" class="point_field non-click" name="point" value=""> 5,000p</button>
+          <button type="button" class="point_field non-click" name="point" value="">10,000p</button>
+      </form>
+
+
+      <!-- 결제하기 -->
+      <!-- Button trigger modal -->
       <div class="pay">
-        <button id="pay_btn" > 결제하기 </button>
+      <button type="button" class="btn non-activate" id="pay_btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+        결제하기
+      </button>
+
+      <!-- Modal -->
+      <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <!-- <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1> -->
+              <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
+            </div>
+            <div class="modal-body" style="text-align:center; font-weight:bold;">
+              <p>기존 포인트 : </p>
+              <p>선택된 포인트 : </p>
+              <p>충전 후 포인트 : </p>
+            </div>
+            <div class="modal-footer" style="display:flex; justify-content:center;">
+              <button type="button" class="btn btn-primary" style="width:110px; border-radius:15px;">결제하기</button>
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"  style="width:110px; border-radius:15px;">닫기</button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
+    </div>
+
+
+    <!-- 푸터 -->
       <footer>
         <a href="{% url 'home' %}" class="footer_field">홈</a>
-        <div class="footer_field">??</div>
-        <div class="footer_field">my</div>
+        <div href="" class="footer_field">??</div>
+        <div href="" class="footer_field">my</div>
       </footer>
 
-
-      
+    <script src="{% static 'js/point.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
   </body>
 </html>

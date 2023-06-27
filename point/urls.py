@@ -3,5 +3,7 @@ from . import views
 
 urlpatterns = [
     path('chargePoint', views.chargePoint, name="chargePoint"),
-    path('pointHistory', views.pointHistory, name="pointHistory"),
+    path('consultPoint', views.consultPoint, name="consultPoint"),
+    path('pointHistory', views.pointHistory, name="pointHistory"),  
+    
 ]
