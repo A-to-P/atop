@@ -3,9 +3,57 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css\point.css' %}"> 
     <title>chargePoint</title>
   </head>
   <body>
-    chargePoint 페이지
+    <!-- nav bar  -->
+    <div class="nav">
+      <div class="nav_left">
+        <a href="{% url 'home' %}" class="logo"> AtoP로고 </a>
+      </div>
+      <div class="nav_right">
+        <a href="{% url 'chargePoint' %}"> 포인트 충전 </a>
+        <a href="" id="profile" style="margin-left: 20px;">프로필</a> 
+      </div>
+    </div>
+
+
+    <div class="main_content">
+      <div class="main_content_header">
+        <h1 class="title">충전하기</h1>
+        <hr>
+        <h4 class="info"> 충전금액을 선택해주세요.</h4>
+      </div>
+      <div class="current_point">
+        {{username}}님의 현재 point <span style="color:red">포인트금액</span>
+      </div>
+  
+      <div class="point_choice">
+        <div class="choice_field" >
+          <div class="point_field">1,000p</div>
+        </div>
+        <div class="choice_field">
+          <div class="point_field"> 5,000p</div>
+        </div>
+        <div class="choice_field">
+          <div class="point_field">10,000p</div>
+        </div>
+      </div>
+      <!-- 결제하기 버튼 클릭 시 모달창 -->
+      <div class="pay">
+        <button id="pay_btn" > 결제하기 </button>
+      </div>
+    </div>
+      <footer>
+        <a href="{% url 'home' %}" class="footer_field">홈</a>
+        <div class="footer_field">??</div>
+        <div class="footer_field">my</div>
+      </footer>
+
+
+      
   </body>
 </html>
