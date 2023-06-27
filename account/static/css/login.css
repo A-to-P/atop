@@ -1,54 +1,11 @@
-*{
-  margin:0 0;
-
-}
-/* 내비게이션 바 */
-.nav{
-  background-color: gray;
-  height:30px;
-  padding:10px 30px;
-  margin-bottom: 90px;
-  display: flex;
-  justify-content: space-between;
-}
-.nav span{
-  margin-right: 15px;
-  display: inline-block;
-  height: 20px;
-  width:fit-content; 
-  padding: 10px;
-  
-}
-.nav a{
-  margin-left: 15px;
-  display: inline-block;
-  height: 20px;
-  width:fit-content; 
-  padding: 10px;
-}
-
-/* 푸터 */
-footer{
-  padding: 20px 20px;
-  display:flex;
-  justify-content: space-between;
-  margin: 0 200px;
-  background-color: rgb(224, 224, 224);
-}
-
-a{
-  text-decoration-line: none;
-}
-a:visited{
-  color:black;
-}
-
-
-
 /* 로그인 폼 구역 */
 .login_wrapper{
-  margin-bottom: 200px;
-  background-color: rgb(216, 216, 216);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  min-height: 64rem;
+  padding-bottom: 17rem;
 }
 
 .login_container{
