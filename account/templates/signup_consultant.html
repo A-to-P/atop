@@ -1,14 +1,9 @@
-
 {% extends 'signupForm.html' %} 
 
-
-
 {% block title %}컨설턴트 회원가입 페이지 {%endblock title %}
-
-
 {% block FormTitle %} 컨설턴트 회원가입 {% endblock FormTitle %} 
-{% block content %}
 
+{% block selectForm %}
 <div class="request_field">
   <label for="request_field">컨설팅 분야</label><br>
   <select name="request_field" id="request_field" required> 
@@ -29,8 +24,5 @@
   <button style="float:right;">인증하기</button><br>
 </div>
 
-
 </div>
-
-
-{%endblock content %}
+{% endblock selectForm %}
