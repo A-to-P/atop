@@ -1,5 +1,7 @@
-
+// 포인트
 const nonClick = document.querySelectorAll(".non-click");
+
+// 결제하기 버튼 
 const pay_btn = document.querySelector("#pay_btn");
 
 
@@ -27,3 +29,16 @@ nonClick.forEach((e) => {
   e.addEventListener("click", handleClick);
 });
 
+
+// 선택 포인트 모달에 띄우기
+function calculatePoint(event){
+  nonClick.forEach((e)=>{
+    if(e.classList[2] === "click"){
+      let choiced = e.value ; 
+      document.getElementById("choiced_point").innerHTML = choiced; 
+      
+    }
+  })
+}
+
+pay_btn.addEventListener("click", calculatePoint); 

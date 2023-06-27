@@ -32,10 +32,11 @@
       </div>
       
       <!-- 포인트 선택 -->
-      <form class="point_container">
-          <button type="button" class="point_field non-click" name="point" value="">1,000p</button>
-          <button type="button" class="point_field non-click" name="point" value=""> 5,000p</button>
-          <button type="button" class="point_field non-click" name="point" value="">10,000p</button>
+      <form action="{% url 'chargePoint' %}" class="point_container" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+          <button type="button" class="point_field non-click" name="point" value="1000">1,000p</button>
+          <button type="button" class="point_field non-click" name="point" value="5000"> 5,000p</button>
+          <button type="button" class="point_field non-click" name="point" value="10000">10,000p</button>
       </form>
 
 
@@ -56,7 +57,7 @@
             </div>
             <div class="modal-body" style="text-align:center; font-weight:bold;">
               <p>기존 포인트 : </p>
-              <p>선택된 포인트 : </p>
+              <p>선택된 포인트 : <span id="choiced_point">1000 </span> </p>
               <p>충전 후 포인트 : </p>
             </div>
             <div class="modal-footer" style="display:flex; justify-content:center;">
