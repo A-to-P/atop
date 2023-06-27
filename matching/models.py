@@ -22,7 +22,7 @@ class Request(models.Model):
     title = models.CharField(max_length=20, default="", blank=True)
     consult_tags = models.ManyToManyField("account.Tag", related_name='consultant', blank=True)
     fee = models.IntegerField(default=0, blank=True)
-    content = models.TextField(max_length=500, blank=True) # TODO: 500자로 충분할까?
+    content = models.TextField(blank=True)
     
     
     @property
@@ -35,3 +35,13 @@ class Request(models.Model):
 
     def __str__(self):
         return f"{self.title}"
+    
+class Application(models.Model):
+    req = models.ForeignKey("matching.Request", on_delete=models.CASCADE, default=None)
+    user = models.ForeignKey("account.User", on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
+    # 컨설팅 기획안
+    proposal = models.TextField(default="", blank=True)
+    
+    def __str__(self):
+        return f"{self.req} | {self.user}"
