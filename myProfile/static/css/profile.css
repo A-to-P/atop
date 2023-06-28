@@ -1,0 +1,73 @@
+.base_container{
+  display: flex;
+  flex-direction: column;
+}
+/* 오른쪽 컨텐츠에 따라 전체 높이가 달라짐 */
+.content{
+  height: 100%;
+  width: 100%;
+  flex: 1;
+  margin: 0 0;
+  display: inline-block;
+  display: flex; 
+  flex-direction: row;
+}
+
+/* 왼쪽 프로필, 메뉴 바 */
+.left_content{
+  width:20%;
+  background-color : white; 
+  padding: 4rem 1rem; 
+  text-align: center;
+}
+
+.picture{
+  margin: 0.3rem auto;
+  height:5rem;
+  width: 5rem;
+  border-radius: 100%;
+  background-color: blue;
+}
+.profile_space{
+  margin: 0 auto 3rem;
+}
+.profile{
+  margin: 0 auto;
+  height: 10rem;
+  width: 10rem;
+  border-radius: 1rem;
+  background-color: rgb(255, 255, 255);
+  box-shadow:  0 4px 10px rgb(16, 160, 255);
+  padding: 1rem;
+}
+.info{
+  margin-top: 1rem;
+}
+h4{
+  margin: 0;
+  padding-bottom: 0.5rem;
+}
+
+.profile_title{
+  margin: 0 auto 2rem auto;
+
+
+}
+.menu{
+  margin: 1rem auto;
+  width: 9rem;
+  padding:0.3rem;
+  border: solid black;
+}
+.menu:hover{
+  background-color: gray;
+  transform: scale(1.4);
+}
+
+
+
+
+/* 오른쪽 컨텐츠 영역 */
+.right_content{
+  width: 80%;
+}

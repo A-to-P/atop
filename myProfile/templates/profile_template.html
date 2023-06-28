@@ -1,0 +1,60 @@
+<!-- base.html 상속 -->
+{% extends 'base.html' %}  
+{% load static %}
+
+{% block static %}
+  <link rel="stylesheet" href="{% static 'css/profile.css' %}" >  
+{% endblock %}
+
+
+{% block title %}
+  좌측 프로필 바 템플릿
+{% endblock %}
+
+
+
+
+{% block content %} 
+
+<!-- 왼쪽 사이드 : 프로필, 메뉴바 -->
+<div class="content">
+  <div class="left_content">
+    <div class="profile_space">
+      <div class="profile"> 
+        <div class="picture">
+        </div>
+        <div class="info">
+          <h4 >닉네임:</h4>
+          <h4 >분야: </h4>
+        </div>
+      </div>
+
+    </div>
+    
+
+    <div class="profile_title">
+      <h3>My Consulting</h3>
+    </div>
+
+    <div class="menu_bar">
+      <p class="menu">
+        <a href="" >현재 컨설팅</a>
+      </p>
+      <p class="menu" >
+        <a href="">컨설팅 히스토리</a>
+      </p>
+      <p class="menu">
+        <a href="">내 의뢰 목록</a>
+      </p>
+    </div>
+  </div>
+
+
+  <!-- 오른쪽 영역  -->
+    <div class="right_content">
+      여기 콘텐츠를 넣어요.
+    </div>
+</div>
+
+
+{% endblock %}
