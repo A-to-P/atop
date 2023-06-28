@@ -1,11 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MyConsulting</title>
-  </head>
-  <body>
-    MyConsulting 페이지 입니다
-  </body>
-</html>
+{% extends 'profile_template.html' %} 
+{% load static %}
+
+
+{% block title %}
+  마이 컨설팅 
+{% endblock %}
+
+{% block profile_title %}  
+My Consulting
+{% endblock %}
+
+{% block maincontent %}  
+   여기는 마이 컨설팅 페이지입니다. 
+{% endblock %}

@@ -31,28 +31,34 @@
 
     </div>
     
-
+    
     <div class="profile_title">
-      <h3>My Consulting</h3>
+      
+      <h3>{% block profile_title %}My Consulting{% endblock %}</h3>
     </div>
 
+
     <div class="menu_bar">
+      {% block menu %}
       <p class="menu">
         <a href="" >현재 컨설팅</a>
       </p>
       <p class="menu" >
-        <a href="">컨설팅 히스토리</a>
-      </p>
-      <p class="menu">
         <a href="">내 의뢰 목록</a>
       </p>
+      <p class="menu">
+        <a href="">컨설팅 히스토리</a>
+      </p>
+      {% endblock %}
     </div>
   </div>
 
 
   <!-- 오른쪽 영역  -->
     <div class="right_content">
+      {% block maincontent %}
       여기 콘텐츠를 넣어요.
+      {% endblock %}
     </div>
 </div>
 
