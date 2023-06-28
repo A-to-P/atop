@@ -1,10 +1,21 @@
-from django.shortcuts import render
+# from django.contrib.auth import authenticate
+from django.contrib.auth import login, logout
+from django.shortcuts import render, redirect, get_object_or_404
+
+from .models import User
+from .forms import CustomUserSignupForm, CustomUserSigninForm
 
 # Create your views here.
 
-# 로그인 
+# 로그인
 def login(request):
-    return render(request, 'login.html')
+    form = CustomUserSigninForm()
+    if request.method == 'POST':
+        form = CustomUserSigninForm(request, request.POST)
+        if form.is_valid():
+            login(request, form.get_user())
+            return redirect("home")
+    return render(request, "login.html")
 
 # 회원가입 
 def signup(request):
