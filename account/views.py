@@ -21,6 +21,11 @@ def login(request):
         else:
             return render(request, 'login.html', {'error':'아이디 또는 비밀번호가 틀립니다.'})
 
+# 로그아웃
+def logout(request):
+    auth_logout(request)
+    return redirect('home')
+
 # 회원가입 
 def signup(request):
     return render(request, 'signup.html')
