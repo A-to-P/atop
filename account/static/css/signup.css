@@ -1,0 +1,87 @@
+
+*{
+  margin: 0 0;
+}
+
+/* 내비게이션 바 */
+.nav{
+  background-color: gray;
+  height:30px;
+  padding:10px 30px;
+  margin-bottom: 90px;
+  display: flex;
+  justify-content: space-between;
+}
+.nav span{
+  margin-right: 15px;
+  display: inline-block;
+  height: 20px;
+  width:fit-content; 
+  padding: 10px;
+  
+}
+.nav a{
+  margin-left: 15px;
+  display: inline-block;
+  height: 20px;
+  width:fit-content; 
+  padding: 10px;
+}
+
+/* 푸터 */
+footer{
+  padding: 20px 20px;
+  display:flex;
+  justify-content: space-between;
+  margin: 0 200px;
+  background-color: rgb(224, 224, 224);
+}
+
+a{
+  text-decoration-line: none;
+}
+a:visited{
+  color:black;
+}
+
+
+
+/* Signup.html */
+.signup_wrapper{
+  margin-bottom: 200px;
+  padding: 0 20px;
+}
+.signup_container{
+  height: 500px;
+  width: 600px;
+  margin: 0 auto;
+  border-radius: 20px;
+  padding: 30px;
+  background-color: rgb(198, 198, 198); 
+}
+.signup_title{
+  text-align: center;
+  background-color:rgb(255, 255, 255);
+  margin-bottom: 20px;
+}
+.choice{
+  margin-bottom: 80px;
+  margin-top: 20px;
+  text-align: center;
+}
+.signup_choice{
+  display:flex;
+  justify-content: space-between;
+}
+
+
+
+.restaurant_choice, .consultant_choice {
+  width : fit-content;
+  height: fit-content;
+  margin: 10px 0 ;
+  border-radius:20px;
+  background-color: white;
+  text-align: center;
+  padding: 100px 100px;
+}
