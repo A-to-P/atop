@@ -5,3 +5,4 @@ from .models import *
 admin.site.register(User)
 admin.site.register(Tag)
 admin.site.register(ConsultantProfile)
+admin.site.register(EduVerification)

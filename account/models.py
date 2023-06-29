@@ -74,18 +74,38 @@ class ConsultantProfile(models.Model):
     # 이름, 나이, 학력, 학교    
     name = models.CharField(max_length=20, null=True)
     birth = models.DateField(null=True)
-    education = models.TextField(max_length=200, default="")
-    college = models.TextField(max_length=200, default="")
+    education = models.CharField(max_length=25, default="")
+    self_introducing = models.TextField(max_length=500, default="") # 500자
     image = models.ImageField(upload_to='profile/', null=True, blank=True)
     # 연락가능시간
     contact_at = models.TextField(max_length=200, default="")
-
+    
+    # 학교인증은 따로 DB만들어서 사진 올리기
+    # edu_verification = { 0:아직 인증 시도 안함, 1:인증사진은 올렸는데 인증이 안됨, 2:인증됨, 
+    # 3:운영진이확인했는데문제가있음..? 나중여 여유되면 개발}
+    @property
+    def edu_verification(self):
+        # DB에서 인증내역 찾아보기 (인증사진을 올리면 DB에 인증내역 생성됨)
+        item = EduVerification.objects.filter(user=self.user).first()
+        
+        # 만약 인증 사진을 올린적이 있다면
+        if item is not None:
+            # 사진은 올렸지만 운영진이 확인 안함
+            if item.verified == False:
+                return 1            
+            # 사진을 운영진이 확인했고 인증됨
+            return 2
+        
+        # 인증내역없음, 인증시도안함
+        return 0
+    
     class Meta:
         db_table = 'consultant_profile'
 
     def __str__(self):
         return f"{self.user.username} | {self.name}"
     
+
 class SignupDetail(models,Model):
 #요식업자 or 컨설턴트 중에 고르기
     CLASSIFICATION_CHOICES = (
@@ -119,3 +139,12 @@ class RestaurantPart(models.Model):
 
 class ConsultantPart(models.Model):
     ConsultantPart_part = models.TextField(blank=False)
+
+class EduVerification(models.Model):
+    user = models.ForeignKey("User", on_delete=models.CASCADE)
+    img = models.ImageField(upload_to='edu_verification/', null=False)
+    verified = models.BooleanField(default=False)
+
+    def __str__(self):
+        return f"{self.user.username} | {self.verified}"
+

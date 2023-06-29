@@ -1,10 +1,9 @@
 {% extends 'signupForm.html' %} 
 
+{% block title %}요식업자 회원가입 페이지 {%endblock title %}
 {% block FormTitle %} 요식업자 회원가입 {% endblock FormTitle %}
 
-
-{% block content %}
-
+{% block selectForm %}
 <div class="restaurant_field">
   <label for="restaurant_field">요식업 분야</label><br>
   <select name="restaurant_field" id="restaurant_field" required>
@@ -29,8 +28,5 @@
     <option value="logo_design">로고 디자인</option>
     <option value="interior">인테리어</option>
   </select>
-
 </div>
-
-
-{%endblock content %}
+{% endblock selectForm %}
