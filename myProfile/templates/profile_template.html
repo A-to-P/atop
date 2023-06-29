@@ -21,9 +21,9 @@
   <div class="left_content">
     <div class="profile_space">
       <div class="profile"> 
-        <div class="picture">
+        <div class="img">
         </div>
-        <div class="info">
+        <div class="profile_summary">
           <h4 >닉네임:</h4>
           <h4 >분야: </h4>
         </div>
@@ -33,22 +33,13 @@
     
     
     <div class="profile_title">
-      
-      <h3>{% block profile_title %}My Consulting{% endblock %}</h3>
+      <h3>{% block profile_title %}{% endblock %}</h3>
     </div>
 
 
     <div class="menu_bar">
       {% block menu %}
-      <p class="menu">
-        <a href="" >현재 컨설팅</a>
-      </p>
-      <p class="menu" >
-        <a href="">내 의뢰 목록</a>
-      </p>
-      <p class="menu">
-        <a href="">컨설팅 히스토리</a>
-      </p>
+
       {% endblock %}
     </div>
   </div>

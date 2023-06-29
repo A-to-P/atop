@@ -21,7 +21,7 @@
   text-align: center;
 }
 
-.picture{
+.img{
   margin: 0.3rem auto;
   height:5rem;
   width: 5rem;
@@ -40,7 +40,7 @@
   box-shadow:  0 4px 10px rgb(16, 160, 255);
   padding: 1rem;
 }
-.info{
+.profile_summary{
   margin-top: 1rem;
 }
 h4{

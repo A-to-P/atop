@@ -1,11 +1,115 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>myProfile</title>
-  </head>
-  <body>
-    myProfile 페이지
-  </body>
-</html>
+{% extends 'profile_template.html' %} 
+{% load static %}
+{% block static %}
+  <link rel="stylesheet" href="{% static 'css/profile.css' %}" >  
+  <link rel="stylesheet" href="{% static 'css/myProfile.css' %}" >  
+{% endblock %}
+
+{% block title %}컨설턴트 프로필 페이지{% endblock %}
+
+
+
+{% block profile_title %}
+  Profile
+{% endblock %}
+
+{% block maincontent %}
+<div class="profile_container">
+  <div class="information">
+    <div class= "info" id="name">
+      이름 : 
+    </div>
+    <div class= "info" id="age">
+      나이 : 
+    </div>
+    <div class= "info" id="email">
+      이메일 : 
+    </div>
+    <div id="school">
+      <div class= "info">
+        학력 : 
+      </div>
+      <div class= "badge"> 학교 인증 완료 </div>
+    </div>
+  </div>
+
+  <div class="introduction">
+    <h3> 자기소개 </h3>
+    <div class="intro_content">
+      자기소개 내용이 들어가는 곳입니다.
+      자기소개 내용도 문제네요.... 
+      크기가 유동적으로 안 바뀌는데 어떡해요 ㅜㅜㅜㅜㅜㅜㅜㅜ
+      자기소개 내용이 들어가는 곳입니다.
+      자기소개 내용도 문제네요.... 
+      크기가 유동적으로 안 바뀌는데 어떡해요 ㅜㅜㅜㅜㅜㅜㅜㅜ
+      자기소개 내용이 들어가는 곳입니다.
+      자기소개 내용도 문제네요.... 
+      크기가 유동적으로 안 바뀌는데 어떡해요 ㅜㅜㅜㅜㅜㅜㅜㅜ
+    </div>
+  </div>
+
+  <div class="consulting_info">
+    <h3> 컨설팅 정보 </h3>
+    <div class="consult_info" id="consult_field">
+      <div class="consult_info_title">컨설팅 분야</div>
+      <div class="consult_info_content"> dasdkfj a;sd</div>
+    </div> 
+    <div class="consult_info" id="contact">
+      <div class="consult_info_title">연락 가능 시간</div>
+      <div class="consult_info_content"> </div>
+    </div>
+    <div class= "consult_info" id="times">
+      <div class="consult_info_title">컨설팅 횟수</div>
+      <div class="consult_info_content"> </div>
+    </div>
+  </div>
+  <div class="consulting_review">
+    <h3> 컨설팅 리뷰 </h3>
+
+    <div class="review">
+      <div class="review_header">
+        <div class="review_header_left">
+          <span class="review_info">요식업자 이름</span>
+          <span class="review_info" >별점</span>
+        </div>
+        <div class="review_header_right">
+          <span class="review_info" >리뷰 등록 일자</span>
+        </div>
+        
+      </div>
+      <div class="review_content">
+        리뷰 한 칸에 몇 글자 들어갈 수 있게 해야 할까요..... 
+        크기가 유동적으로 안 바뀌는데 어떡해요 ㅜㅜㅜㅜㅜㅜㅜㅜ
+        리뷰 한 칸에 몇 글자 들어갈 수 있게 해야 할까요..... 
+        크기가 유동적으로 안 바뀌는데 어떡해요 ㅜㅜㅜㅜㅜㅜㅜㅜ
+        리뷰 한 칸에 몇 글자 들어갈 수 있게 해야 할까요..... 
+        크기가 유동적으로 안 바뀌는데 어떡해요 ㅜㅜㅜㅜㅜㅜㅜㅜ
+      </div>
+    </div>
+    <div class="review">
+      <div class="review_header">
+        <div class="review_header_left">
+          <span class="review_info">요식업자 이름</span>
+          <span class="review_info" >별점</span>
+        </div>
+        <div class="review_header_right">
+          <span class="review_info" >리뷰 등록 일자</span>
+        </div>
+        
+      </div>
+      <div class="review_content">
+          리뷰 한 칸에 몇 글자 들어갈 수 있게 해야 할까요..... 
+          크기가 유동적으로 안 바뀌는데 어떡해요 ㅜㅜㅜㅜㅜㅜㅜㅜ
+          리뷰 한 칸에 몇 글자 들어갈 수 있게 해야 할까요..... 
+          크기가 유동적으로 안 바뀌는데 어떡해요 ㅜㅜㅜㅜㅜㅜㅜㅜ
+          리뷰 한 칸에 몇 글자 들어갈 수 있게 해야 할까요..... 
+          크기가 유동적으로 안 바뀌는데 어떡해요 ㅜㅜㅜㅜㅜㅜㅜㅜ
+      </div>
+    </div>
+    <div>리뷰는 페이지네이션을 하고... 모달로 상세창을 띄워야할듯...</div>
+  </div>
+
+</div>
+
+{% endblock maincontent %}
+
