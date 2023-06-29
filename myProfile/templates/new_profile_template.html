@@ -3,7 +3,7 @@
 {% load static %}
 
 {% block static %}
-  <link rel="stylesheet" href="{% static 'css/profile.css' %}" >  
+  <link rel="stylesheet" href="{% static 'css/new_profile.css' %}" >  
 {% endblock %}
 
 
@@ -16,11 +16,9 @@
 
 {% block content %} 
 
-
+<!-- 왼쪽 사이드 : 프로필, 메뉴바 -->
 <div class="container">
-
-  <!-- 왼쪽 사이드 : 프로필, 메뉴바 -->
-  <div class="content  left_content  ">
+  <div class="left_content content">
     <div class="profile_space">
       <div class="profile"> 
         <div class="img">
@@ -48,9 +46,10 @@
 
 
   <!-- 오른쪽 영역  -->
-    <div class="content right_content">
+    <div class="right_content content">
       {% block maincontent %}
-        
+
+
       {% endblock %}
     </div>
 </div>

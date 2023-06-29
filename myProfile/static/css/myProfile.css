@@ -3,7 +3,7 @@
  
 }
 .profile_container{
-  height: 80rem;
+  /* height: 80rem; */
   padding: 4rem 5rem;
 }
 
@@ -24,7 +24,7 @@
   margin-bottom: 0.3rem;
   width:fit-content;
   background-color: gray;
-}
+ }
 
 #school .info{
   margin-right: 2rem;
