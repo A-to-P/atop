@@ -20,6 +20,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
+    path('', include("chat.urls")),
     path('', include("base.urls")),
     path('', include("consulting.urls")),
     path('', include("matching.urls")),
