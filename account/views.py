@@ -1,10 +1,30 @@
-from django.shortcuts import render
+from django.contrib.auth import authenticate,login as auth_login, logout as auth_logout
+from django.shortcuts import render, redirect
+from .models import User
 
 # Create your views here.
 
-# 로그인 
+# 로그인
 def login(request):
-    return render(request, 'login.html')
+    if request.method == 'GET':
+        return render(request, 'login.html')
+    
+    elif request.method == 'POST':
+        id = request.POST['id']
+        pw = request.POST['pw']
+        user = authenticate(request, username=id, password=pw)
+
+        if user is not None:
+            auth_login(request, user)
+            return redirect('home')
+        
+        else:
+            return render(request, 'login.html', {'error':'아이디 또는 비밀번호가 틀립니다.'})
+
+# 로그아웃
+def logout(request):
+    auth_logout(request)
+    return redirect('home')
 
 # 회원가입 
 def signup(request):

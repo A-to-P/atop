@@ -14,7 +14,12 @@
       <h1> 로그인 </h1>
     </div>
 
-    <form id="login_form" >
+    {% if error %}
+    {{error}}
+    {% endif %}
+
+    <form id="login_form" method="POST" actions="{% url 'login' %}">
+    {% csrf_token %}
       <div class="id">
         <label for="user_id"> ID </label><br>
         <input type="text" class="login_input" placeholder="아이디를 입력하세요." id="user_id" name="id"/>
