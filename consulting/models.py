@@ -13,13 +13,16 @@ class Consulting(models.Model):
         "account.User", related_name='consultant', on_delete=models.CASCADE)
     restaurant = models.ForeignKey(
         "account.User", related_name='restaurant', on_delete=models.CASCADE)
+    final_report = models.FileField(upload_to='final_report', null=True, max_length=100, blank=True)
 
-    # @property
-    # def tags(self):
-    #     return self.req.consult_tags
-    # @property
-    # def fee(self):
-    #     return self.req.fee
+    # 태그 객체들의 리스트로 반환
+    @property
+    def tags(self):
+        return list(self.req.consult_tags.all())
+    
+    @property
+    def fee(self) -> int:
+        return self.req.fee
 
     def __str__(self):
         return f"{self.restaurant}&{self.consultant} ({self.start}~{self.end})"
@@ -31,7 +34,7 @@ class Review(models.Model):
     rating = models.IntegerField(
         validators=[MinValueValidator(0), MaxValueValidator(5)])
     created_at = models.DateTimeField(auto_now_add=True)
-    content = models.TextField(default="")
+    comment = models.TextField(default="")
 
     def __str__(self):
         return f"{self.consulting} | {self.rating}"
@@ -43,3 +46,15 @@ class Review(models.Model):
     @property
     def consultant(self):
         return self.consulting.consultant
+
+class Accusation(models.Model):
+    # 원고
+    complainant = models.ForeignKey("account.User", related_name='complainant', on_delete=models.CASCADE)
+    # 피고인
+    defendant = models.ForeignKey("account.User", related_name='defendant', on_delete=models.CASCADE)
+    # 증빙자료, 신고사유
+    evidence = models.FileField(upload_to='evidence', null=True, max_length=100)
+    comment = models.TextField(default="", blank=True)
+    
+    def __str__(self):
+        return f"{self.id} : {self.comment[:10]}..."
