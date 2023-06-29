@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
+from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager, User
 
 JOB_CHOICES = (("restaurant", "Restaurant"),("consultant", "Consultant"))
 
@@ -85,3 +85,37 @@ class ConsultantProfile(models.Model):
 
     def __str__(self):
         return f"{self.user.username} | {self.name}"
+    
+class SignupDetail(models,Model):
+#요식업자 or 컨설턴트 중에 고르기
+    CLASSIFICATION_CHOICES = (
+        ('Consultant', 'Consultant'),
+        ('Restaurant', 'Restaurant')
+
+
+class RestaurantSingupDetail(models.Model):
+    #아이디
+    username = models.CharField(max_length=64, unique=True,verbose_name = '아이디')
+    #이메일
+    email = models.EmailField(unique=True)
+    #비밀번호
+    password = models.CharField(max_length=64,verbose_name = '비밀번호')
+
+
+class ConsultantSingupDetail(models.Model):
+    #아이디
+    username = models.CharField(max_length=64, unique=True,verbose_name = '아이디')
+    #이메일
+    email = models.EmailField(unique=True)
+    #비밀번호
+    password = models.CharField(max_length=64,verbose_name = '비밀번호')
+    #학교이메일 인증
+    campusemail= models.EmailField()
+
+
+
+class RestaurantPart(models.Model):
+    restaurant_part = models.TextField(blank=False)
+
+class ConsultantPart(models.Model):
+    ConsultantPart_part = models.TextField(blank=False)
