@@ -14,6 +14,10 @@
       <h1> 로그인 </h1>
     </div>
 
+    {% if error %}
+    {{error}}
+    {% endif %}
+
     <form id="login_form" method="POST" actions="{% url 'login' %}">
     {% csrf_token %}
       <div class="id">
@@ -29,10 +33,6 @@
       <p><button id="login_btn">로그인</button></p>
       <a href="{% url 'signup' %}" style="float:right;" > 회원가입 하기 </a>
     </form>
-
-    {% if error %}
-    {{error}}
-    {% endif %}
   </div>
 </div>
 {% endblock %}
