@@ -10,3 +10,6 @@ def editMyprofile(request):
 
 def profile_template(request):
     return render(request, "profile_template.html")
+
+def new_profile_template(request):
+    return render(request, "new_profile_template.html")

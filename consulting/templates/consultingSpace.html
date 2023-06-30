@@ -1,11 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ConsultingSpace</title>
-  </head>
-  <body>
-    ConsultingSpace 페이지입니다.
-  </body>
-</html>
+{% extends 'profile_template.html' %}
+{% load static %}
+
+
+{% block title %}
+  컨설팅 스페이스 
+{% endblock %}
+
+{% block maincontent %}  
+   여기는 Consulting Space 입니다. 
+{% endblock %}
+
+
+
+{% block profile_title %}  
+Consulting Space
+{% endblock %}
+
+{% block menu %} 
+<p class="menu">
+  <a href="" >현재 컨설팅</a>
+</p>
+<p class="menu" >
+  <a href="">컨설팅 포트폴리오</a>
+</p>
+{% endblock %}

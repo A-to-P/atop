@@ -1,27 +1,24 @@
-.base_container{
-  display: flex;
-  flex-direction: column;
+/* 오른쪽 컨텐츠에 따라 전체 높이가 유동적으로 달라짐 (해결)*/
+.container{
+  display:flex;
+  flex-direction: row;  
 }
-/* 오른쪽 컨텐츠에 따라 전체 높이가 달라짐 */
 .content{
-  height: 100%;
-  width: 100%;
-  flex: 1;
-  margin: 0 0;
-  display: inline-block;
-  display: flex; 
-  flex-direction: row;
+  flex: 1 4 0;
+  align-self: auto;
+}
+/* 오른쪽 컨텐츠 영역 */
+.right_content{
+  flex: 4 1 0;
 }
 
 /* 왼쪽 프로필, 메뉴 바 */
 .left_content{
-  width:20%;
   background-color : white; 
   padding: 4rem 1rem; 
   text-align: center;
 }
-
-.picture{
+.img{
   margin: 0.3rem auto;
   height:5rem;
   width: 5rem;
@@ -40,19 +37,18 @@
   box-shadow:  0 4px 10px rgb(16, 160, 255);
   padding: 1rem;
 }
-.info{
+/* 닉네임, 분야 */
+.profile_summary{
   margin-top: 1rem;
 }
 h4{
   margin: 0;
   padding-bottom: 0.5rem;
 }
-
 .profile_title{
   margin: 0 auto 2rem auto;
-
-
 }
+/*  */
 .menu{
   margin: 1rem auto;
   width: 9rem;
@@ -65,9 +61,10 @@ h4{
 }
 
 
-
-
-/* 오른쪽 컨텐츠 영역 */
-.right_content{
-  width: 80%;
+.footer{
+  position: unset;
 }
+
+
+
+
