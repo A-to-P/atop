@@ -12,6 +12,11 @@ html, body {
   background-color: grey;
 }
 
+.content {
+  height: fit-content;
+  min-height: 50rem;
+}
+
 /* 내비게이션 바 */
 .navbar{
   background-color: rgb(224, 224, 224);
@@ -33,17 +38,10 @@ height: 20px;
 width:fit-content; 
 padding: 10px;
 }
-.content{
-  height:auto;
-}
 
 
 /* 푸터 */
 .footer{
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: auto;
   padding: 1rem;
   display:flex;
   justify-content: space-between;

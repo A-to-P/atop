@@ -1,0 +1,118 @@
+.content_wrapper{
+    padding: 1rem;
+}
+
+.wrapper {
+    margin: 1rem 0;
+    padding: 1rem;
+    height : fit-content;
+    /* border: 0.2rem black solid; */
+    border-radius: 1rem;
+    
+}
+
+.slide {
+    padding: 1rem;
+    width: 16rem;
+    height: fit-content;
+    box-sizing: border-box;
+    border-radius: 1rem;
+    background-color: white;
+}
+
+.title {
+    font-weight: 600;
+    font-size: 1.3rem;
+    padding-bottom: 0.7rem;
+}
+
+.bold_text {
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.AtoP_title{
+    font-size: 1.7rem;
+    font-style: italic;
+}
+
+.text_wrapper {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 3rem;
+    background-color: skyblue;
+}
+
+.img_container{
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    width: 25rem;
+    padding: 1rem;
+    background-color: black;
+}
+
+.rank_container {
+    display: flex;
+    justify-content: space-around;
+}
+
+.category_text {
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.rank_number {
+    float: left;
+    clear: both;
+    padding: 0.5rem;
+    font-weight: 600;
+}
+.rank_name {
+    margin-left: 3rem;
+    padding: 0.5rem;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.review_container {
+    display: flex;
+    justify-content: space-around;
+}
+
+.review_slide{
+    width: 13rem;
+}
+
+.profile_img{
+    float: left;
+    margin: 0 0.5rem 0.5rem 0;
+    width: 5rem;
+    height: 5rem;
+    border-radius: 50%;
+    background-color: blue;
+}
+
+.review_content{
+    clear: both;
+    overflow: hidden;
+    white-space: normal;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;   /* 말줄임표로 보이는 라인 수*/
+    -webkit-box-orient: vertical;
+}
+
+.consultant_information{
+    text-align: right;
+    padding-top: 0.5rem;
+    color: grey;
+}
+
+.findRequest_text{
+    color: white;
+    font-size: 2rem;
+    font-weight: 600;
+}

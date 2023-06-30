@@ -30,9 +30,11 @@
       </div>
       {% endblock %}
   
+      <div class="content">
       {% block content %} 
-        {% comment %} base.html을 상속한 템플릿에서 구현해야 하는 영역 {% endcomment %}
+          {% comment %} base.html을 상속한 템플릿에서 구현해야 하는 영역 {% endcomment %}
       {% endblock %}
+      </div>
   
       {% block footer %}
       <div class="footer">
