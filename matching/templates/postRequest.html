@@ -1,11 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>postRequest</title>
-  </head>
-  <body>
-    postRequest 페이지
-  </body>
-</html>
+{% extends 'profile_template.html' %} 
+{% load static %}
+{% block static %}
+  <link rel="stylesheet" href="{% static 'css/profile.css' %}" >  
+  <link rel="stylesheet" href="{% static 'css/PostRequest.css' %}" >  
+{% endblock %}
+
+{% block title %}PostRequest{% endblock %}
+
+
+{% block profile_title %}
+  Profile
+{% endblock %}
+
+{% block maincontent %}
+PostRequest 내용
+{% endblock maincontent %}
