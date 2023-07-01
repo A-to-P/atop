@@ -1,11 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>editMyprofile</title>
-  </head>
-  <body>
-    editMyprofile 페이지
-  </body>
-</html>
+{% extends 'profile_template.html' %} 
+{% load static %}
+{% block static %}
+  <link rel="stylesheet" href="{% static 'css/profile.css' %}" >  
+  <link rel="stylesheet" href="{% static 'css/editMyprofile.css' %}" >  
+{% endblock %}
+
+{% block title %}컨설턴트 프로필 수정 페이지{% endblock %}
+
+
+{% block profile_title %}
+  Profile
+{% endblock %}
+
+{% block maincontent %}
+  editMyprofile 내용
+{% endblock maincontent %}

@@ -1,11 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>findRequest</title>
-  </head>
-  <body>
-    findRequest 페이지
-  </body>
-</html>
+{% extends 'base.html' %}   <!--base.html 상속(base.css 포함)-->
+{% load static %}
+{% block static %}
+    <link rel="stylesheet" href="{% static '/css/findRequest.css' %}">
+{% endblock %}
+
+{% block title %} findRequest {% endblock %}
+
+{% block content %}
+findRequest내용
+{% endblock %}
