@@ -82,6 +82,12 @@ WSGI_APPLICATION = 'atop.wsgi.application'
 
 ASGI_APPLICATION = 'atop.asgi.application'
 
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels.layers.InMemoryChannelLayer"
+    }
+}
+
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases

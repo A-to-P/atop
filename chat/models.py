@@ -24,5 +24,5 @@ class Message(models.Model):
     def __str__(self) -> str:
         return f"{self.user.username}"
     
-    def last_30(self, room_id):
-        return Message.objects.filter(room=room_id).order_by('created_at')[:30]
+    def ordered_messages(self, room_id):
+        return Message.objects.filter(room=room_id).order_by('created_at')
