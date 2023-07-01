@@ -48,8 +48,10 @@ a:visited{
 
 /* Signup.html */
 .signup_wrapper{
-  margin-bottom: 200px;
-  padding: 0 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: inherit;
 }
 .signup_container{
   height: 500px;

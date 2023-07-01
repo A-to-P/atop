@@ -7,3 +7,9 @@ def myProfile(request):
 
 def editMyprofile(request):
     return render(request, "editMyprofile.html")
+
+def profile_template(request):
+    return render(request, "profile_template.html")
+
+def new_profile_template(request):
+    return render(request, "new_profile_template.html")
