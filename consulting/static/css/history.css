@@ -1,0 +1,13 @@
+.history{
+  margin: 0 auto;
+  text-align: center;
+  /* display: flex;
+  justify-content: space-between; */
+  border: solid black 1px;
+  padding: 0.5rem;
+  width: 42rem;
+  list-style-type: none;
+}
+span{
+  margin: 0 0.3rem;
+}

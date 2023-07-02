@@ -4,6 +4,7 @@
   flex-direction: row;  
 }
 .content{
+  height: unset;
   flex: 1 4 0;
   align-self: auto;
 }

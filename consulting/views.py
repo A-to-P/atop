@@ -8,3 +8,5 @@ def myConsulting(request):
 def consultingSpace(request):
     return render(request, 'consultingSpace.html')
 
+def consultingHistory(request):
+    return render(request, 'consultingHistory.html')

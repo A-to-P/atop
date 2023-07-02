@@ -52,11 +52,11 @@ a:visited{
 
 .signup_container{
   background-color: #d6d6d6;
-  width: 500px;
-  height: 700px;
-  margin: 0 auto;
-  border-radius: 20px;
-  padding: 50px;
+  width: 30rem;
+  height: 50rem;
+  margin: 5rem auto;
+  border-radius: 2rem;
+  padding: 3rem;
 }
 
 .signup_title{
@@ -66,10 +66,9 @@ a:visited{
 }
 
 .signup_input, select{
-  /* margin-top: 10px; */
   margin: 10px auto;
-  height:50px;
-  width: 435px;
+  height: 3rem;
+  width: 26rem;
   border-radius: 10px;
   border: none;
 }
@@ -83,11 +82,19 @@ a:visited{
 }
 
 #signup_btn{
-  height:50px;
+  height: 3rem;
   border: none;
-  border-radius: 10px;
+  border-radius: 1rem;
   background-color: rgb(145, 145, 145);
-  width:200px; 
+  width: 15rem;
   display: block;
-  margin: 20px auto;
+  margin: 5rem auto 0 auto;
+}
+.authenticate .signup_input{
+  background-color: rgb(252, 252, 252);
+  height: 3rem;
+  display: flex;
+  width: auto;
+  justify-content: space-between;
+  padding: 0.5rem;
 }

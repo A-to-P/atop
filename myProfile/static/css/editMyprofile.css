@@ -1,0 +1,22 @@
+input{
+  width: 100%;
+}
+.confirm{
+  padding: 0.3rem;
+}
+
+.badge{
+  height:fit-content;
+}
+.consult_info_content input {
+  width: unset;
+}
+.store_profile{
+  float: right;
+  width: fit-content;
+  height: fit-content;
+  border : none;
+  background-color: rgb(200, 200, 200);
+  margin-top: 2rem;
+  padding : 0.5rem;
+}

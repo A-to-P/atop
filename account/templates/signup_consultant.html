@@ -16,12 +16,21 @@
     <option value="branding">창업브랜딩</option>
     <option value="logo_design">로고 디자인</option>
     <option value="interior">인테리어</option>
-  </select>
+</select>
 
 <div class="authenticate" >
   <label for="authenticate" >학교 인증</label><br>
-  <input type="email" class="signup_input" placeholder="학교 웹메일을 입력해주세요." id="" name="authenticate"/>
-  <button style="float:right;">인증하기</button><br>
+  <div class="signup_input" >
+    <div>
+      <span style="font-size:small;">학생증이나 재학증명서 이미지 파일을 올려주세요.</span>
+      <input type="file" style="margin-top: 0.3rem;" id="" name="authenticate"/>
+    </div>
+    <div style="margin: auto;">
+      <input type="button" style="float:right;border:none; border-radius:1rem;" value="인증하기"/>
+    </div>
+    
+  </div>
+  
 </div>
 
 </div>

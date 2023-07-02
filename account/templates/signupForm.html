@@ -15,7 +15,11 @@
     <form id="signup_form" >
       <!-- {% csrf_token %} -->
       <div class="form_field">
-        <label for="user_id"> 이름 </label><br>
+        <label for="user_name"> 이름 </label><br>
+        <input type="text" class="signup_input" placeholder="이름을 입력해주세요." id="user_name" name="username"/>
+      </div>
+      <div class="form_field">
+        <label for="user_id"> 아이디 </label><br>
         <input type="text" class="signup_input" placeholder="아이디를 입력해주세요." id="user_id" name="username"/>
       </div>
       <div class="form_field">
@@ -24,15 +28,15 @@
       </div>
       <div class="form_field">
         <label for="password"> 비밀번호 </label><br>
-        <input type="text" class="signup_input" placeholder="비밀번호를 입력해주세요." id="password" name="password"/>
+        <input type="password" class="signup_input" placeholder="비밀번호를 입력해주세요." id="password" name="password"/>
         <br>
-        <input type="text" class="signup_input" placeholder="비밀번호 재입력" id="password_check" name="password_check"/>
+        <input type="password" class="signup_input" placeholder="비밀번호 재입력" id="password_check" name="password_check"/>
       </div>
       <!-- select 폼 -->
       {% block selectForm %}
 
       {% endblock selectForm %}
-      <p><button id="signup_btn">가입하기</button></p>
+      <input type="submit" id="signup_btn" value="가입하기"/>
     </form>
     </div>
   </div>
