@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
+from consulting.models import Consulting
 
 JOB_CHOICES = (("restaurant", "Restaurant"),("consultant", "Consultant"))
 
@@ -33,6 +34,12 @@ class User( AbstractBaseUser, PermissionsMixin):
     @property
     def is_staff(self):
         return self.is_superuser
+    
+    def count_consulting(self):
+        return len(Consulting.objects.filter(consultant=self))
+    
+    def __lt__(self, other):
+        return self.count_consulting() < other.count_consulting()
 
 
 class Tag(models.Model):
