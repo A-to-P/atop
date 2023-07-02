@@ -39,11 +39,16 @@ class ChatConsumer(WebsocketConsumer):
         return result
 
     def message_to_json(self, message):
-        return {
-            'author': message.user.username,
-            'content': message.message,
-            'timestamp': str(message.created_at)
-        }
+        result= {}
+        result['author']= message.user.username,
+        result['content']= message.message,
+        # file None인경우 해결
+        try:
+            result['file']= message.file.url,
+        except:
+            result['file']= None,
+        result['timestamp']= str(message.created_at)
+        return result
 
     commands = {
         'fetch_messages': fetch_messages,

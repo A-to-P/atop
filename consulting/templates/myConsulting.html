@@ -1,28 +1,28 @@
-{% extends 'consulting_template.html' %} 
+{% extends 'consulting_template.html' %}
 {% load static %}
 
 {% block static %}
-  <link rel="stylesheet" href="{% static 'css/profile.css' %}" >  
-  <link rel="stylesheet" href="{% static 'css/consulting_template.css' %}" >  
-  <link rel="stylesheet" href="{% static 'css/myConsulting.css' %}" >  
+  <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+  <link rel="stylesheet" href="{% static 'css/consulting_template.css' %}">
+  <link rel="stylesheet" href="{% static 'css/myConsulting.css' %}">
 {% endblock %}
 
 {% block title %}
-  마이 컨설팅 
+  마이 컨설팅
 {% endblock %}
 
-{% block profile_title %}  
-My Consulting
+{% block profile_title %}
+  My Consulting
 {% endblock %}
 
-{% block menu %} 
-<p class="menu">
-  <a href="" >현재 컨설팅</a>
-</p>
-<p class="menu" >
-  <a href="">내 의뢰 목록</a>
-</p>
-<p class="menu">
-  <a href="">컨설팅 히스토리</a>
-</p>
-{% endblock menu %}  
+{% block menu %}
+  <p class="menu">
+    <a href="">현재 컨설팅</a>
+  </p>
+  <p class="menu">
+    <a href="">내 의뢰 목록</a>
+  </p>
+  <p class="menu">
+    <a href="">컨설팅 히스토리</a>
+  </p>
+{% endblock menu %}
