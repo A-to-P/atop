@@ -64,5 +64,11 @@
       </div>
       {% endblock %}
     </div>
+
+    <!-- base.html에 적용될 자바스크립트 경로 -->
+    <script  type="text/javascript" src="{% static '/js/base.js' %}"></script>
+
+    <!-- 다음 html에 적용할 js 파일 경로 넣는 곳 -->
+    {% block js %}{% endblock %}
   </body>
 </html>
