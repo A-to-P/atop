@@ -1,0 +1,142 @@
+.myConsulting_wrapper{
+    margin: 2rem;
+}
+
+.myConsulting_container{
+    padding: 1rem 2rem;
+    height: fit-content;
+    border-radius: 1rem;
+    background-color: rgb(178, 204, 243);
+}
+
+.myConsulting_title{
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+/*-----------위------------*/
+
+div[class^="request_"]:not(.request_summary){  /*~로 시작하는 속성 선택*/
+    margin: 0.5rem;
+    padding: 0.5rem 1.5rem;
+    background-color: white;
+}
+
+.request_category, .request_money{
+    display: inline-block;
+    width: fit-content;
+}
+
+.request_summary_container{
+    clear:both;
+}
+
+.request_summary{
+    overflow: hidden;
+    white-space: normal;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;   /* 말줄임표로 보이는 라인 수*/
+    -webkit-box-orient: vertical;
+}
+
+.request_button {
+    float: right;
+    margin: 0.5rem 1rem;
+    padding: 0.5rem 1.5rem;
+    border-radius: 0.5rem;
+    border: none;
+    background-color: rgb(75, 126, 255);
+    color: white;
+}
+
+
+/*-----------아래------------*/
+
+.myConsulting_consulting_container{
+    display: flex;
+    flex-direction: row;
+}
+
+
+/* chat 영역 */
+
+.chat_wrapper{
+    width: 50%;
+    height: fit-content;
+}
+
+.info_wrapper{
+    padding: 1rem;
+    width: 50%;
+}
+
+.chat_container{
+    margin-bottom: 1rem;
+    height: 25rem;
+    background-color: white;
+}
+
+.chat_input_container{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 0 1rem;
+    height: 4rem;
+    background-color: white;
+}
+
+#chat_file_button{
+    width: 3rem;
+    height: inherit;
+    background-image: url(../../static/img/clip.png);
+    background-size: contain;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: none;
+}
+
+#chat_inputbox{
+    margin: 0 1rem;
+    padding: 0 1rem;
+    width: 75%;
+    height: 2rem;
+    background-color: white;
+    font-size: 1rem;
+}
+
+#chat_submit_button{
+    padding: 0.5rem;
+    width: 5rem;
+    border: solid 0.2rem rgb(55, 70, 205);
+    border-radius: 1rem;
+    background-color: white;
+}
+
+/* info 영역 */
+
+.info_title{
+    font-weight: 600;
+}
+
+.info_container{
+    padding: 2rem 1rem;
+    height: fit-content;
+    border-radius: 1rem;
+    background-color: rgb(55, 70, 205);
+}
+
+.consultant_img{
+    margin: 0.5rem auto;
+    height: 5rem;
+    width: 5rem;
+    border-radius: 100%;
+    background-color: rgb(5, 5, 63);
+}
+
+div[class^="consultant_"]:not(.consultant_img){  /*~로 시작하는 속성 선택*/
+    margin: 0.5rem;
+    padding: 0.5rem 1rem;
+    background-color: white;
+}
