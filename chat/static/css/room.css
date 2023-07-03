@@ -10,6 +10,8 @@
 
 .chat-message {
   max-width: 20rem;
+  word-wrap: break-word;
+  word-break: break-all;
 }
 
 .file-download {

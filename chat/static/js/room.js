@@ -157,18 +157,18 @@ function createMessage(data) {
       <div class="d-flex flex-row justify-content-end pt-0 me">
               <div class="d-flex flex-row">
                 <div>
-                <p class="chat-message ${isContent} p-2 me-2 mb-1 text-white rounded-3 bg-primary">${data.content}</p>
+                <div class="chat-message ${isContent} p-2 me-2 mb-1 text-white rounded-3 bg-primary">${data.content}</div>
                 ${fileContent}
                 </div>
               </div>
             </div>`
-      : `<div class="d-flex flex-row justify-content-start you">
+      : `<p class="small ms-2 mb-0 rounded-3 text-muted">${timestamp}</p>
+      <div class="d-flex flex-row justify-content-start you">
               <div class="d-flex flex-row">
               <div>
-                <p class="chat-message ${isContent} p-2 ms-2 mb-1 rounded-3" style="background-color:#f5f6f7;" >${data.content}</p>
+                <div class="chat-message ${isContent} p-2 ms-2 mb-1 rounded-3" style="background-color:#f5f6f7;" >${data.content}</div>
                 ${fileContent}
                 </div>
-                <p class="small ms-2 mb-1 rounded-3 text-muted">${timestamp}</p>
               </div>
             </div>`;
 
