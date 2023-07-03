@@ -12,8 +12,12 @@
     <!-- 회원가입 폼 제목  -->
     <h1 class="signup_title">{% block FormTitle %} signupForm {%endblock FormTitle %}</h1>
 
-    <form id="signup_form" >
-      <!-- {% csrf_token %} -->
+    {% if error %}
+    {{error}}
+    {% endif %}
+
+    <form id="signup_form" method="POST" actions="{% url 'signup_restaurant' %}> 
+      {% csrf_token %}
       <div class="form_field">
         <label for="user_id"> 이름 </label><br>
         <input type="text" class="signup_input" placeholder="아이디를 입력해주세요." id="user_id" name="username"/>
