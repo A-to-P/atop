@@ -8,14 +8,14 @@
   padding: 1.5rem 2rem;
   padding-bottom: 4.5rem;
 }
-.col {
+.col-box {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   gap: 1rem;
 }
 
-.row {
+.row-box {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -24,11 +24,11 @@
 
 .request_input {
   width: 100%;
-  height: 2rem;
+  /* height: 2rem; */
 }
 
 textarea {
-  width: 100%;
+  /* width: 100%; */
   border: none;
   resize: none;
 }

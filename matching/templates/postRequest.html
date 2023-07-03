@@ -12,32 +12,33 @@
 {% endblock %}
 
 {% block maincontent %}
-  <h3>의뢰 글 작성하기</h3>
   <div id="post_request_container">
+    <h3>의뢰 글 작성하기</h3>
+
     <form id="request_form" method="POST" actions="{% url 'postRequest' %}">
       {% csrf_token %}
-      <div class="col">
+      <div class="col-box">
         <input name="title" type="text" class="request_input" placeholder="제목" required="required"></input>
 
         <b>요식업자 정보</b>
 
-        <div class="row">
+        <div class="row-box">
           <input name="name" type="text" class="request_input" placeholder="이름" value="{{profile.name}}" required="required"></input>
           <input name="age" type="text" class="request_input" placeholder="나이" value="{{profile.age}}" required="required"></input>
           <input name="career" type="text" class="request_input" placeholder="경력" value="{{profile.career}}" required="required"></input>
         </div>
 
-        <div class="row">
+        <div class="row-box">
           <input name="menu" type="text" class="request_input" placeholder="주메뉴" value="{{profile.menu}}" required="required"></input>
           <input name="location" type="text" class="request_input" placeholder="가게 위치" value="{{profile.location}}" required="required"></input>
         </div>
 
-        <div class="row">
+        <div class="row-box">
           <input name="area" type="text" class="request_input" placeholder="가게 규모" value="{{profile.area}}" required="required"></input>
           <input name="monthly_avg_rev" type="number" class="request_input" placeholder="월 평균 매출" required="required"></input>
         </div>
 
-        <div class="row">
+        <div class="row-box">
           <select class="request_input" id="request_field" required="required">
             <option value="marketing" selected="selected">마케팅</option>
             <option value="control_cost">원가 관리</option>
@@ -52,7 +53,7 @@
           <input name="fee" type="number" class="request_input" placeholder="컨설팅비"></input>
         </div>
 
-        <textarea name="content" rows="10" placeholder="의뢰 내용을 입력해주세요." required="required"></textarea>
+        <textarea name="content" row-box-boxs="10" placeholder="의뢰 내용을 입력해주세요." required="required"></textarea>
       </div>
 
       <button type="submit" id="request_submit_btn">의뢰 등록하기</button>
