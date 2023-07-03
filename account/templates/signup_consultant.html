@@ -3,20 +3,16 @@
 {% block title %}컨설턴트 회원가입 페이지 {%endblock title %}
 {% block FormTitle %} 컨설턴트 회원가입 {% endblock FormTitle %} 
 
-{% block selectForm %} {% csrf_token %}
-<div class="request_field">
-  <label for="request_field">컨설팅 분야</label><br>
-  <select name="request_field" id="request_field" required> 
-    <option value="marketing">마케팅</option>
-    <option value="control_cost">원가 관리</option>
-    <option value="account_book">회계 장부</option>
-    <option value="labor">노무</option>
-    <option value="tax">절세</option>
-    <option value="sns">SNS</option>
-    <option value="branding">창업브랜딩</option>
-    <option value="logo_design">로고 디자인</option>
-    <option value="interior">인테리어</option>
-  </select>
+{% block selectForm %} 
+  {% csrf_token %}
+  <div class="request_field">
+    <label for="request_field">컨설팅 분야</label><br>
+
+    <select name="request_field" id="request_field" required="required">
+      {% for tag in tags %}
+        <option value="{{tag.value}}">{{ tag.name }}</option>
+      {% endfor %}
+    </select>
 
 <!-- <div class="authenticate" >
   <label for="authenticate" >학교 인증</label><br>
@@ -24,5 +20,5 @@
   <button style="float:right;">인증하기</button><br>
 </div> -->
 
-</div>
+  </div>
 {% endblock selectForm %}

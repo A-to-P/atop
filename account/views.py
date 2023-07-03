@@ -62,14 +62,19 @@ def signup_restaurant(request):
             tag = Tag.objects.get(value=tag_value)
             user = User.objects.create(username=username,password=password,email=email,job='restaurant')
             user.tag.add(tag.id)
-            
             auth.login(request,user)
             return redirect('home')
+    return render(request, 'signup_restaurant.html')
     
 
 #컨설턴트 회원가입폼
 def signup_consultant(request):
+    tags = list(Tag.objects.filter(job="consultant").values())
+    if request.method =="GET":
+        return render(request, 'signup_consultant.html', {'tags':tags})
+    
     if request.method == "POST":
+        tag_value = request.POST['request_field']
         username = request.POST['username']
         password = request.POST['password']
         password_check = request.POST['password_check']
@@ -84,10 +89,11 @@ def signup_consultant(request):
         if password != password_check:
             error_password = '비밀번호와 비밀번호 확인이 일치하지 않습니다.'
             return render(request, 'signup_consultant.html', {'error': error_password})
-        else:   
+        else:
+            tag = Tag.objects.get(value=tag_value)   
             user = User(username=username, password=password,email=email,job='consultant')
             user.save()
-
+            user.tag.add(tag.id)
             auth.login(request,user)
             return redirect('home')
     return render(request, 'signup_consultant.html')
