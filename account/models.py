@@ -44,7 +44,6 @@ class User( AbstractBaseUser, PermissionsMixin):
 
 class Tag(models.Model):
     name = models.CharField(max_length=20)
-    value = models.CharField(max_length=20, default="")
     # 요식업분야/컨설팅분야 구분
     job = models.CharField(choices=JOB_CHOICES, max_length=10)
 

@@ -1,24 +1,23 @@
-{% extends 'signupForm.html' %} 
+{% extends 'signupForm.html' %}
 
-{% block title %}컨설턴트 회원가입 페이지 {%endblock title %}
-{% block FormTitle %} 컨설턴트 회원가입 {% endblock FormTitle %} 
+{% block title %}컨설턴트 회원가입 페이지
+{%endblock title %}
+{% block FormTitle %}
+  컨설턴트 회원가입
+{% endblock FormTitle %}
 
-{% block selectForm %} 
+{% block selectForm %}
   {% csrf_token %}
   <div class="request_field">
     <label for="request_field">컨설팅 분야</label><br>
 
     <select name="request_field" id="request_field" required="required">
       {% for tag in tags %}
-        <option value="{{tag.value}}">{{ tag.name }}</option>
+        <option value="{{tag.id}}">{{ tag.name }}</option>
       {% endfor %}
     </select>
 
-<!-- <div class="authenticate" >
-  <label for="authenticate" >학교 인증</label><br>
-  <input type="email" class="signup_input" placeholder="학교 웹메일을 입력해주세요." id="" name="authenticate"/>
-  <button style="float:right;">인증하기</button><br>
-</div> -->
+    <!-- <div class="authenticate" > <label for="authenticate" >학교 인증</label><br> <input type="email" class="signup_input" placeholder="학교 웹메일을 입력해주세요." id="" name="authenticate"/> <button style="float:right;">인증하기</button><br> </div> -->
 
   </div>
 {% endblock selectForm %}
