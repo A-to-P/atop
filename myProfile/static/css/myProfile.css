@@ -14,28 +14,28 @@
 
 }
 
+.information .mb-3{
+  width: 35rem;
+}
+
 .info{
   padding: 0.3rem 1rem;
   margin-bottom: 0.3rem;
-  height: fit-content;
-  width: 30rem;
+  width: 35rem;
   background-color: #d3d3d3;
 }
-#school{
+.school_check{
   display: flex;
   justify-content: left;
   /* margin-right: 5rem; */
 }
 .badge{
   border: none;
-  margin-bottom: 0.3rem;
-  width:fit-content;
-  background-color: rgb(214, 214, 214);
+  height: fit-content;
+  /* width:fit-content; */
  }
 
-#school .info{
-  margin-right: 2rem;
-}
+
 /* 간단 정보 부분 */
 .information{
   margin-bottom: 2rem;

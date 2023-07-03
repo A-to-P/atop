@@ -1,6 +1,10 @@
 input{
   width: 100%;
 }
+.information .mb-3{
+  width: 35rem;
+}
+
 .confirm{
   padding: 0.3rem;
 }
@@ -13,10 +17,21 @@ input{
 }
 .store_profile{
   float: right;
-  width: fit-content;
+  /* width: fit-content;
   height: fit-content;
   border : none;
   background-color: rgb(200, 200, 200);
   margin-top: 2rem;
-  padding : 0.5rem;
+  padding : 0.5rem; */
+}
+.btn-primary{
+  height : fit-content;
+}
+.text-bg-secondary{
+  background-color: unset;
+  height : fit-content;
+  padding: 0;
+}
+.modal-dialog{
+  margin-top: 15%;
 }

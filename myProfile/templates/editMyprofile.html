@@ -26,32 +26,48 @@
 
 
 <form method="POST" action="" class="profile_container" entype="multipart/form-data">
-  {% csrf_token %}   
+  {% csrf_token %}    
+
+  <!-- 기본정보 수정폼 -->
   <div class="information">
-    <div class= "info" id="name">
-      이름 : <input type="text" name="name" value="{{edit_profile.name}}" />
+    <div class="mb-3 ">
+      <label for="name" class="form-lagel ">이름</label>
+      <input class="form-control" type="text" name="name" id="name" value="" valueplaceholder="이름을 입력해주세요." aria-label="default input example">
     </div>
-    <div class= "info">
-      프로필 사진 : <input type="file" name="image" />
+    <div class="mb-3 ">
+      <label for="formFile" class="form-label">프로필 사진</label>
+      <input class="form-control" type="file" name= "profile_imgage" id="formFile">
     </div>
-    <div class= "info" id="age">
-      나이 : <input type="text" name="age" value="{{edit_profile.age}}" />
+    <div class="mb-3 ">
+      <label for="age" class="form-lagel ">나이</label>
+      <input class="form-control" type="text" name="age" id="age" value="" valueplaceholder="나이를 입력해주세요." aria-label="default input example">
     </div>
-    <div class= "info" id="email">
-      이메일 : <input type="email" name="email" value="{{edit_profile.email}}" />
+
+    <div class="mb-3">
+      <label for="email" class="form-label ">이메일</label>
+      <input type="email" class="form-control" name="email" id="email" placeholder="name@example.com">
     </div>
-    <div id="school">
-      <div class= "info">
-        학력 : <input type="school" name="school" value="{{edit_profile.school}}" />
+    <div class="school_check ">
+      <div class="mb-3 ">
+        <label for="school" class="form-label">학력</label>
+        <input type="email" class="form-control" name="school" id="school" placeholder="학교명과 학과명을 입력해주세요.">
       </div>
       <!-- 인증되어 있으면 -->
-      <a href="" class="badge confirm"> 인증 완료 </a>
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-patch-check-fill" viewBox="0 0 16 16">
-        <path d="M10.067.87a2.89 2.89 0 0 0-4.134 0l-.622.638-.89-.011a2.89 2.89 0 0 0-2.924 2.924l.01.89-.636.622a2.89 2.89 0 0 0 0 4.134l.637.622-.011.89a2.89 2.89 0 0 0 2.924 2.924l.89-.01.622.636a2.89 2.89 0 0 0 4.134 0l.622-.637.89.011a2.89 2.89 0 0 0 2.924-2.924l-.01-.89.636-.622a2.89 2.89 0 0 0 0-4.134l-.637-.622.011-.89a2.89 2.89 0 0 0-2.924-2.924l-.89.01-.622-.636zm.287 5.984-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7 8.793l2.646-2.647a.5.5 0 0 1 .708.708z"/>
-      </svg>
+      <!-- 
+        <button type="button" class="btn btn-primary" style="margin: auto;">
+        인증완료 
+        
+        <span class="badge text-bg-secondary">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-patch-check-fill" viewBox="0 0 16 16">
+            <path d="M10.067.87a2.89 2.89 0 0 0-4.134 0l-.622.638-.89-.011a2.89 2.89 0 0 0-2.924 2.924l.01.89-.636.622a2.89 2.89 0 0 0 0 4.134l.637.622-.011.89a2.89 2.89 0 0 0 2.924 2.924l.89-.01.622.636a2.89 2.89 0 0 0 4.134 0l.622-.637.89.011a2.89 2.89 0 0 0 2.924-2.924l-.01-.89.636-.622a2.89 2.89 0 0 0 0-4.134l-.637-.622.011-.89a2.89 2.89 0 0 0-2.924-2.924l-.89.01-.622-.636zm.287 5.984-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7 8.793l2.646-2.647a.5.5 0 0 1 .708.708z"/>
+          </svg>
+        </span>
+      </button> 
+    -->
+      
       <!-- 인증되어 있지 않으면 -->
       <!-- Button trigger modal -->
-      <div>
+      <div style="margin: auto;">
         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
           학교 인증하기
         </button>
@@ -61,15 +77,18 @@
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">학교 인증</h1>
+                <h1 class="modal-title fs-5" id="exampleModalLabel">학교 인증하기</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div class="modal-body">
-                ...
+                <p>
+                  학생증이나 재학증명서를 업로드해주세요.
+                </p>
+                <input class="form-control" type="file" name= "shcool" id="shcool">
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="submit" class="btn btn-primary">Save changes</button>
               </div>
             </div>
           </div>
@@ -82,22 +101,24 @@
     </div>
     
   </div>
-
+  <!-- 자기소개 -->
   <div class="introduction">
-    <h3> 자기소개 </h3>
-    <div class="intro_content">
-      <textarea name="intro_content" id="" cols="100%" placeholder="자기소개를 작성해주세요."> {{edit_profile.intro_content}} </textarea>
-      
+    <div class="">
+      <div class="mb-3">
+        <label for="introduction" class="form-label"><h5>자기소개</h5></label>
+        <textarea class="form-control" id="introduction" rows="3"></textarea>
+      </div>
     </div>
   </div>
 
-  <form class="consulting_info">
-    <h3> 컨설팅 정보 </h3>
-    <div class="consult_info" id="consult_field">
-      <div class="consult_info_title">컨설팅 분야</div>
-      <div class="consult_info_content"> 
-        <select name="request_field" id="request_field" required> 
-          <option value="marketing">마케팅</option>
+  <div class="consulting_info" >
+    <h5> 컨설팅 정보 </h5>
+
+    
+      <div class="input-group mb-3">
+        <label class="input-group-text" for="inputGroupSelect01">컨설팅 분야</label>
+        <select class="form-select" name="request_field" id="request_field" required aria-label="Default select example"> 
+          <option selected value="marketing">마케팅</option>
           <option value="control_cost">원가 관리</option>
           <option value="account_book">회계 장부</option>
           <option value="labor">노무</option>
@@ -106,36 +127,39 @@
           <option value="branding">창업브랜딩</option>
           <option value="logo_design">로고 디자인</option>
           <option value="interior">인테리어</option>
-      </select>
+        </select>
       </div>
-    </div> 
-    <div class="consult_info" id="contact">
-      <div class="consult_info_title">연락 가능 시간</div>
-      <div class="consult_info_content">
-        <!-- 언제든지 가능 선택 박스 -->
-        <div> 
-          언제든지 가능 <input type="checkbox" class="consult_info_content" name="always" value="always" required>     
+
+      <div>
+        <div class="input-group mb-3">
+          <span class="input-group-text" id="inputGroup-sizing-default">연락 가능 시간</span>
+          <input type="time" name="start_time"  value="08:00" min="00:00" max="23:00" step="300" required class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+          <input type="time" name="end_time" value="23:00" min="00:00" max="23:00" step="300" required class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+          
         </div>
-        <!-- 시간대 선택  -->
-        <input type="time" class="consult_info_content" name="start_time" value="08:00" min="00:00" max="23:00" step="300" required> 
-        ~
-        <input type="time" class="consult_info_content" name="end_time" value="23:00" min="00:00" max="23:00" step="300" required> 
-        
-
-        
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" id="gridCheck">
+          <label class="form-check-label"style="margin-bottom: 1rem;" for="gridCheck">
+            언제든지 가능
+          </label>
+        </div>
       </div>
-    </div>
-    <div class= "consult_info" id="times">
-      <div class="consult_info_title">컨설팅 횟수</div>
-      <div class="consult_info_content">
-        <input type="text" name="consult_time" value="{{edit_profile.consult_time}}" /> 회
+
+      
+
+      
+      <div class="input-group mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-default">컨설팅 횟수</span>
+        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
       </div>
-    </div>
+   
+    
+      <div class="col-auto">
+       <button type="submit" class="btn btn-primary mb-3 store_profile">프로필 저장</button>
+      </div>
+    <!-- <input type="submit" class="store_profile" name="submit" value="프로필 저장"/> -->
+  </div>
 
 
-    <button class="store_profile" type="submit">프로필 저장 </button>
-  </form>
-
-
-
+</form>
 {% endblock %}

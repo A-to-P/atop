@@ -1,5 +1,6 @@
 /* 오른쪽 컨텐츠에 따라 전체 높이가 유동적으로 달라짐 (해결)*/
-.container{
+.template_container{
+  padding: 0;
   display:flex;
   flex-direction: row;  
 }
@@ -40,7 +41,8 @@
 }
 /* 닉네임, 분야 */
 .profile_summary{
-  margin-top: 1rem;
+  font-weight: bold;
+  margin-top: 0.5rem;
 }
 h4{
   margin: 0;

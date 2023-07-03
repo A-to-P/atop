@@ -19,19 +19,21 @@
     {% endif %}
 
     <form id="login_form" method="POST" actions="{% url 'login' %}">
-    {% csrf_token %}
-      <div class="id">
-        <label for="user_id"> ID </label><br>
-        <input type="text" class="login_input" placeholder="아이디를 입력하세요." id="user_id" name="id"/>
+      {% csrf_token %}
+      <div class="mb-3">
+        <label for="user_id" class="form-label">ID</label>
+        <input type="text" class="form-control" id="user_id" name="id" placeholder="아이디를 입력하세요">
       </div>
-      
-      <div class="pw">
-        <label for="user_pw"> PW </label><br>
-        <input type="password" class="login_input" placeholder="비밀번호를 입력하세요." name="pw" id="user_pw"/>
+      <div class="mb-3">
+        <label for="user_id" class="form-label">PW</label>
+        <input type="password" class="form-control" name="pw" id="user_pw" placeholder="비밀번호를 입력하세요">
       </div>
-  
-      <p><button id="login_btn">로그인</button></p>
+
+    
+      <button type="submit" class="btn btn-primary login_btn">로그인</button>
       <a href="{% url 'signup' %}" style="float:right;" > 회원가입 하기 </a>
+
+      
     </form>
   </div>
 </div>

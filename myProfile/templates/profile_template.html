@@ -1,7 +1,7 @@
 <!-- base.html 상속 -->
 {% extends 'base.html' %}  
 {% load static %}
-{% load bootstrap4 %}
+
 {% block static %}
   <link rel="stylesheet" href="{% static 'css/profile.css' %}" >  
 {% endblock %}
@@ -17,7 +17,7 @@
 {% block content %} 
 
 
-<div class="container">
+<div class="template_container">
 
   <!-- 왼쪽 사이드 : 프로필, 메뉴바 -->
   <div class="content  left_content  ">
@@ -26,17 +26,15 @@
         <div class="img">
         </div>
         <div class="profile_summary">
-          <h4 >이름: 
-            
-          </h4>
-          <h4 >분야: </h4>
+          <div>이름: </div>
+          <div>분야: </div>
         </div>
       </div>
     </div>
     
     
     <div class="profile_title">
-      <h3>{% block profile_title %}{% endblock %}</h3>
+      <h3 style="font-weight: bold;">{% block profile_title %}{% endblock %}</h3>
     </div>
 
 
