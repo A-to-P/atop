@@ -17,7 +17,7 @@
 {% block content %} 
 
 
-<div class="container">
+<div class="template_container">
 
   <!-- 왼쪽 사이드 : 프로필, 메뉴바 -->
   <div class="content  left_content  ">
@@ -26,22 +26,21 @@
         <div class="img">
         </div>
         <div class="profile_summary">
-          <h4 >닉네임:</h4>
-          <h4 >분야: </h4>
+          <div>이름: </div>
+          <div>분야: </div>
         </div>
       </div>
-
     </div>
     
     
     <div class="profile_title">
-      <h3>{% block profile_title %}{% endblock %}</h3>
+      <h3 style="font-weight: bold;">{% block profile_title %}{% endblock %}</h3>
     </div>
 
 
     <div class="menu_bar">
       {% block menu %}
-
+        
       {% endblock %}
     </div>
   </div>

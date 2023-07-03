@@ -16,7 +16,7 @@
     {{error}}
     {% endif %}
 
-    <form id="signup_form" method="POST" actions="{% url 'signup_restaurant' %}> 
+    <form id="signup_form" method="POST" actions="{% url 'signup_restaurant' %}"> 
       {% csrf_token %}
       <div class="form_field">
         <label for="user_id"> 이름 </label><br>

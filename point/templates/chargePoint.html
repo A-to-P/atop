@@ -1,30 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'css\point.css' %}"> 
+{% extends 'base.html' %}
+   {% load static %}
+    {% block static %} 
+      <link rel="stylesheet" href="{% static 'css\point.css' %}"> 
+    {% endblock %}
+   
     <!-- 요식업자 포인트 충전 페이지 -->
-    <title>chargePoint</title>
-  </head>
-  <body>
-    <!-- nav bar  -->
-    <div class="nav">
-      <div class="nav_left">
-        <a href="{% url 'home' %}" class="logo"> AtoP로고 </a>
-      </div>
-      <div class="nav_right">
-        <a href="{% url 'chargePoint' %}"> 포인트 충전 </a>
-        <a href="" id="profile" style="margin-left: 20px;">프로필</a> 
-      </div>
-    </div>
+    {% block title %}chargePoint{% endblock %}
+ 
 
-
+    {% block content %} 
     <div class="main_content">
       <div class="main_content_header">
-        <h1 class="title"> {% block title %}충전하기{% endblock title %}</h1>
+        <h2 class="title"> {% block point_title %}충전하기{% endblock%}</h2>
         <hr>
         <h6 class="info"> 충전금액을 선택해주세요.</h6>
       </div>
@@ -33,18 +20,23 @@
       </div>
       
       <!-- 포인트 선택 -->
-      <form action="{% url 'chargePoint' %}" class="point_container" method="POST" enctype="multipart/form-data">
+      
+      <form id="chargePoint" action="{% url 'chargePoint' %}" class="point_container" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
-          <button type="button" class="point_field non-click" name="point" value="1000">1,000p</button>
-          <button type="button" class="point_field non-click" name="point" value="5000"> 5,000p</button>
-          <button type="button" class="point_field non-click" name="point" value="10000">10,000p</button>
+        <input type="hidden" name="_method" value="PUT"/>
+        <input type="radio"  class="btn-check non-click " name="point" value="1000" id="option1" autocomplete="off" >
+        <label class="btn btn-secondary point_field non-click " for="option1">1000</label>
+        <input type="radio" class="btn-check non-click " name="point" value="5000" id="option2" autocomplete="off" >
+        <label class="btn btn-secondary point_field non-click " for="option2">5000</label>
+        <input type="radio" class="btn-check non-click" name="point" value="10000" id="option3" autocomplete="off" >
+        <label class="btn btn-secondary point_field non-click" for="option3">10000</label>
       </form>
 
 
       <!-- 결제하기 -->
       <!-- Button trigger modal -->
       <div class="pay">
-      <button type="button" class="btn non-activate" id="pay_btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+      <button type="submit" form="chargePoint" class="btn non-activate" id="pay_btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
         결제하기
       </button>
 
@@ -61,7 +53,7 @@
               <p>선택된 포인트 : <span id="choiced_point">1000</span> </p>
               <p>충전 후 포인트 : </p>
             </div>
-            <div class="modal-footer" style="display:flex; justify-content:center;">
+            <div class ="modal-footer" style="display:flex; justify-content:center;">
               <button type="button" class="btn btn-primary" style="width:110px; border-radius:15px;">결제하기</button>
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"  style="width:110px; border-radius:15px;">닫기</button>
             </div>
@@ -71,15 +63,10 @@
     </div>
     </div>
 
-
-    <!-- 푸터 -->
-      <footer>
-        <a href="{% url 'home' %}" class="footer_field">홈</a>
-        <div href="" class="footer_field">??</div>
-        <div href="" class="footer_field">my</div>
-      </footer>
-
-    <script src="{% static 'js/point.js' %}"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+    {% endblock %}
+    
+    {% block js %}<script src="{% static 'js/point.js' %}"></script>
+    {% endblock %}
+    
   </body>
 </html>

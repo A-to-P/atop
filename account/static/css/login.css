@@ -8,19 +8,23 @@
 }
 
 .login_container{
-  height:600px;
-  width:400px;
-  border-radius: 30px;
+  height: 36rem;
+  width: 30rem;
+  border-radius: 2rem;
   background-color: rgb(189, 189, 189);
-  margin: 0 auto; 
-  padding: 50px;
+  margin: 0 auto;
+  padding: 3rem;
 }
 .login_title{
   text-align: center;
-  background-color:rgb(255, 255, 255);
   margin-bottom: 20px;
 }
-
+h1{
+  font-weight: bold;
+}
+.form-control{
+  height: 3rem;
+}
 
 .id{
   height: 70px;
@@ -45,17 +49,14 @@
   border: none;
 }
 
-#login_form label{
-  height: 20px;
+label{
   font-size: large;
-  padding: 0 20px; 
+  font-weight: bold;
+  padding: 0 1rem;
 }
 
-#login_btn{
-  height:50px;
-  border: none;
-  border-radius: 10px;
-  background-color: rgb(255, 255, 255);
-  width:400px; 
-  margin-bottom: 10px;
+.login_btn{
+
+  width:100%;
+  margin:2rem 0;
 }

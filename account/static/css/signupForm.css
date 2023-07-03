@@ -2,38 +2,8 @@
   margin:0 0;
 
 }
-/* 내비게이션 바 */
-.nav{
-  background-color: gray;
-  height:30px;
-  padding:10px 30px;
-  margin-bottom: 90px;
-  display: flex;
-  justify-content: space-between;
-}
-.nav span{
-  margin-right: 15px;
-  display: inline-block;
-  height: 20px;
-  width:fit-content; 
-  padding: 10px;
-  
-}
-.nav a{
-  margin-left: 15px;
-  display: inline-block;
-  height: 20px;
-  width:fit-content; 
-  padding: 10px;
-}
-
-/* 푸터 */
-footer{
-  padding: 20px 20px;
-  display:flex;
-  justify-content: space-between;
-  margin: 0 200px;
-  background-color: rgb(224, 224, 224);
+h2{
+  font-weight: bold;
 }
 
 a{
@@ -52,42 +22,41 @@ a:visited{
 
 .signup_container{
   background-color: #d6d6d6;
-  width: 500px;
-  height: 700px;
-  margin: 0 auto;
-  border-radius: 20px;
-  padding: 50px;
+  width: 33rem;
+  height: 50rem;
+  margin: 5rem auto;
+  border-radius: 2rem;
+  padding: 4rem;
 }
 
 .signup_title{
   text-align: center;
- 
-  margin-bottom: 20px;
+  margin-bottom: 3rem;
 }
 
 .signup_input, select{
-  /* margin-top: 10px; */
   margin: 10px auto;
-  height:50px;
-  width: 435px;
+  height: 3rem;
+  width: 26rem;
   border-radius: 10px;
   border: none;
 }
 
-#signup_form{
-  padding: 0 30px;
-}
+
 #signup_form label{
   height: 20px;
   font-size: large;
 }
 
-#signup_btn{
-  height:50px;
-  border: none;
-  border-radius: 10px;
-  background-color: rgb(145, 145, 145);
-  width:200px; 
-  display: block;
-  margin: 20px auto;
+.signup_btn{
+  width:100%;
+  margin:2rem 0;
+}
+.authenticate .signup_input{
+  background-color: rgb(252, 252, 252);
+  height: 3rem;
+  display: flex;
+  width: auto;
+  justify-content: space-between;
+  padding: 0.5rem;
 }
