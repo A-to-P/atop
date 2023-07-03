@@ -1,0 +1,17 @@
+{% extends 'profile_template.html' %} 
+{% load static %}
+{% block static %}
+  <link rel="stylesheet" href="{% static 'css/profile.css' %}" >  
+  <link rel="stylesheet" href="{% static 'css/applyRequest.css' %}" >  
+{% endblock %}
+
+{% block title %}applyRequest{% endblock %}
+
+
+{% block profile_title %}
+  Profile
+{% endblock %}
+
+{% block maincontent %}
+applyRequest 내용
+{% endblock maincontent %}

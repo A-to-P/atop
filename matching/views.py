@@ -51,6 +51,9 @@ def postRequest(request):
 def detailedRequest(request):
     return render(request, "detailedRequest.html")
 
+def applyRequest(request):
+    return render(request, "applyRequest.html")
+
 
 def findRequest(request):
     return render(request, "findRequest.html")
