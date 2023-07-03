@@ -11,16 +11,43 @@
 <div class="request_wrapper">
     <div class="request_text">컨설팅 의뢰 글 내용</div>
     <div class="request_container">
-        <div class="reqeust_title">의뢰글 제목</div>
-        <div class="restaurant_info_wrapper">
-            <div class="request_text">요식업자 정보(프로필 보러가기)</div>
+        <div class="request_info_title">의뢰글 제목</div>
+        <div class="restaurant_wrapper">
+            <div class="request_text">
+                요식업자 정보
+                <a href="{% url 'myProfile' %}" >(프로필 보러가기)</a>
+            </div>
+            <div class="restaurant_info_wrapper">
+                <div class="request_info_name">이름(나이) 아무개(35세)</div>
+                <div class="request_info_category">요식업 분야 양식</div>
+                <div class="request_info_sales">월 평균 매출 x,xxx,xxx원</div>
+            </div>            
         </div>
-        <div class="consultant_info_wrapper">
+        <div class="consulting_wrapper">
             <div class="request_text">컨설팅 정보</div>
-            <div class="request_category">컨설팅 분야 마케팅</div>
-            <div class="request_money">컨설팅비 xxx,xxx원</div>
+            <div class="consulting_info_wrapper">
+                <div class="request_info_category">컨설팅 분야 마케팅</div>
+                <div class="request_info_money">컨설팅비 xxx,xxx원</div>
+            </div>
         </div>
-        <div class="request_text_content">의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용</div>
+        <div class="request_info_content">의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용</div>
+    </div>
+</div>
+
+<div class="application_wrapper">
+    <div class="application_text">컨설팅 기획안</div>
+    <div class="application_container">
+        <textarea class="application_input_content" placeholder="지원서를 작성해주세요."></textarea>
+        <div class="consultant_wrapper">
+            <div class="application_text">컨설턴트 정보 입력</div>
+            <div class="application_input_name">이름: 김양식</div>
+            <div class="application_input_age">나이: 35세</div>
+            <div class="application_input_education">학력: 국민대학교 경영학과 3학년</div>
+            <div class="application_input_category">컨설팅 분야: 마케팅</div>
+            <input type="submit" value="전송하기" class="submit_button">
+        </div>
+        
+
     </div>
 </div>
 

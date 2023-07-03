@@ -1,10 +1,66 @@
-.request_wrapper{
+.request_wrapper, .application_wrapper{
     margin: 0 auto;
     padding: 1rem;
-    width: 30rem;
-    height: 33rem;
+    width: 70%;
+    height: fit-content;
 }
 
-.request_container {
+.request_container, .application_container{
+    padding: 1rem;
     background-color: white;
+}
+
+.request_container > *, .application_container > * {
+    margin : 1rem 0;
+}
+
+div[class^="request_info_"], div[class^="application_input_"]{  /*~로 시작하는 속성 선택*/
+    margin: 0.5rem 0.5rem;
+    padding: 0.5rem 1.5rem;
+    max-height: 15rem;
+    border : gray 0.2rem solid;
+    background-color: white;
+}
+
+.consultant_wrapper{
+    position: relative;
+}
+.consultant_wrapper>*{
+    width: 50%;
+}
+
+.application_input_category{
+    /* float:left; */
+}
+
+div[class^="request_info_"]:not(.request_info_title, .request_info_content){  /*~로 시작하는 속성 선택*/
+    
+}
+
+.restaurant_info_wrapper, .consulting_info_wrapper {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.request_text, .application_text{
+    margin: 0.2rem;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.request_info_content{
+    overflow-y: scroll;
+}
+
+.application_input_content{
+    width: 100%;
+    height: 14rem;
+}
+
+.submit_button{
+    position: absolute;
+    width: 8rem;
+    height: 3rem;
+    bottom: 0rem;
+    right: 0rem;
 }
