@@ -1,26 +1,20 @@
-{% extends 'signupForm.html' %} 
+{% extends 'signupForm.html' %}
 
-{% block title %}요식업자 회원가입 페이지 {%endblock title %}
-{% block FormTitle %} 요식업자 회원가입 {% endblock FormTitle %}
+{% block title %}요식업자 회원가입 페이지
+{%endblock title %}
+{% block FormTitle %}
+  요식업자 회원가입
+{% endblock FormTitle %}
 
-{% block selectForm %} {% csrf_token %}
-<div class="restaurant_field">
-  <label for="restaurant_field">요식업 분야</label><br>
-  <select name="restaurant_field" id="restaurant_field" required>
-    <option value="korean_food">한식</option>
-    <option value="western_food">양식</option>
-    <option value="chinese_food">중식</option>
-    <option value="japanese_food">일식</option>
-    <option value="asian_food">아시안</option>
-    <option value="cafe_dessert">카페・디저트</option>
-  </select>
-</div>
-<script>
-  $(document).ready(function(){
-      $("select[name=restaurant_field]").change(function () {
-      $("#restaurant_field").submit();
+{% block selectForm %}
+  {% csrf_token %}
+  <div class="restaurant_field">
+    <label for="restaurant_field">요식업 분야</label><br>
 
-      });
-  });
-</script>
+    <select name="restaurant_field" id="restaurant_field" required="required">
+      {% for tag in tags %}
+        <option value="{{tag.value}}">{{ tag.name }}</option>
+      {% endfor %}
+    </select>
+  </div>
 {% endblock selectForm %}
