@@ -1,7 +1,7 @@
 from django.contrib.auth import authenticate,login as auth_login, logout as auth_logout
 from django.shortcuts import render, redirect
 from .models import User, Tag, ConsultantProfile, RestaurantProfile
-from django.contrib import auth
+from django.contrib.auth.hashers import make_password
 
 # Create your views here.
 
@@ -42,7 +42,7 @@ def signup_restaurant(request):
         return render(request, 'signup_restaurant.html', {'tags':tags})
     
     if request.method == "POST":
-        tag_value = request.POST['restaurant_field']
+        tag_id = request.POST['restaurant_field']
         username = request.POST['username']
         password = request.POST['password']
         password_check = request.POST['password_check']
@@ -59,12 +59,10 @@ def signup_restaurant(request):
             error_password = '비밀번호와 비밀번호 확인이 일치하지 않습니다.'
             return render(request, 'signup_restaurant.html', {'error': error_password, 'tags':tags})
         else:   
-            tag = Tag.objects.get(value=tag_value)
-            user = User.objects.create(username=username,password=password,email=email,job='restaurant')
-            user.tag.add(tag.id)
-            auth.login(request,user)
+            user = User.objects.create(username=username,password=make_password(password),email=email,job='restaurant')
+            user.tag.add(tag_id)
+            auth_login(request,user)
             return redirect('home')
-    return render(request, 'signup_restaurant.html')
     
 
 #컨설턴트 회원가입폼
@@ -74,7 +72,7 @@ def signup_consultant(request):
         return render(request, 'signup_consultant.html', {'tags':tags})
     
     if request.method == "POST":
-        tag_value = request.POST['request_field']
+        tag_id = request.POST['request_field']
         username = request.POST['username']
         password = request.POST['password']
         password_check = request.POST['password_check']
@@ -90,10 +88,8 @@ def signup_consultant(request):
             error_password = '비밀번호와 비밀번호 확인이 일치하지 않습니다.'
             return render(request, 'signup_consultant.html', {'error': error_password})
         else:
-            tag = Tag.objects.get(value=tag_value)   
-            user = User(username=username, password=password,email=email,job='consultant')
+            user = User(username=username, password=make_password(password),email=email,job='consultant')
             user.save()
-            user.tag.add(tag.id)
-            auth.login(request,user)
+            user.tag.add(tag_id)
+            auth_login(request,user)
             return redirect('home')
-    return render(request, 'signup_consultant.html')

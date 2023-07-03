@@ -13,7 +13,7 @@
 
     <select name="restaurant_field" id="restaurant_field" required="required">
       {% for tag in tags %}
-        <option value="{{tag.value}}">{{ tag.name }}</option>
+        <option value="{{tag.id}}">{{ tag.name }}</option>
       {% endfor %}
     </select>
   </div>
