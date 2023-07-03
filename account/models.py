@@ -42,7 +42,7 @@ class Tag(models.Model):
     job = models.CharField(choices=JOB_CHOICES, max_length=10)
 
     class Meta:
-        db_table = 'tag'
+        db_table = 'tag'    
 
     def __str__(self):
         return f"{self.name}" 
