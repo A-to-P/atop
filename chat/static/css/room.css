@@ -11,3 +11,15 @@
   background-color: transparent;
   border: none;
 }
+
+.me,
+.you {
+  min-width: 10rem;
+}
+
+.file-download {
+  background-image: url("../../static/download.svg");
+  width: 1rem;
+  height: 1rem;
+  margin-right: 2rem;
+}

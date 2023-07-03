@@ -129,29 +129,36 @@ function createMessage(data) {
   }/${_timestamp.getDate()} ${_timestamp.getHours()}:${_timestamp.getMinutes()}`;
 
   const file = data["file"][0];
-  console.log(file.filename);
+  // console.log(file.filename);
+  // 메시지 내용이 없으면 display: none
+  const isContent = data.content != "" ? "" : "display: none";
+
   const fileContent =
     file.filename == ""
       ? ``
-      : `<p class="p-2 ms-2 me-2 mb-1 rounded-3 bg-warning">
-      <button class="file-download">${
-        file.filename
-      }<div style="display: none">${JSON.stringify(file)}</div></button>
-      </p>`;
+      : `
+      <div class="chat-message p-2 ms-2 me-2 mb-1 rounded-3 bg-warning d-flex justify-content-between align-items-center">
+      <div>${file.filename}</div>
+      <button class="file-download"><span style="display: none">${JSON.stringify(
+        file
+      )}</span></button></div>
+      `;
 
   const aChat =
     author == userName
-      ? `<div class="d-flex flex-row justify-content-end pt-1 me">
+      ? `<p class="small mb-0 me-2 text-end text-muted d-flex justify-content-end">${timestamp}</p>
+      
+      <div class="d-flex flex-row justify-content-end pt-1 me">
               <div class="d-flex flex-row">
-                <p class="small me-2 mb-1 rounded-3 text-muted d-flex justify-content-end">${timestamp}</p>
-                <div><p class=" p-2 me-2 mb-1 text-white rounded-3 bg-primary">${data.content}</p>
+                
+                <div><p class="chat-message p-2 me-2 mb-1 text-white rounded-3 bg-primary" style="${isContent}">${data.content}</p>
                 ${fileContent}</div>
               </div>
             </div>`
       : `<div class="d-flex flex-row justify-content-start you">
               <div class="d-flex flex-row">
               <div>
-                <p class=" p-2 ms-2 mb-1 rounded-3" style="background-color:#f5f6f7;">${data.content}</p>
+                <p class="chat-message p-2 ms-2 mb-1 rounded-3" style="background-color:#f5f6f7;" style="${isContent}">${data.content}</p>
                 ${fileContent}</div>
                 <p class="small ms-2 mb-1 rounded-3 text-muted">${timestamp}</p>
               </div>

@@ -24,7 +24,7 @@ class Message(models.Model):
     base64URL = models.TextField(default="", blank=True)
     
     def __str__(self) -> str:
-        return f"{self.user.username}"
+        return f"{self.user.username} \"{self.message[:5]}{'...' if len(self.message)>5 else ''}\""
     
     def ordered_messages(self, room_id):
         return Message.objects.filter(room=room_id).order_by('created_at')
