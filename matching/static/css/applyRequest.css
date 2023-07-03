@@ -1,0 +1,10 @@
+.request_wrapper{
+    margin: 0 auto;
+    padding: 1rem;
+    width: 30rem;
+    height: 33rem;
+}
+
+.request_container {
+    background-color: white;
+}

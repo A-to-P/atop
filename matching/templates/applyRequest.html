@@ -1,17 +1,27 @@
-{% extends 'profile_template.html' %} 
+{% extends 'base.html' %} 
 {% load static %}
 {% block static %}
-  <link rel="stylesheet" href="{% static 'css/profile.css' %}" >  
+  <!-- <link rel="stylesheet" href="{% static 'css/profile.css' %}" >   -->
   <link rel="stylesheet" href="{% static 'css/applyRequest.css' %}" >  
 {% endblock %}
 
 {% block title %}applyRequest{% endblock %}
 
+{% block content %}
+<div class="request_wrapper">
+    <div class="request_text">컨설팅 의뢰 글 내용</div>
+    <div class="request_container">
+        <div class="reqeust_title">의뢰글 제목</div>
+        <div class="restaurant_info_wrapper">
+            <div class="request_text">요식업자 정보(프로필 보러가기)</div>
+        </div>
+        <div class="consultant_info_wrapper">
+            <div class="request_text">컨설팅 정보</div>
+            <div class="request_category">컨설팅 분야 마케팅</div>
+            <div class="request_money">컨설팅비 xxx,xxx원</div>
+        </div>
+        <div class="request_text_content">의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용</div>
+    </div>
+</div>
 
-{% block profile_title %}
-  Profile
-{% endblock %}
-
-{% block maincontent %}
-applyRequest 내용
-{% endblock maincontent %}
+{% endblock content %}
