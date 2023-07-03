@@ -7,19 +7,21 @@
 #chat-log::-webkit-scrollbar-track {
   background-color: transparent; /*스크롤바 트랙 색상*/
 }
+
+.chat-message {
+  max-width: 20rem;
+}
+
 .file-download {
   background-color: transparent;
   border: none;
-}
-
-.me,
-.you {
-  min-width: 10rem;
-}
-
-.file-download {
   background-image: url("../../static/download.svg");
+  background-repeat: no-repeat;
   width: 1rem;
   height: 1rem;
-  margin-right: 2rem;
+  margin-left: 0.5rem;
+}
+
+.hidden {
+  display: none;
 }

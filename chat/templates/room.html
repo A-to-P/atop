@@ -19,22 +19,19 @@
 
         <div class="card" id="chat2" style="width:100%">
 
+          {% comment %} {% csrf_token %} 혹시 오류나면 이거 써보기 {% endcomment %}
+          
           <div id="chat-log" class="card-body p-1 pt-3" style="position: relative;  height:30rem; overflow-y:scroll"></div>
+          <!--최종 레포트 선택하는 radio input name=final_report, value=해당 파일이 들어있는 message 객체의 id-->
 
           <div class="card-footer text-muted d-flex flex-column justify-content-start align-items-start p-1">
 
-            {% comment %} 
-            <input id="chat-message-file" type="file"><br>
-            <input id="chat_inputbox" type="text" class="form-control form-control-lg" placeholder="메시지를 입력하세요.">
-            <input id="chat_submit_button" type="button" value="Send"><br> 
-            {% endcomment %}
-
             <span id="file_name" class="small ">첨부파일이 없습니다.</span>
             <div class="chat_input_container position-relative">
-              
+
               <input type="file" name="file" id="chat_file_input" style="display:none"></input>
               <button type="button" id="chat_file_button" onclick="document.getElementById('chat_file_input').click();"></button>
-              
+
               <input type="text" id="chat_inputbox">
               <!--채팅 입력창-->
               <button type="submit" id="chat_submit_button">전송</button>

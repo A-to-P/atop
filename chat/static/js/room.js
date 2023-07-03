@@ -119,7 +119,9 @@ function fetchMessages() {
   chatSocket.send(JSON.stringify({ command: "fetch_messages" }));
 }
 
+let cnt_msg = 0; // 메시지 카운트, 파일메시지 input의 id
 function createMessage(data) {
+  cnt_msg += 1;
   // console.log("createMessage_data:", data);
   const author = data["author"];
 
@@ -131,35 +133,41 @@ function createMessage(data) {
   const file = data["file"][0];
   // console.log(file.filename);
   // 메시지 내용이 없으면 display: none
-  const isContent = data.content != "" ? "" : "display: none";
+  const isContent = data.content != "" ? "" : "hidden";
 
+  // 최종 레포트 선택하는 radio input
+  // name=final_report, value=해당 파일이 들어있는 message 객체의 id
   const fileContent =
     file.filename == ""
       ? ``
-      : `
-      <div class="chat-message p-2 ms-2 me-2 mb-1 rounded-3 bg-warning d-flex justify-content-between align-items-center">
-      <div>${file.filename}</div>
-      <button class="file-download"><span style="display: none">${JSON.stringify(
-        file
-      )}</span></button></div>
+      : `<div class="chat-message p-2 ms-2 me-2 mb-1 rounded-3 bg-warning d-flex justify-content-between align-items-center">
+      <input class="me-2" id="file_radio_${cnt_msg}" value="${
+          data["message_id"]
+        }" type="radio" name="final_report"/>
+      <div><label for="file_radio_${cnt_msg}">${file.filename}<label></div>
+      <button class="file-download">
+      <span class="hidden" id="${cnt_msg}">${JSON.stringify(file)}</span>
+      </button></div>
       `;
 
   const aChat =
     author == userName
       ? `<p class="small mb-0 me-2 text-end text-muted d-flex justify-content-end">${timestamp}</p>
       
-      <div class="d-flex flex-row justify-content-end pt-1 me">
+      <div class="d-flex flex-row justify-content-end pt-0 me">
               <div class="d-flex flex-row">
-                
-                <div><p class="chat-message p-2 me-2 mb-1 text-white rounded-3 bg-primary" style="${isContent}">${data.content}</p>
-                ${fileContent}</div>
+                <div>
+                <p class="chat-message ${isContent} p-2 me-2 mb-1 text-white rounded-3 bg-primary">${data.content}</p>
+                ${fileContent}
+                </div>
               </div>
             </div>`
       : `<div class="d-flex flex-row justify-content-start you">
               <div class="d-flex flex-row">
               <div>
-                <p class="chat-message p-2 ms-2 mb-1 rounded-3" style="background-color:#f5f6f7;" style="${isContent}">${data.content}</p>
-                ${fileContent}</div>
+                <p class="chat-message ${isContent} p-2 ms-2 mb-1 rounded-3" style="background-color:#f5f6f7;" >${data.content}</p>
+                ${fileContent}
+                </div>
                 <p class="small ms-2 mb-1 rounded-3 text-muted">${timestamp}</p>
               </div>
             </div>`;

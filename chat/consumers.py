@@ -42,9 +42,9 @@ class ChatConsumer(WebsocketConsumer):
 
     def message_to_json(self, message):
         result= {}
+        result['message_id']= message.id
         result['author']= message.user.username,
         result['content']= message.message,
-        # file None인경우 해결
         result['file']= {'filename' : message.filename, 'base64URL':message.base64URL},
         result['timestamp']= str(message.created_at)
         return result
