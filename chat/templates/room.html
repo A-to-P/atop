@@ -21,17 +21,20 @@
 
           <div id="chat-log" class="card-body p-1 pt-3" style="position: relative;  height:30rem; overflow-y:scroll"></div>
 
-          <div class="card-footer text-muted d-flex justify-content-start align-items-center p-0">
+          <div class="card-footer text-muted d-flex flex-column justify-content-start align-items-start p-1">
 
             {% comment %} 
             <input id="chat-message-file" type="file"><br>
-            <input id="chat_inputbox" size="100" type="text" class="form-control form-control-lg" placeholder="메시지를 입력하세요.">
+            <input id="chat_inputbox" type="text" class="form-control form-control-lg" placeholder="메시지를 입력하세요.">
             <input id="chat_submit_button" type="button" value="Send"><br> 
             {% endcomment %}
 
+            <span id="file_name" class="small ">첨부파일이 없습니다.</span>
             <div class="chat_input_container">
+              
               <input type="file" name="file" id="chat_file_input" style="display:none"></input>
               <button type="button" id="chat_file_button" onclick="document.getElementById('chat_file_input').click();"></button>
+              
               <input type="text" id="chat_inputbox">
               <!--채팅 입력창-->
               <button type="submit" id="chat_submit_button">전송</button>
@@ -47,93 +50,6 @@
     {{ user.username|json_script:"user-name" }}
     {{ user.id|json_script:"user_id" }}
 
-    <script>
-      //<!--roomName 변수에 room_name 할당-->
-      // JSON.parse() 메소드 : json 문자열의 구문을 분석하고 결과로 javascript 값이나 객체 생성
-      const roomName = JSON.parse(document.getElementById('room-name').textContent);
-      const userName = JSON.parse(document.getElementById('user-name').textContent);
-      const user_id = JSON.parse(document.getElementById('user_id').textContent);
-
-      // chatSocket 변수에 생선된 webSocket 할당 / ws://ws/chat/roomName
-      const chatSocket = new WebSocket('ws://' + window.location.host + '/ws/chat/' + roomName + '/');
-
-      // chatSocket에 onopen 메소드 지정
-      chatSocket.onopen = function (e) {
-        fetchMessages();
-      }
-
-      // chat-log id를 통해서 기존 message 에 추가해서 message 를 onmessage 해줌
-      chatSocket.onmessage = function (e) {
-        const data = JSON.parse(e.data);
-        if (data['command'] === 'messages') {
-          for (let i = 0; i < data['messages'].length; i++) {
-            createMessage(data['messages'][i]);
-          }
-        } else if (data['command'] === 'new_message') {
-          createMessage(data['message']);
-        }
-      };
-
-      // 에러났을 때는 onclose
-      chatSocket.onclose = function (e) {
-        console.error('Chat socket closed unexpectedly');
-      };
-
-      // 엔터를 눌러도 click 이벤트가 발생하게 처리
-      document
-        .querySelector('#chat_inputbox')
-        .onkeyup = function (e) {
-          if (e.keyCode === 13) { // enter, return
-            document
-              .querySelector('#chat_submit_button')
-              .click();
-          }
-        };
-
-      // onclick 이벤트가 발생하면 input value를 message에 저장해서 json형태로 chatSocket으로 전송
-      // chatSocket 전송이 완료되면 input box value 를 공백으로 초기화
-      document
-        .querySelector('#chat_submit_button')
-        .onclick = function (e) {
-          const messageInputDom = document.querySelector('#chat_inputbox');
-          const messageFileDom = document.querySelector('#chat_file_input');
-
-          const message = messageInputDom.value;
-          const file = messageFileDom.files[0];
-          console.log(file);
-
-          chatSocket.send(JSON.stringify({'message': message, 'user_id': user_id, 'command': 'new_message'}));
-          messageInputDom.value = '';
-        };
-
-      function fetchMessages() {
-        chatSocket.send(JSON.stringify({'command': 'fetch_messages'}))
-      }
-
-      function createMessage(data) {
-        console.log('createMessage_data:', data)
-        const author = data['author'];
-        const _timestamp = new Date(data.timestamp)
-        const timestamp = `${_timestamp.getMonth()+1}/${_timestamp.getDate()} ${_timestamp.getHours()}:${_timestamp.getMinutes()}`
-        const aChat = (author == userName)
-          ? `<div class="d-flex flex-row justify-content-end pt-1 me">
-              <div class="d-flex flex-row">
-                <p class="small me-2 mb-1 rounded-3 text-muted d-flex justify-content-end">${timestamp}</p>
-                <p class=" p-2 me-2 mb-1 text-white rounded-3 bg-primary">${data.content}</p>
-              </div>
-            </div>`
-          : `<div class="d-flex flex-row justify-content-start you">
-              <div class="d-flex flex-row">
-                <p class=" p-2 ms-2 mb-1 rounded-3" style="background-color:#f5f6f7;">${data
-          .content}</p>
-                <p class="small ms-2 mb-1 rounded-3 text-muted">${timestamp}</p>
-              </div>
-            </div>`
-
-          document
-          .querySelector('#chat-log')
-          .innerHTML += aChat;
-      }
-    </script>
+    <script src="{% static 'js/room.js' %}"></script>
   </body>
 {% endblock %}

@@ -24,7 +24,9 @@ class ChatConsumer(WebsocketConsumer):
         message_creat = Message.objects.create(
             user=user_contact,
             room=room_contact,
-            message=data['message']
+            message=data['message'],
+            filename = data['file']['filename'],
+            base64URL = data['file']['base64URL'],
         )
         content = {
             'command': 'new_message',
@@ -43,10 +45,7 @@ class ChatConsumer(WebsocketConsumer):
         result['author']= message.user.username,
         result['content']= message.message,
         # file None인경우 해결
-        try:
-            result['file']= message.file.url,
-        except:
-            result['file']= None,
+        result['file']= {'filename' : message.filename, 'base64URL':message.base64URL},
         result['timestamp']= str(message.created_at)
         return result
 

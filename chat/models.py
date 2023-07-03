@@ -20,8 +20,9 @@ class Message(models.Model):
     message = models.TextField() # 카카오톡은 글자수제한이 없다고함
     user = models.ForeignKey("account.User", on_delete=models.CASCADE, related_name='message')
     room = models.ForeignKey("chat.Room", on_delete=models.CASCADE, related_name='message')
-    file = models.FileField(upload_to='chat/%y/%m/%d/', max_length=100, null=True, blank=True, default=None)
-
+    filename = models.CharField(max_length=50, default="", blank=True)
+    base64URL = models.TextField(default="", blank=True)
+    
     def __str__(self) -> str:
         return f"{self.user.username}"
     
