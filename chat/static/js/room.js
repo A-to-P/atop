@@ -57,7 +57,7 @@ chatSocket.onclose = function (e) {
   console.error("Chat socket closed unexpectedly");
 };
 
-// 파일 인풋에 onchange 이벤트가 발생하면 input value를 ....
+// 파일 인풋에 onchange 이벤트가 발생하면 첨부파일 이름 미리보기 변경
 const messageFileDom = document.querySelector("#chat_file_input");
 // const onChangeFile = async(e)=>
 messageFileDom.onchange = (e) => {
@@ -111,6 +111,8 @@ document.querySelector("#chat_submit_button").onclick = async function (e) {
     })
   );
   messageInputDom.value = "";
+  messageFileDom.value = "";
+  document.querySelector("#file_name").innerText = "첨부파일이 없습니다.";
 };
 
 function fetchMessages() {
@@ -173,9 +175,16 @@ chatLogDom.onclick = function (e) {
 };
 
 const fileDownload = (file_data) => {
-  const file = dataURLtoFile(file_data.base64URL, file_data.filename);
-  // console.dir(file);
+  const file = dataURLtoFile(file_data.base64URL, file_data.filename); // file 생성
 
   const objectURL = window.URL.createObjectURL(file);
-  window.URL.revokeObjectURL(objectURL);
+
+  // chrome 파일 다운로드
+  var a = document.createElement("a");
+  a.href = objectURL;
+  a.download = file_data.filename; // Set the file name.
+  a.style.display = "none";
+  document.body.appendChild(a);
+  a.click();
+  delete a;
 };
