@@ -1,14 +1,15 @@
-{% extends 'profile_template.html' %} 
+{% extends 'profile_template.html' %}
 {% load static %}
 
 {% block static %}
-  <link rel="stylesheet" href="{% static 'css/profile.css' %}" >  
-  <link rel="stylesheet" href="{% static 'css/consulting_template.css' %}" >  
+  <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+  <link rel="stylesheet" href="{% static 'css/consulting_template.css' %}">
 {% endblock %}
 
 <!-- mainContent -->
-{% block maincontent %}  
-   <div class="myConsulting_wrapper"> <!--위 의뢰글-->
+{% block maincontent %}
+  <div class="myConsulting_wrapper">
+    <!--위 의뢰글-->
     <div class="myConsulting_title">컨설팅 의뢰 내용</div>
     <div class="myConsulting_container myConsulting_request_container">
       <div class="request_title">분식점 마케팅 의뢰합니다</div>
@@ -21,27 +22,33 @@
         </div>
       </div>
     </div>
-   </div>
+  </div>
 
-   <div class="myConsulting_wrapper"><!--아래 채팅-->
+  <div class="myConsulting_wrapper">
+    <!--아래 채팅-->
     <div class="myConsulting_title">진행 중인 컨설팅</div>
     <div class="myConsulting_container myConsulting_consulting_container">
-      
-      <div class="chat_wrapper"> <!--왼쪽 채팅-->
-        <div class="chat_container"></div>
+
+      <div class="chat_wrapper">
+        <!--왼쪽 채팅-->
+        {% block chat %}{% endblock %}
+        {% comment %} <div class="chat_container"></div>
         <div class="chat_input_container">
           <input type="file" name="file" id="chat_file_input" style="display:none"></input>
           <button type="button" id="chat_file_button" onclick="document.getElementById('chat_file_input').click();"></button>
-          <input type="text" id="chat_inputbox">  <!--채팅 입력창-->
+          <input type="text" id="chat_inputbox">
+          <!--채팅 입력창-->
           <button type="submit" id="chat_submit_button">전송</button>
-        </div>
+        </div> {% endcomment %}
       </div>
 
-      <div class="info_wrapper"> <!--오른쪽 정보-->
+      <div class="info_wrapper">
+        <!--오른쪽 정보-->
         <div class="info_container">
           <div class="info_title">컨설턴트 정보</div>
           <div class="consultant_img"></div>
-          <div class="consultant_name">컨설턴트 이름 : </div>
+          <div class="consultant_name">컨설턴트 이름 :
+          </div>
           <div class="consultant_category">컨설팅 분야 : 마케팅</div>
           <div class="consultant_time">연락 가능 시간 : 10:00 ~ 18:00</div>
           <div class="consultant_star">★★★★★</div>
@@ -50,11 +57,9 @@
 
     </div>
 
-   </div>
+  </div>
 {% endblock %}
 
 {% block js %}
-<script type="text/javascript">
-
-</script>
+  <script type="text/javascript"></script>
 {% endblock %}

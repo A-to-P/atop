@@ -1,0 +1,27 @@
+#chat-log::-webkit-scrollbar {
+  width: 0.2rem; /*스크롤바의 너비*/
+}
+#chat-log::-webkit-scrollbar-thumb {
+  background-color: #2d2727; /*스크롤바의 색상*/
+}
+#chat-log::-webkit-scrollbar-track {
+  background-color: transparent; /*스크롤바 트랙 색상*/
+}
+
+.chat-message {
+  max-width: 20rem;
+}
+
+.file-download {
+  background-color: transparent;
+  border: none;
+  background-image: url("../../static/download.svg");
+  background-repeat: no-repeat;
+  width: 1rem;
+  height: 1rem;
+  margin-left: 0.5rem;
+}
+
+.hidden {
+  display: none;
+}
