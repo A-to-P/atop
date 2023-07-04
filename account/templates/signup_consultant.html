@@ -4,21 +4,11 @@
 {% block FormTitle %} 컨설턴트 회원가입 {% endblock FormTitle %} 
 
 {% block selectForm %}
-<select class=" form-select request_field" aria-label="Default select example">
-  <option value="marketing" selected>마케팅</option>
-  <option value="control_cost">원가 관리</option>
-  <option value="account_book">회계 장부</option>
-  <option value="labor">노무</option>
-  <option value="tax">절세</option>
-  <option value="sns">SNS</option>
-  <option value="branding">창업브랜딩</option>
-  <option value="logo_design">로고 디자인</option>
-  <option value="interior">인테리어</option>
-</select>
+
 <div class="request_field">
   <label for="request_field">컨설팅 분야</label><br>
-  <select name="request_field" id="request_field" required> 
-    <option value="marketing">마케팅</option>
+  <select class=" form-select request_field" aria-label="Default select example">
+    <option value="marketing" selected>마케팅</option>
     <option value="control_cost">원가 관리</option>
     <option value="account_book">회계 장부</option>
     <option value="labor">노무</option>
@@ -27,11 +17,13 @@
     <option value="branding">창업브랜딩</option>
     <option value="logo_design">로고 디자인</option>
     <option value="interior">인테리어</option>
-</select>
+  </select>
+  
 
 <div class="authenticate" >
   <label for="authenticate" >학교 인증</label><br>
-  <div class="signup_input" >
+  <div style="font-size:small;margin: 0.4rem 0;">학생증이나 재학증명서 이미지 파일을 올려주세요.</div>
+  <!-- <div class="signup_input" >
     <div>
       <span style="font-size:small;">학생증이나 재학증명서 이미지 파일을 올려주세요.</span>
       <input type="file" style="margin-top: 0.3rem;" id="" name="authenticate"/>
@@ -39,7 +31,10 @@
     <div style="margin: auto;">
       <input type="button" style="float:right;border:none; border-radius:1rem;" value="인증하기"/>
     </div>
-    
+  </div> -->
+  <div class="input-group mb-3">
+    <input type="file" class="form-control" id="inputGroupFile02">
+    <label class="input-group-text" for="inputGroupFile02">인증하기</label>
   </div>
   
 </div>

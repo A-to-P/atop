@@ -6,8 +6,8 @@
 {% block selectForm %}
 <div class="restaurant_field">
   <label for="restaurant_field">요식업 분야</label><br>
-  <select name="restaurant_field" id="restaurant_field" required>
-    <option value="korean_food">한식</option>
+  <select class="form-select" aria-label="Default select example">
+    <option value="korean_food" selected>한식</option>
     <option value="western_food">양식</option>
     <option value="chinese_food">중식</option>
     <option value="japanese_food">일식</option>
@@ -17,8 +17,8 @@
 </div>
 <div class="request_field">
   <label for="request_field">컨설팅 희망 분야</label><br>
-  <select name="request_field" id="request_field" required> 
-    <option value="marketing">마케팅</option>
+  <select class="form-select" aria-label="Default select example">
+    <option value="marketing" selected>마케팅</option>
     <option value="control_cost">원가 관리</option>
     <option value="account_book">회계 장부</option>
     <option value="labor">노무</option>

@@ -45,8 +45,6 @@ INSTALLED_APPS = [
     'matching',
     'myProfile',
     'point',
-    
-    'bootstrap4',
 ]
 
 MIDDLEWARE = [

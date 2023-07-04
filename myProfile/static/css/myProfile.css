@@ -9,8 +9,8 @@
 .edit_btn{
   display: block;
   text-align: right;
-  margin: 0 0 1.5rem 1.5rem;
-  width: 30rem;
+  margin-bottom: 1rem;
+  width: 35rem;
 
 }
 
@@ -24,7 +24,7 @@
   width: 35rem;
   background-color: #d3d3d3;
 }
-.school_check{
+.check{
   display: flex;
   justify-content: left;
   /* margin-right: 5rem; */
@@ -105,4 +105,12 @@
 .more{
   text-align: center;
   margin: 2rem auto 0 auto;
+}
+
+
+
+.store_info{
+  width: 100%;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
 }
