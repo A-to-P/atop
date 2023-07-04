@@ -43,10 +43,6 @@ a:visited{
 }
 
 
-#signup_form label{
-  height: 20px;
-  font-size: large;
-}
 
 .signup_btn{
   width:100%;
@@ -59,4 +55,9 @@ a:visited{
   width: auto;
   justify-content: space-between;
   padding: 0.5rem;
+}
+
+
+label{
+  font-weight: bold;
 }

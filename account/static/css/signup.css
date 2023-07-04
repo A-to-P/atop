@@ -21,8 +21,8 @@ a:visited{
   min-height: inherit;
 }
 .signup_container{
-  height: 38rem;
-  width: 40rem;
+  height: 35rem;
+  width: 35rem;
   margin: 0 auto;
   border-radius: 2rem;
   padding: 3rem;
@@ -40,8 +40,8 @@ a:visited{
   text-align: center;
 }
 .signup_choice{
-  display:flex;
-  justify-content: space-between;
+  display: flex;
+  justify-content: center;
 }
 h1{
   text-align: center;
@@ -51,11 +51,11 @@ h1{
 
 
 .restaurant_choice, .consultant_choice {
-  width: 15rem;
-  height: 15rem;
-  margin: 0.5rem;
+  width: 13rem;
+  height: 13rem;
+  margin: 1rem;
   border-radius: 2rem;
   background-color: white;
   text-align: center;
-  padding: 5rem 3rem;
+  padding: 4rem 3rem;
 }
