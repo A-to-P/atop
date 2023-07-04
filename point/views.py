@@ -7,18 +7,18 @@ from account.models import User
 # 요식업자 포인트 충전 페이지
 @login_required
 def chargePoint(request):
-    if request.method == "PUT":
-        print (1)
     if request.method == "GET":
-        print (2)
-    if request.method == "POST":
         user = request.user
-        plus = request.POST.get('point')
-        total = request.user.point + int(plus)
-        user.point = total
-        user.save()
-        return render(request, 'chargePoint.html', {'plus' : plus}) 
-    return render(request, 'chargePoint.html')
+        return render(request, 'chargePoint.html', {'user': user })
+    if request.method == "POST":
+        # PUT을 쓰려면 요청은 post로 날리고 hidden input을 사용함
+        if request.POST.get('_method') == "PUT": 
+            user = request.user
+            plus = request.POST.get('point')
+            total = request.user.point + int(plus)
+            user.point = total
+            user.save()
+        return render(request, 'chargePoint.html')
 
 # 컨설턴트 포인트 정산 페이지 
 def consultPoint(request):
