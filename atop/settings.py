@@ -32,6 +32,9 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'channels',
+    'chat',
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -45,6 +48,7 @@ INSTALLED_APPS = [
     'matching',
     'myProfile',
     'point',
+
 ]
 
 MIDDLEWARE = [
@@ -76,6 +80,14 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'atop.wsgi.application'
+
+ASGI_APPLICATION = 'atop.asgi.application'
+
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels.layers.InMemoryChannelLayer"
+    }
+}
 
 
 # Database

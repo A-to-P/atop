@@ -1,43 +1,23 @@
-{% extends 'signupForm.html' %} 
+{% extends 'signupForm.html' %}
 
-{% block title %}컨설턴트 회원가입 페이지 {%endblock title %}
-{% block FormTitle %} 컨설턴트 회원가입 {% endblock FormTitle %} 
+{% block title %}컨설턴트 회원가입 페이지
+{%endblock title %}
+{% block FormTitle %}
+  컨설턴트 회원가입
+{% endblock FormTitle %}
 
 {% block selectForm %}
+  {% csrf_token %}
+  <div class="request_field">
+    <label for="request_field">컨설팅 분야</label><br>
 
-<div class="request_field">
-  <label for="request_field">컨설팅 분야</label><br>
-  <select class=" form-select request_field" aria-label="Default select example">
-    <option value="marketing" selected>마케팅</option>
-    <option value="control_cost">원가 관리</option>
-    <option value="account_book">회계 장부</option>
-    <option value="labor">노무</option>
-    <option value="tax">절세</option>
-    <option value="sns">SNS</option>
-    <option value="branding">창업브랜딩</option>
-    <option value="logo_design">로고 디자인</option>
-    <option value="interior">인테리어</option>
-  </select>
-  
+    <select name="request_field" id="request_field" required="required">
+      {% for tag in tags %}
+        <option value="{{tag.id}}">{{ tag.name }}</option>
+      {% endfor %}
+    </select>
 
-<div class="authenticate" >
-  <label for="authenticate" >학교 인증</label><br>
-  <div style="font-size:small;margin: 0.4rem 0;">학생증이나 재학증명서 이미지 파일을 올려주세요.</div>
-  <!-- <div class="signup_input" >
-    <div>
-      <span style="font-size:small;">학생증이나 재학증명서 이미지 파일을 올려주세요.</span>
-      <input type="file" style="margin-top: 0.3rem;" id="" name="authenticate"/>
-    </div>
-    <div style="margin: auto;">
-      <input type="button" style="float:right;border:none; border-radius:1rem;" value="인증하기"/>
-    </div>
-  </div> -->
-  <div class="input-group mb-3">
-    <input type="file" class="form-control" id="inputGroupFile02">
-    <label class="input-group-text" for="inputGroupFile02">인증하기</label>
+    <!-- <div class="authenticate" > <label for="authenticate" >학교 인증</label><br> <input type="email" class="signup_input" placeholder="학교 웹메일을 입력해주세요." id="" name="authenticate"/> <button style="float:right;">인증하기</button><br> </div> -->
+
   </div>
-  
-</div>
-
-</div>
 {% endblock selectForm %}
