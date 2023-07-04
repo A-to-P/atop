@@ -11,6 +11,7 @@ urlpatterns = [
     # 127.0.0.1:8000/editMyprofile
     path('editConsultProfile', views.editConsultProfile, name="editConsultProfile"),
     
+    path('editRestProfile', views.editRestProfile, name="editRestProfile"),
     path('profile_template', views.profile_template, name="profile_template"),
     
 

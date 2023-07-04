@@ -10,6 +10,9 @@ def restaurantProfile(request):
 def editConsultProfile(request):
     return render(request, "editConsultProfile.html")
 
+def editRestProfile(request):
+    return render(request, "editRestProfile.html")
+
 def profile_template(request):
     return render(request, "profile_template.html")
 
