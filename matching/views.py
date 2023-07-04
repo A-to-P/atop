@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
-from account.models import RestaurantProfile
+from django.http import JsonResponse 
+from account.models import RestaurantProfile, Tag
 from .models import Request
 import datetime
 # Create your views here.
@@ -54,6 +55,30 @@ def detailedRequest(request):
 def applyRequest(request):
     return render(request, "applyRequest.html")
 
+# Json data로 만들기 위한 함수
+def requestDictionary(request_list):
+    output = {}
+    output["title"] = request_list.title
+    output["rest_tag"] = request_list.rest_tag
+    output["fee"] = request_list.fee
+    # 지원자 수 고민해보기
+    output["content"] = request_list.content
+    return output
 
 def findRequest(request):
+    tag_list = list(Tag.objects.filter(job="consultant"))
+
+    # 태그 별 출력
+    for tag in tag_list:
+        tmp = []
+        request_list = Request.objects.filter(consult_tag=tag)
+        for i in range(len(request_list)):
+            tmp.append(requestDictionary(request_list[i]))
+        
+        request_list = tmp
+        
+        data = {
+            "request_list" : request_list
+        }
+        return JsonResponse(data)
     return render(request, "findRequest.html")
