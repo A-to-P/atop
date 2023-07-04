@@ -3,7 +3,7 @@
 {% block static %}
   <link rel="stylesheet" href="{% static 'css/profile.css' %}" >  
   <link rel="stylesheet" href="{% static 'css/Myprofile.css' %}" >  
-  <link rel="stylesheet" href="{% static 'css/editMyprofile.css' %}" > 
+  <link rel="stylesheet" href="{% static 'css/editConsultProfile.css' %}" > 
 {% endblock %}
 
 {% block title %}컨설턴트 프로필 수정 페이지{% endblock %}
@@ -17,7 +17,7 @@
 {% block nav_right %}
   <a href="{% url 'consultingSpace' %}" > Consulting Space </a>
   <a href=""> 알람 </a>
-  <a href="{% url 'myProfile' %}">마이프로필</a>
+  <a href="{% url 'consultantProfile' %}">마이프로필</a>
   
 
 {% endblock %}

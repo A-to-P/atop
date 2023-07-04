@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'matching',
     'myProfile',
     'point',
+
 ]
 
 MIDDLEWARE = [

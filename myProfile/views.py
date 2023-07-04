@@ -2,14 +2,16 @@ from django.shortcuts import render
 
 # Create your views here.
 
-def myProfile(request):
-    return render(request, "myProfile.html")
+def consultantProfile(request):
+    return render(request, "consultantProfile.html")
+def restaurantProfile(request):
+    return render(request, "restaurantProfile.html")
 
-def editMyprofile(request):
-    return render(request, "editMyprofile.html")
+def editConsultProfile(request):
+    return render(request, "editConsultProfile.html")
 
 def profile_template(request):
     return render(request, "profile_template.html")
 
-def new_profile_template(request):
-    return render(request, "new_profile_template.html")
+def consultProfile(request):
+    return render(request, "myProfile.html")

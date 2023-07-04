@@ -16,7 +16,7 @@
         <h6 class="info"> 충전금액을 선택해주세요.</h6>
       </div>
       <div class="current_point">
-        {{username}}님의 현재 point <span style="color:red">포인트금액</span>
+        {{user.username}}님의 현재 point <span style="color:red">{{user.point}}p</span>
       </div>
       
       <!-- 포인트 선택 -->
@@ -49,9 +49,17 @@
               <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
             </div>
             <div class="modal-body" style="text-align:center; font-weight:bold;">
-              <p>기존 포인트 : </p>
-              <p>선택된 포인트 : <span id="choiced_point">1000</span> </p>
-              <p>충전 후 포인트 : </p>
+              <p>기존 포인트 : {{user.point}}</p>
+              <p>선택된 포인트 : <span id="choiced_point">{{plus}}</span> </p>
+              <p>충전 후 포인트 : 
+              {% if plus == 1000 %}
+              {{user.point|add:"1000"}}
+              {% elif plus == 5000 %}
+              {{user.point|add:"5000"}}
+              {% else %}
+              {{user.point|add:"10000"}}
+              {% endif %}
+              </p>
             </div>
             <div class ="modal-footer" style="display:flex; justify-content:center;">
               <button type="button" class="btn btn-primary" style="width:110px; border-radius:15px;">결제하기</button>
