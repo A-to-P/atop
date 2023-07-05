@@ -1,0 +1,41 @@
+.wrapper{
+  margin-top: 4rem ;
+}
+.info_container{
+  width: 40rem;
+  margin: 1rem auto;
+  padding: 3rem 5rem;
+  background-color: rgb(202, 202, 202);
+  border-radius: 2rem;
+}
+.info_title{
+  text-align: center;
+  font-weight: bold;
+}
+.my-point{
+  display: flex;
+  justify-content:space-between;
+}
+.mb-3{
+  width: 100%;
+}
+.edit_btn{
+  width: 100%;
+  text-align: right;
+}
+a{
+  color: white;
+  text-decoration: none;
+}
+a:visited{
+  color: unset;
+}
+
+.edit_clear{
+  width: 40rem;
+  margin: 1rem auto;
+}
+.edit_clear button{
+  float: right;
+  margin-right: 2rem;
+}

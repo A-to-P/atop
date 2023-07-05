@@ -11,7 +11,7 @@
   <div class="restaurant_field">
     <label for="restaurant_field">요식업 분야</label><br>
 
-    <select name="restaurant_field" id="restaurant_field" required="required">
+    <select class=" form-select request_field" aria-label="Default select example">
       {% for tag in tags %}
         <option value="{{tag.id}}">{{ tag.name }}</option>
       {% endfor %}

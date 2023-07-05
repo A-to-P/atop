@@ -17,12 +17,6 @@ input{
 }
 .store_profile{
   float: right;
-  /* width: fit-content;
-  height: fit-content;
-  border : none;
-  background-color: rgb(200, 200, 200);
-  margin-top: 2rem;
-  padding : 0.5rem; */
 }
 .btn-primary{
   height : fit-content;
@@ -34,4 +28,9 @@ input{
 }
 .modal-dialog{
   margin-top: 15%;
+}
+
+.shcool_check{
+  display: flex;
+  justify-content: space-between;
 }

@@ -93,3 +93,20 @@ def signup_consultant(request):
             user.tag.add(tag_id)
             auth_login(request,user)
             return redirect('home')
+
+
+
+def consultant_info(request):
+    return render(request, 'consultant_info.html')
+    
+
+def restaurant_info(request):
+    return render(request, "restaurant_info.html") 
+
+def info_template(request):
+    return render(request, "info_template.html") 
+
+
+
+def edit_info(request):
+    return render(request, "edit_info.html") 

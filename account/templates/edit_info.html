@@ -1,0 +1,51 @@
+{% extends 'base.html' %}   
+{% load static %} 
+
+{% block static %}
+<link rel="stylesheet" href="{% static 'css/my_info.css' %}">
+{% endblock %}
+
+{% block title %}{% endblock %}
+
+{% block nav_right %}
+{% endblock %}
+
+
+{% block content %} 
+<form action="" method="" class="wrapper">
+
+  <h3 class="info_title">개인정보</h3>
+  <div class="info_container">
+    {% block editbtn %}
+    {% endblock %}
+    
+    <div class="mb-3">
+      <label for="user_id" class="form-label">ID</label>
+      <input type="text" class="form-control" id="user_id" >
+    </div>
+    <div class="mb-3">
+      <label for="user_pw" class="form-label">PW</label>
+      <input type="password" class="form-control" id="user_pw" >
+    </div>
+    <div class="mb-3">
+      <label for="email" class="form-label">이메일 주소</label>
+      <input type="email" class="form-control" id="email" placeholder="name@example.com">
+    </div>
+    <div class="mb-3 ">
+      <label for="myPoint" class="form-label">보유 캐시</label>
+      <div class="my-point">
+        <input type="text" class="form-control" id="myPoint" style="width: 80%;">
+        {% block point %}
+        <button type="button" class="btn btn-primary ">충전하기</button>
+        {% endblock %}
+      </div>
+    </div>
+    
+  </div>
+  <div class="edit_clear">
+    <button type="submit" class="btn btn-primary ">변경 완료</button>
+  </div>
+  
+  
+</form>
+{% endblock %}
