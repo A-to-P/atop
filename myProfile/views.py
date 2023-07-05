@@ -86,14 +86,7 @@ def editRestProfile(request):
     return render(request, "editRestProfile.html", {'res_profile' : res_profile, "tags":tags})
 
 def profile_template(request):
-    print (123)
-    user = request.user
-    # if request.user.job == "restaurant":
-    #     return redirect('home')
-    
-    # if request.user.job == "consultant":
-    #     return redirect('home')
-    return render(request, "profile_template.html", {'user' : user})
+    return render(request, "profile_template.html")
 
 def consultProfile(request):
     return render(request, "myProfile.html")

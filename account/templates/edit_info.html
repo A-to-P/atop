@@ -11,9 +11,9 @@
 {% endblock %}
 
 
-{% block content %} 
-<form action="" method="" class="wrapper">
-
+{% block content %}
+<form action="" method="POST" class="wrapper">
+{% csrf_token %}
   <h3 class="info_title">개인정보</h3>
   <div class="info_container">
     {% block editbtn %}
@@ -21,20 +21,21 @@
     
     <div class="mb-3">
       <label for="user_id" class="form-label">ID</label>
-      <input type="text" class="form-control" id="user_id" >
+      <input type="text" class="form-control" value="{{user.username}}" id="user_id" name="user_id">
     </div>
     <div class="mb-3">
       <label for="user_pw" class="form-label">PW</label>
-      <input type="password" class="form-control" id="user_pw" >
+      <input type="password" class="form-control" value="???" id="user_pw" name="user_pw">
     </div>
     <div class="mb-3">
       <label for="email" class="form-label">이메일 주소</label>
-      <input type="email" class="form-control" id="email" placeholder="name@example.com">
+      <input type="email" class="form-control" value="{{user.email}}" id="email" name="email" placeholder="name@example.com">
     </div>
     <div class="mb-3 ">
       <label for="myPoint" class="form-label">보유 캐시</label>
       <div class="my-point">
-        <input type="text" class="form-control" id="myPoint" style="width: 80%;">
+      {% comment %} 포인트는 임의로 수정할 수 없어 readonly 처리 {% endcomment %}
+        <input type="text" class="form-control" value="{{user.point}}" id="myPoint" name="point" style="width: 80%;" readonly>
         {% block point %}
         <button type="button" class="btn btn-primary ">충전하기</button>
         {% endblock %}

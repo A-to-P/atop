@@ -1,0 +1,81 @@
+.portfolio-title{
+  width: 48rem;
+  padding: 0.7rem 0;
+  margin: 3rem auto 1rem auto;
+  font-weight: bold;
+}
+
+ul{
+  margin: 0;
+  padding: 0;
+}
+.portfolio-list{
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+
+  list-style-type: none;
+}
+.list-content{
+  display: flex;
+  justify-content: space-between;
+  padding: 0.7rem 3rem;
+  width: 48rem;
+  height: 3rem;
+  text-align: center;
+  border: solid black 1px;
+}
+.list-bar{
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto 1rem auto;
+
+}
+.list-container{
+  display: flex;
+  justify-content: center;
+}
+.portfolio-btn{
+  margin: 0;
+  padding: 0;
+  background-color: unset;
+  color: black;
+  border: none;
+}
+.delete_btn{
+      --bs-btn-color: unset;
+    --bs-btn-bg:unset;
+    --bs-btn-border-color: unset;
+    --bs-btn-hover-color: unset;
+  --bs-btn-hover-bg: unset; 
+    --bs-btn-hover-border-color: unset;
+    --bs-btn-focus-shadow-rgb: unset;
+    --bs-btn-active-color: unset;
+   --bs-btn-active-bg: unset;
+     --bs-btn-active-border-color: unset; 
+     --bs-btn-active-shadow: unset;
+     --bs-btn-disabled-color: unset;
+     --bs-btn-disabled-bg:unset;
+    --bs-btn-disabled-border-color: unset;
+}
+.delete-content{
+  height: 20rem;
+}
+
+.modal-footer{
+  justify-content: space-between;
+  border-top: none
+}
+.modal-content{
+  text-align: center;
+}
+.check{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+.delete-check{
+  width : 10rem;
+}
