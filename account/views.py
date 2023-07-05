@@ -128,11 +128,12 @@ def edit_info(request):
         user.username = request.POST['user_id']
         user.email = request.POST['email']
         user.point = request.POST['point']
+        new_password = request.POST['user_pw']
+        user.set_password(new_password)
         user.save()
+        auth_login(request, user)
         if user.job == "restaurant":
             return redirect ('restaurant_info')
         elif user.job == "consultant":
             return redirect ('consultant_info')
-    return render(request, "edit_info.html") 
-
-# pw = request.POST['pw']
+    return render(request, "edit_info.html")
