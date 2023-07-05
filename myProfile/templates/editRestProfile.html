@@ -37,10 +37,7 @@
     </div>for
     <div class="mb-3 ">
       <label for="formFile" class="form-label">프로필 사진</label>
-      {% if profile.image %}
-      <img src="{{res_profile.image.url}}" alt="프로필사진" width="100">
-    {%endif%}
-      <input class="form-control" type="file" name= "profile_imgage" id="formFile">
+      <input class="form-control" type="file" name= "profile_image" id="formFile">
     </div>
     <div class="mb-3 ">
       <label for="age" class="form-lagel ">나이</label>
@@ -112,7 +109,7 @@
     <div class="">
       <div class="mb-3">
         <label for="introduction" class="form-label"><h5>자기소개</h5></label>
-        <textarea class="form-control" id="introduction" rows="3"></textarea>
+        <textarea class="form-control" id="introduction" name="introduction" rows="3">{{res_profile.self_introducing}}</textarea>
       </div>
     </div>
   </div>
