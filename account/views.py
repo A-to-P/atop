@@ -1,5 +1,6 @@
 from django.contrib.auth import authenticate,login as auth_login, logout as auth_logout
 from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
 from .models import User, Tag, ConsultantProfile, RestaurantProfile
 from django.contrib.auth.hashers import make_password
 
@@ -102,18 +103,36 @@ def signup_consultant(request):
             return redirect('home')
 
 
-
+@login_required
 def consultant_info(request):
-    return render(request, 'consultant_info.html')
+    if request.user.job != "consultant":
+        return redirect('home')
     
+    return render(request, 'consultant_info.html')
 
+@login_required
 def restaurant_info(request):
+    if request.user.job != "restaurant":
+        return redirect('home')
     return render(request, "restaurant_info.html") 
 
+@login_required
 def info_template(request):
     return render(request, "info_template.html") 
 
 
-
+@login_required
 def edit_info(request):
+    if request.method == "POST":
+        user = request.user
+        user.username = request.POST['user_id']
+        user.email = request.POST['email']
+        user.point = request.POST['point']
+        user.save()
+        if user.job == "restaurant":
+            return redirect ('restaurant_info')
+        elif user.job == "consultant":
+            return redirect ('consultant_info')
     return render(request, "edit_info.html") 
+
+# pw = request.POST['pw']

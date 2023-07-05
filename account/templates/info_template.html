@@ -21,20 +21,20 @@
     
     <div class="mb-3">
       <label for="user_id" class="form-label">ID</label>
-      <input type="text" class="form-control" id="user_id" value="여기 아이디" readonly>
+      <input type="text" class="form-control" id="user_id" value="{{user.username}}" readonly>
     </div>
     <div class="mb-3">
       <label for="user_pw" class="form-label">PW</label>
-      <input type="password" class="form-control" id="user_pw"  value="여기 패스워드" readonly>
+      <input type="password" class="form-control" id="user_pw" value="{{user.password}}" readonly>
     </div>
     <div class="mb-3">
       <label for="email" class="form-label">이메일 주소</label>
-      <input type="email" class="form-control" id="email" placeholder="name@example.com"  value="여기 이메일" readonly>
+      <input type="email" class="form-control" id="email" placeholder="name@example.com" value="{{user.email}}" readonly>
     </div>
     <div class="mb-3 ">
       <label for="myPoint" class="form-label">보유 캐시</label>
       <div class="my-point">
-        <input type="text" class="form-control" id="myPoint" style="width: 80%;" value="여기 보유 포인트" readonly>
+        <input type="text" class="form-control" id="myPoint" style="width: 80%;" value="{{user.point}}" readonly>
         {% block point %}
         <button type="submit" class="btn btn-primary signup_btn">충전하기</button>
         {% endblock %}
