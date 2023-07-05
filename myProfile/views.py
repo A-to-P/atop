@@ -18,15 +18,16 @@ def editConsultProfile(request):
 
 def editRestProfile(request):
     res_profile, created = RestaurantProfile.objects.get_or_create(user=request.user)
+    user = request.user
     if request.method == "POST":
 
         res_profile.name = request.POST.get('name')
         res_profile.image = request.FILES.get('profile_image')
         User.email = request.POST.get('email')
         res_profile.birth = request.POST.get('age')
-        res_profile.career = request.POST.get('career')
-        # 밑에 두 개 "IntegrityError, Not NULL constraint failed" 
-        # res_profile.self_introducing = request.POST.get('introduction')
+        res_profile.career = request.POST.get('career') 
+        res_profile.self_introducing = request.POST.get('introduction')
+        # contact_at 에러남 -> "IntegrityError, Not NULL constraint failed"
         # res_profile.contact_at = request.POST.get('inputGroup-sizing-default')
         res_profile.menu = request.POST.get('sig_menu')
         res_profile.location = request.POST.get('location')
