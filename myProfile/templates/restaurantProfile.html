@@ -40,18 +40,21 @@
 
     <div class="information">
       <div class="info" id="name">
-        이름 :
+        이름 : {{res_profile.name}}
       </div>
       <div class="info" id="age">
-        나이 :
+        나이 : 
+        {% if res_profile.birth != None %}
+        {{res_profile.birth}}
+        {% endif %}
       </div>
       <div class="info" id="email">
-        이메일 :
+        이메일 : {{user.email}}
       </div>
 
       <div class="check">
         <div class="info" id="career">
-          경력 :
+          경력 : {{res_profile.career}}
         </div>
 
         <!-- 마이 프로필 화면에서는 인증 여부만 표시, 수정하기에서 인증하기 창으로 연결 -->
@@ -75,7 +78,7 @@
         자기소개
       </h5>
       <div class="intro_content" maxlength="500">
-        자기소개 내용이 들어가는 곳입니다.
+      {{res_profile.self_introducing}}
 
       </div>
     </div>
@@ -87,7 +90,7 @@
 
       <div class="consult_info" id="contact">
         <div class="consult_info_title">연락 가능 시간</div>
-        <div class="consult_info_content">여기는 연락 가능 시간
+        <div class="consult_info_content"> {{res_profile.contact_at}}
         </div>
       </div>
 
@@ -98,13 +101,13 @@
         가게 정보
       </h5>
       <div class="info store_info" id="signature_menu">
-        주메뉴 :
+        주메뉴 : {{res_profile.menu}}
       </div>
       <div class="info store_info" id="location">
-        가게 위치 :
+        가게 위치 : {{res_profile.location}}
       </div>
       <div class="info store_info" id="size">
-        가게 규모 :
+        가게 규모 : {{res_profile.area}}
       </div>
 
     </div>
