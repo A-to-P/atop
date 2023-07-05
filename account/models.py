@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
 from consulting.models import Consulting
+import datetime
 
 JOB_CHOICES = (("restaurant", "Restaurant"),("consultant", "Consultant"))
 
@@ -84,6 +85,10 @@ class RestaurantProfile(models.Model):
 
     def __str__(self):
         return f"{self.user.username} | {self.name}"
+    
+    @property
+    def age(self):
+        return  datetime.datetime.today().year - self.birth.year +1
 
 class ConsultantProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
@@ -121,6 +126,10 @@ class ConsultantProfile(models.Model):
 
     def __str__(self):
         return f"{self.user.username} | {self.name}"
+
+    @property
+    def age(self):
+        return  datetime.datetime.today().year - self.birth.year +1
     
     
 class EduVerification(models.Model):

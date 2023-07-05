@@ -36,17 +36,20 @@ def editConsultProfile(request):
     user = request.user
     if request.method == "POST":
         con_profile.name = request.POST.get('name')
-        con_profile.image = request.FILES.get('profile_image')
+        image =  request.FILES.get('profile_image')
+        if image is not None: # 파일 업로드 안하면 수정 안함
+            con_profile.image = image
+        user.tag.clear()
+        user.tag.add(request.POST.get('request_field'))
         user.email = request.POST.get('email')
         user.save()
-        con_profile.birth = request.POST.get('age')
+        con_profile.birth = request.POST.get('birth')
         con_profile.education = request.POST.get('school') 
         con_profile.self_introducing = request.POST.get('introduction')
         if request.POST.get('anytime'): # '언제나' 체크되있다면
             con_profile.contact_at = request.POST.get('anytime')
         else:
-            print(request.POST.get('start_time'))
-        # con_profile.contact_at = request.POST.get('inputGroup-sizing-default')
+            con_profile.contact_at = f"{request.POST.get('start_time')} ~ {request.POST.get('end_time')}"
         con_profile.save()
         # 컨설팅 분야
 
@@ -66,12 +69,14 @@ def editRestProfile(request):
     if request.method == "POST":
 
         res_profile.name = request.POST.get('name')
-        res_profile.image = request.FILES.get('profile_image')
+        image =  request.FILES.get('profile_image')
+        if image is not None:
+            res_profile.image = image
         user.tag.clear()
         user.tag.add(request.POST.get('restaurant_field'))
         user.email = request.POST.get('email')
         user.save()
-        res_profile.birth = request.POST.get('age')
+        res_profile.birth = request.POST.get('birth')
         res_profile.career = request.POST.get('career') 
         res_profile.self_introducing = request.POST.get('introduction')
         if request.POST.get('anytime'): # '언제나' 체크되있다면
