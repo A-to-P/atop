@@ -42,10 +42,11 @@ def signup_restaurant(request):
         return render(request, 'signup_restaurant.html', {'tags':tags})
     
     if request.method == "POST":
+        name = request.POST['name']
         tag_id = request.POST['restaurant_field']
-        username = request.POST['username']
-        password = request.POST['password']
-        password_check = request.POST['password_check']
+        username = request.POST['id']
+        password = request.POST['pw']
+        password_check = request.POST['pw_check']
         email = request.POST['email']
         
 
@@ -61,6 +62,9 @@ def signup_restaurant(request):
         else:   
             user = User.objects.create(username=username,password=make_password(password),email=email,job='restaurant')
             user.tag.add(tag_id)
+            
+            profile = RestaurantProfile.objects.create(user=user, name=name)
+            print(profile)
             auth_login(request,user)
             return redirect('home')
     
@@ -72,10 +76,11 @@ def signup_consultant(request):
         return render(request, 'signup_consultant.html', {'tags':tags})
     
     if request.method == "POST":
+        name = request.POST['name']
         tag_id = request.POST['request_field']
-        username = request.POST['username']
-        password = request.POST['password']
-        password_check = request.POST['password_check']
+        username = request.POST['id']
+        password = request.POST['pw']
+        password_check = request.POST['pw_check']
         email = request.POST['email']
 
         if not username or not password:
@@ -88,9 +93,11 @@ def signup_consultant(request):
             error_password = '비밀번호와 비밀번호 확인이 일치하지 않습니다.'
             return render(request, 'signup_consultant.html', {'error': error_password})
         else:
-            user = User(username=username, password=make_password(password),email=email,job='consultant')
-            user.save()
+            user = User.objects.create(username=username, password=make_password(password),email=email,job='consultant')
             user.tag.add(tag_id)
+            
+            profile = ConsultantProfile.objects.create(user=user, name=name)
+            print(profile)
             auth_login(request,user)
             return redirect('home')
 
