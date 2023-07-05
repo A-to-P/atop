@@ -33,28 +33,29 @@
   <div class="information">
     <div class="mb-3 ">
       <label for="name" class="form-lagel ">이름</label>
-      <input class="m-control" type="text" name="name" id="name" value="" valueplaceholder="이름을 입력해주세요." aria-label="default input example">
+      <input class="m-control" type="text" name="name" id="name" value="{{res_profile.name}}" valueplaceholder="이름을 입력해주세요." aria-label="default input example">
     </div>for
     <div class="mb-3 ">
       <label for="formFile" class="form-label">프로필 사진</label>
-      <input class="form-control" type="file" name= "profile_imgage" id="formFile">
+      <input class="form-control" type="file" name= "profile_image" id="formFile">
     </div>
     <div class="mb-3 ">
       <label for="age" class="form-lagel ">나이</label>
-      <input class="form-control" type="text" name="age" id="age" value="" valueplaceholder="나이를 입력해주세요." aria-label="default input example">
+      {% comment %} 일단 생년월일 그대로 출력되도록 함, 나이로 바꾸는 작업 해야됨, 기본값 기존 값으로 하는건 JS필요 {% endcomment %}
+      <input class="form-control" type="date" name="age" id="age" value="2000-01-01" valueplaceholder="나이를 입력해주세요." aria-label="default input example">
     </div>
 
     <div class="mb-3">
       <label for="email" class="form-label ">이메일</label>
-      <input type="email" class="form-control" name="email" id="email" placeholder="name@example.com">
+      <input type="email" class="form-control" name="email" id="email" value="{{user.email}}"placeholder="name@example.com">
     </div>
     <div >
       <div class="mb-3 ">
-        <label for="school" class="form-label">학력</label>
+        <label for="career" class="form-label">경력</label>
         <div>
           
         </div>
-        <input type="email" class="form-control check" name="school" id="school" placeholder="학교명과 학과명을 입력해주세요.">
+        <input type="text" class="form-control check" name="career" id="career" value="{{res_profile.career}}"placeholder="경력을 입력해주세요.">
       </div>
       <!-- 인증되어 있으면 -->
       <!-- 
@@ -108,7 +109,7 @@
     <div class="">
       <div class="mb-3">
         <label for="introduction" class="form-label"><h5>자기소개</h5></label>
-        <textarea class="form-control" id="introduction" rows="3"></textarea>
+        <textarea class="form-control" id="introduction" name="introduction" rows="3">{{res_profile.self_introducing}}</textarea>
       </div>
     </div>
   </div>
@@ -134,15 +135,15 @@
     <h5> 가게 정보 </h5>
     <div class="mb-3 ">
       <label for="name" class="form-lagel ">주메뉴</label>
-      <input class="form-control" type="text" name="sig_menu" id="sig_menu" value="" valueplaceholder="이름을 입력해주세요." aria-label="default input example">
+      <input class="form-control" type="text" name="sig_menu" id="sig_menu" value="{{res_profile.menu}}" valueplaceholder="이름을 입력해주세요." aria-label="default input example">
     </div>
     <div class="mb-3 ">
       <label for="name" class="form-lagel ">가게 위치</label>
-      <input class="form-control" type="text" name="location" id="location" value="" valueplaceholder="이름을 입력해주세요." aria-label="default input example">
+      <input class="form-control" type="text" name="location" id="location" value="{{res_profile.location}}" valueplaceholder="이름을 입력해주세요." aria-label="default input example">
     </div>
     <div class="mb-3 ">
       <label for="name" class="form-lagel ">가게 규모</label>
-      <input class="form-control" type="text" name="size" id="size" value="" valueplaceholder="이름을 입력해주세요." aria-label="default input example">
+      <input class="form-control" type="text" name="size" id="size" value="{{res_profile.area}}" valueplaceholder="이름을 입력해주세요." aria-label="default input example">
     </div>
     <div class="col-auto">
       <button type="submit" class="btn btn-primary mb-3 store_profile">프로필 저장</button>
