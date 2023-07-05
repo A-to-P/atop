@@ -43,19 +43,22 @@
   
   <div class="information">
     <div class= "info" id="name">
-      이름 : 
+      이름 : {{con_profile.name}}
     </div>
     <div class= "info" id="age">
       나이 : 
+      {% if con_profile.birth != None %}
+      {{con_profile.birth}}
+      {% endif %}
     </div>
     <div class= "info" id="email">
-      이메일 : 
+      이메일 : {{user.email}}
     </div>
 
 
     <div class="school_check">
       <div class= "info">
-        학력 : 
+        학력 : {{con_profile.education}}
       </div>
 
       <!-- 마이 프로필 화면에서는 인증 여부만 표시, 수정하기에서 인증창 연결 -->
@@ -89,7 +92,7 @@
   <div class="introduction">
     <h5> 자기소개 </h5>
     <div class="intro_content" maxlength="500">
-      자기소개 내용이 들어가는 곳입니다.
+      {{con_profile.self_introducing}}
       
     </div>
   </div>
@@ -98,11 +101,11 @@
     <h5> 컨설팅 정보 </h5>
     <div class="consult_info" id="consult_field">
       <div class="consult_info_title">컨설팅 분야</div>
-      <div class="consult_info_content"> 여기는 컨설팅 분야 </div>
+      <div class="consult_info_content"> {{con_field}} </div>
     </div> 
     <div class="consult_info" id="contact">
       <div class="consult_info_title">연락 가능 시간</div>
-      <div class="consult_info_content">여기는 연락 가능 시간 </div>
+      <div class="consult_info_content"> {{con_profile.contact_at}} </div>
     </div>
     <div class= "consult_info" id="times">
       <div class="consult_info_title">컨설팅 횟수</div>
