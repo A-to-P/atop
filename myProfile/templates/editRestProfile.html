@@ -34,7 +34,7 @@
     <div class="mb-3 ">
       <label for="name" class="form-lagel ">이름</label>
       <input class="m-control" type="text" name="name" id="name" value="{{res_profile.name}}" valueplaceholder="이름을 입력해주세요." aria-label="default input example">
-    </div>for
+    </div>
     <div class="mb-3 ">
       <label for="formFile" class="form-label">프로필 사진</label>
       <input class="form-control" type="file" name= "profile_image" id="formFile">
@@ -109,13 +109,24 @@
     <div class="">
       <div class="mb-3">
         <label for="introduction" class="form-label"><h5>자기소개</h5></label>
-        <textarea class="form-control" id="introduction" name="introduction" rows="3">{{res_profile.self_introducing}}</textarea>
+        <textarea class="form-control" id="introduction" name="introduction" rows="3" placeholder="자기소개 글을 입력해보세요. (최대 500자)">{{res_profile.self_introducing}}</textarea>
       </div>
     </div>
   </div>
 
   <div class="consulting_info" >
     <h5> 컨설팅 정보 </h5>
+
+    <div class="input-group mb-3">
+      <label class="input-group-text" for="inputGroupSelect01">요식업 분야</label>
+      <select class="form-select" name="restaurant_field" id="restaurant_field" required aria-label="Default select example"> 
+        {% for tag in tags %}
+          <option value="{{tag.id}}">{{tag.name}}</option>
+          {% endwith %}
+        {% endfor %}
+      </select>
+    </div>
+
       <div>
         <div class="input-group mb-3">
           <span class="input-group-text" id="inputGroup-sizing-default">연락 가능 시간</span>
@@ -124,9 +135,9 @@
           
         </div>
         <div class="form-check">
-          <input class="form-check-input" type="checkbox" id="gridCheck">
+          <input class="form-check-input" type="checkbox" value="언제나" name="anytime" id="gridCheck">
           <label class="form-check-label"style="margin-bottom: 1rem;" for="gridCheck">
-            언제든지 가능
+            언제나
           </label>
         </div>
       </div>      

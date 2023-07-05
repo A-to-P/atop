@@ -119,15 +119,9 @@
       <div class="input-group mb-3">
         <label class="input-group-text" for="inputGroupSelect01">컨설팅 분야</label>
         <select class="form-select" name="request_field" id="request_field" required aria-label="Default select example"> 
-          <option selected value="marketing">마케팅</option>
-          <option value="control_cost">원가 관리</option>
-          <option value="account_book">회계 장부</option>
-          <option value="labor">노무</option>
-          <option value="tax">절세</option>
-          <option value="sns">SNS</option>
-          <option value="branding">창업브랜딩</option>
-          <option value="logo_design">로고 디자인</option>
-          <option value="interior">인테리어</option>
+          {% for tag in tags %}
+          <option value="{{tag.id}}">{{tag.name}}</option>
+        {% endfor %}
         </select>
       </div>
 
@@ -139,7 +133,7 @@
           
         </div>
         <div class="form-check">
-          <input class="form-check-input" type="checkbox" id="gridCheck">
+          <input class="form-check-input" value="언제나" name="anytime" type="checkbox" id="gridCheck">
           <label class="form-check-label"style="margin-bottom: 1rem;" for="gridCheck">
             언제든지 가능
           </label>
