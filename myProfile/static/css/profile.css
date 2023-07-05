@@ -1,73 +1,69 @@
 /* 오른쪽 컨텐츠에 따라 전체 높이가 유동적으로 달라짐 (해결)*/
-.template_container{
+.template_container {
   padding: 0;
-  display:flex;
-  flex-direction: row;  
+  display: flex;
+  flex-direction: row;
 }
-.content{
+.content {
   height: unset;
   flex: 1 4 0;
   align-self: auto;
 }
 /* 오른쪽 컨텐츠 영역 */
-.right_content{
+.right_content {
   flex: 4 1 0;
 }
 
 /* 왼쪽 프로필, 메뉴 바 */
-.left_content{
-  background-color : white; 
-  padding: 4rem 1rem; 
+.left_content {
+  background-color: white;
+  padding: 4rem 1rem;
   text-align: center;
 }
-.img{
+.img {
   margin: 0.3rem auto;
-  height:5rem;
+  height: 5rem;
   width: 5rem;
   border-radius: 100%;
   background-color: blue;
+  object-fit: cover;
 }
-.profile_space{
+.profile_space {
   margin: 0 auto 3rem;
 }
-.profile{
+.profile {
   margin: 0 auto;
   height: 10rem;
   width: 10rem;
   border-radius: 1rem;
   background-color: rgb(255, 255, 255);
-  box-shadow:  0 4px 10px rgb(16, 160, 255);
+  box-shadow: 0 4px 10px rgb(16, 160, 255);
   padding: 1rem;
 }
 /* 닉네임, 분야 */
-.profile_summary{
+.profile_summary {
   font-weight: bold;
   margin-top: 0.5rem;
 }
-h4{
+h4 {
   margin: 0;
   padding-bottom: 0.5rem;
 }
-.profile_title{
+.profile_title {
   margin: 0 auto 2rem auto;
 }
 /*  */
-.menu{
+.menu {
   margin: 1rem auto;
-  width: 9rem;
-  padding:0.3rem;
+  width: 10rem;
+  padding: 0.3rem;
   border: solid black;
 }
-.menu:hover{
+.menu:hover {
   background-color: gray;
   transform: scale(1.4);
 }
 
-
-.footer{
+.footer {
   position: unset;
 }
-
-
-
-
