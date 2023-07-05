@@ -70,16 +70,16 @@ def findRequest(request):
     tag_list = list(Tag.objects.filter(job="consultant"))
 
     # 태그 별 출력
-    for tag in tag_list:
-        tmp = []
-        request_list = Request.objects.filter(consult_tag=tag)
-        for i in range(len(request_list)):
-            tmp.append(requestDictionary(request_list[i]))
+    # for tag in tag_list:
+    #     tmp = []
+    #     request_list = Request.objects.filter(consult_tag=tag)
+    #     for i in range(len(request_list)):
+    #         tmp.append(requestDictionary(request_list[i]))
         
-        request_list = tmp
+    #     request_list = tmp
         
-        data = {
-            "request_list" : request_list
-        }
-        return JsonResponse(data)
+    #     data = {
+    #         "request_list" : request_list
+    #     }
+    #     return JsonResponse(data)
     return render(request, "findRequest.html")

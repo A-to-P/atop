@@ -7,5 +7,57 @@
 {% block title %} findRequest {% endblock %}
 
 {% block content %}
-findRequest내용
+<!--왼쪽 카테고리 메뉴-->
+<div class="content_wrapper">
+    <div class="category_container">
+        <div class="title_category">컨설팅 카테고리</div>
+        <div class="category_list_wrapper">
+            <div class="single_category">
+                <input type="radio" class="radio" name="category-1" value="" checked>마케팅</div>
+            <div class="single_category">
+                <input type="radio" class="radio" name="category-2" value="">원가관리</div>
+            <div class="single_category">
+                <input type="radio" class="radio" name="category-3" value="">회계장부 작성</div>
+            <div class="single_category">
+                <input type="radio" class="radio" name="category-4" value="">SNS</div>
+            <div class="single_category">
+                <input type="radio" class="radio" name="category-5" value="">창업</div>
+            <div class="single_category">
+                <input type="radio" class="radio" name="category-6" value="">브랜딩</div>
+            <div class="single_category">
+                <input type="radio" class="radio" name="category-7" value="">로고 디자인</div>
+            <div class="single_category">
+                <input type="radio" class="radio" name="category-8" value="">인테리어</div>
+        </div>
+    </div>
+    
+    <!--오른쪽 컨설팅 의뢰 리스트-->
+    <div class="request_list_wrapper">
+        <div class="title_request_list">컨설팅 의뢰 리스트</div>
+        <div class="request_filter">
+            <a href="" class="single_filter">최신 등록순</a>
+            <a href="" class="single_filter">마감 임박순</a>
+            <a href="" class="single_filter">고가순</a>
+        </div>
+        <div class="single_request_wrapper">
+            <div class="single_request">
+                <div class="request_top_wrapper">
+                    <div class="request_date">D-7</div>
+                    <div class="request_title">디저트 카페 홍보 도와주세요!</div>
+                    <div class="detail_button">
+                        <a href="{% url 'detailedRequest' %}">상세보기</a>
+                    </div>
+                </div>
+                
+                <div class="request_info_wrapper">
+                    <div class="request_info__category">요식업 분야</div>
+                    <div class="request_info__money">컨설팅 비용</div>
+                    <div class="request_info__num_of_applicant">지원자 수: 2명</div>
+                </div>
+                <div class="request_content">컨설팅 의뢰내용 요약 컨설팅 의뢰내용 요약 컨설팅 의뢰내용 요약 컨설팅 의뢰내용 요약 컨설팅 의뢰내용 요약 컨설팅 의뢰내용 요약 컨설팅 의뢰내용 요약 컨설팅 의뢰내용 요약 컨설팅 의뢰내용 요약 컨설팅 의뢰내용 요약 컨설팅 의뢰내용 요약 컨설팅 의뢰내용 요약 컨설팅 의뢰내용 요약 컨설팅 의뢰내용 요약 </div>
+
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}
