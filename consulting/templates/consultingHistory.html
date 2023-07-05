@@ -6,49 +6,77 @@
   <link rel="stylesheet" href="{% static 'css/Myprofile.css' %}">
   <link rel="stylesheet" href="{% static 'css/history.css' %}">
 {% endblock %}
+ 
 
-{% block title %}컨설턴트 포트폴리오/히스토리{% endblock %}
+{% block title %}요식업자의 컨설팅 히스토리{% endblock %}
 
 {% block profile_title %}
-  consulting Space
+  My Consulting
 {% endblock %}
 
-{% block menu %}
-  <p class="menu">
-    <a href="">현재 컨설팅</a>
-  </p>
-  <p class="menu" style="background-color: gray; ">
-    <a href="{% url 'consultingHistory' %}">컨설팅 포트폴리오</a>
-  </p>
+
+
+
+
+
+{% block menu %} 
+<p class="menu">
+  <a href="" >현재 컨설팅</a>
+</p>
+<p class="menu">
+  <a href="" >내 의뢰글</a>
+</p>
+<p class="menu"  style="background-color: gray; ">
+  <a href="{% url 'consultingHistory' %}" >컨설팅 포트폴리오</a>
+</p>
 {% endblock %}
 
 {% block nav_right %}
-  <a href="{% url 'consultingSpace' %}">
-    Consulting Space
-  </a>
-  <a href="">
-    알람
-  </a>
-  <a href="{% url 'myProfile' %}">마이프로필</a>
+<a href="{% url 'myConsulting' %}" > My Consulting </a>
+<a href=""> 알람 </a>
+<a href="{% url 'restaurantProfile' %}">마이프로필</a>
+  
 
 {% endblock %}
 
 {% block maincontent %}
-  <div>
-    과거 진행한 컨설팅
-  </div>
+<div> 과거 진행한 컨설팅 </div> 
 
-  <ul class="history">
-    <li>
-      <span class="content">컨설팅 종료일자</span>
-      <span class="content">요식업자 이름</span>
-      <span class="content">컨설팅 분야</span>
-      <span class="content">요식업자 이름</span>
-      <span class="content">|</span>
-      <span class="content">최종 레포트 파일</span>
+<div class="history-header"> 
+  <div class="header-title">컨설팅 종료일자</div>
+  <div class="header-title">컨설턴트</div>
+  <div class="header-title">컨설팅 분야</div>
+  <div class="header-title">컨설팅 비용</div>
+</div> 
+
+<div class="history-conatiner">
+  <ul >
+    <li class="history-list">
+      <div class="list-content">컨설팅 종료일자</div>
+      <div class="list-content">컨설턴트</div>
+      <div class="list-content">컨설팅 분야</div>
+      <div class="list-content">컨설팅 비용</div>
     </li>
-
+    <li class="history-list">
+      <div class="list-content">컨설팅 종료일자</div>
+      <div class="list-content">컨설턴트</div>
+      <div class="list-content">컨설팅 분야</div>
+      <div class="list-content">컨설팅 비용</div>
+    </li>
   </ul>
+</div>
+
+
+<nav aria-label="...">
+  <ul class="pagination pagination-sm justify-content-center">
+    <li class="page-item active" aria-current="page">
+      <span class="page-link">1</span>
+    </li>
+    <li class="page-item"><a class="page-link" href="#">2</a></li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+  </ul>
+</nav>
+
 
   {{ user.id|json_script:"user_id" }}
   <script src="{% static 'js/history.js' %}"></script>
