@@ -7,15 +7,22 @@ from account.models import RestaurantProfile, ConsultantProfile, User
 
 @login_required
 def consultantProfile(request):
+    if request.user.job != "consultant":
+        return redirect('home')
     con_profile, created = ConsultantProfile.objects.get_or_create(user=request.user)
     return render(request, "consultantProfile.html", {'con_profile' : con_profile})
 
 @login_required
 def restaurantProfile(request):
+    if request.user.job != "restaurant":
+        return redirect('home')
     res_profile, created = RestaurantProfile.objects.get_or_create(user=request.user)
     return render(request, "restaurantProfile.html", {'res_profile' : res_profile})
 
+@login_required
 def editConsultProfile(request):
+    if request.user.job != "consultant":
+        return redirect('home')
     con_profile, created = ConsultantProfile.objects.get_or_create(user=request.user)
     user = request.user
     if request.method == "POST":
@@ -34,7 +41,10 @@ def editConsultProfile(request):
         return redirect('consultantProfile')
     return render(request, "editConsultProfile.html", {'con_profile' : con_profile})
 
+@login_required
 def editRestProfile(request):
+    if request.user.job != "restaurant":
+        return redirect('home')
     res_profile, created = RestaurantProfile.objects.get_or_create(user=request.user)
     user = request.user
     if request.method == "POST":
@@ -55,7 +65,14 @@ def editRestProfile(request):
     return render(request, "editRestProfile.html", {'res_profile' : res_profile})
 
 def profile_template(request):
-    return render(request, "profile_template.html")
+    print (123)
+    user = request.user
+    # if request.user.job == "restaurant":
+    #     return redirect('home')
+    
+    # if request.user.job == "consultant":
+    #     return redirect('home')
+    return render(request, "profile_template.html", {'user' : user})
 
 def consultProfile(request):
     return render(request, "myProfile.html")
