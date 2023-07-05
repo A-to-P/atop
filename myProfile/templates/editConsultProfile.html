@@ -1,166 +1,175 @@
-{% extends 'profile_template.html' %} 
+{% extends 'profile_template.html' %}
 {% load static %}
 {% block static %}
-  <link rel="stylesheet" href="{% static 'css/profile.css' %}" >  
-  <link rel="stylesheet" href="{% static 'css/Myprofile.css' %}" >  
-  <link rel="stylesheet" href="{% static 'css/editConsultProfile.css' %}" > 
+  <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+  <link rel="stylesheet" href="{% static 'css/Myprofile.css' %}">
+  <link rel="stylesheet" href="{% static 'css/editConsultProfile.css' %}">
 {% endblock %}
 
 {% block title %}컨설턴트 프로필 수정 페이지{% endblock %}
-
 
 {% block profile_title %}
   Edit Profile
 {% endblock %}
 
-
 {% block nav_right %}
-  <a href="{% url 'consultingSpace' %}" > Consulting Space </a>
-  <a href=""> 알람 </a>
+  <a href="{% url 'consultingSpace' %}">
+    Consulting Space
+  </a>
+  <a href="">
+    알람
+  </a>
   <a href="{% url 'consultantProfile' %}">마이프로필</a>
-  
 
 {% endblock %}
 
 {% block maincontent %}
 
+  <form method="POST" action="" class="profile_container" enctype="multipart/form-data">
+    {% csrf_token %}
 
-<form method="POST" action="" class="profile_container" entype="multipart/form-data">
-  {% csrf_token %}    
-
-  <!-- 기본정보 수정폼 -->
-  <div class="information">
-    <div class="mb-3 ">
-      <label for="name" class="form-lagel ">이름</label>
-      <input class="form-control" type="text" name="name" id="name" value="{{con_profile.name}}" valueplaceholder="이름을 입력해주세요." aria-label="default input example">
-    </div>
-    <div class="mb-3 ">
-      <label for="formFile" class="form-label">프로필 사진</label>
-      <input class="form-control" type="file" name= "profile_imgage" id="formFile">
-    </div>
-    <div class="mb-3 ">
-      <label for="age" class="form-lagel ">나이</label>
-      {% comment %} 일단 생년월일 그대로 출력되도록 함, 나이로 바꾸는 작업 해야됨, 기본값 기존 값으로 하는건 JS필요 {% endcomment %}
-      <input class="form-control" type="date" name="age" id="age" value="2000-01-01" valueplaceholder="나이를 입력해주세요." aria-label="default input example">
-    </div>
-
-    <div class="mb-3">
-      <label for="email" class="form-label ">이메일</label>
-      <input type="email" class="form-control" name="email" id="email" value="{{user.email}}"placeholder="name@example.com">
-    </div>
-    <div class="school_check ">
+    <!-- 기본정보 수정폼 -->
+    <div class="information">
       <div class="mb-3 ">
-        <label for="school" class="form-label">학력</label>
-        <input type="email" class="form-control" name="school" id="school" value="{{con_profile.education}}"placeholder="학교명과 학과명을 입력해주세요.">
+        <label for="name" class="form-lagel ">이름</label>
+        <input class="form-control" type="text" name="name" id="name" value="{{con_profile.name}}" valueplaceholder="이름을 입력해주세요." aria-label="default input example">
       </div>
-      <!-- 인증되어 있으면 -->
-      <!-- 
-        <button type="button" class="btn btn-primary" style="margin: auto;">
-        인증완료 
-        
-        <span class="badge text-bg-secondary">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-patch-check-fill" viewBox="0 0 16 16">
-            <path d="M10.067.87a2.89 2.89 0 0 0-4.134 0l-.622.638-.89-.011a2.89 2.89 0 0 0-2.924 2.924l.01.89-.636.622a2.89 2.89 0 0 0 0 4.134l.637.622-.011.89a2.89 2.89 0 0 0 2.924 2.924l.89-.01.622.636a2.89 2.89 0 0 0 4.134 0l.622-.637.89.011a2.89 2.89 0 0 0 2.924-2.924l-.01-.89.636-.622a2.89 2.89 0 0 0 0-4.134l-.637-.622.011-.89a2.89 2.89 0 0 0-2.924-2.924l-.89.01-.622-.636zm.287 5.984-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7 8.793l2.646-2.647a.5.5 0 0 1 .708.708z"/>
-          </svg>
-        </span>
-      </button> 
-    -->
-      
-      <!-- 인증되어 있지 않으면 -->
-      <!-- Button trigger modal -->
-      <div style="margin: auto;">
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-          학교 인증하기
-        </button>
-  
-        <!-- Modal -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">학교 인증하기</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <div class="modal-body">
-                <p>
-                  학생증이나 재학증명서를 업로드해주세요.
-                </p>
-                <input class="form-control" type="file" name= "shcool" id="shcool">
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary">Save changes</button>
+      <img id="preview" class="img" {% if con_profile.image %} src="{{con_profile.image.url}}" {% endif %}/>
+      <div class="mb-3 ">
+        <label for="formFile" class="form-label">프로필 사진</label>
+        <input class="form-control" type="file" accept="image/*" name="profile_image" id="formFile" onchange="readURL(this);">
+      </div>
+      <div class="mb-3 ">
+        <label for="birth" class="form-lagel ">생년월일</label>
+        <input class="form-control" type="date" name="birth" id="birth" aria-label="default input example">
+      </div>
+
+      <div class="mb-3">
+        <label for="email" class="form-label ">이메일</label>
+        <input type="email" class="form-control" name="email" id="email" value="{{user.email}}" placeholder="name@example.com">
+      </div>
+      <div class="school_check ">
+        <div class="mb-3 ">
+          <label for="school" class="form-label">학력</label>
+          <input type="text" class="form-control" name="school" id="school" value="{{con_profile.education}}" placeholder="학교명과 학과명을 입력해주세요.">
+        </div>
+        <!-- 인증되어 있으면 -->
+        <!-- <button type="button" class="btn btn-primary" style="margin: auto;"> 인증완료 <span class="badge text-bg-secondary"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-patch-check-fill" viewBox="0 0 16 16"> <path d="M10.067.87a2.89 2.89 0 0 0-4.134 0l-.622.638-.89-.011a2.89 2.89 0 0 0-2.924 2.924l.01.89-.636.622a2.89 2.89 0 0 0 0 4.134l.637.622-.011.89a2.89 2.89 0 0 0 2.924 2.924l.89-.01.622.636a2.89 2.89 0 0 0 4.134 0l.622-.637.89.011a2.89 2.89 0 0 0 2.924-2.924l-.01-.89.636-.622a2.89 2.89 0 0 0 0-4.134l-.637-.622.011-.89a2.89 2.89 0 0 0-2.924-2.924l-.89.01-.622-.636zm.287 5.984-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7 8.793l2.646-2.647a.5.5 0 0 1 .708.708z"/> </svg> </span> </button> -->
+
+        <!-- 인증되어 있지 않으면 -->
+        <!-- Button trigger modal -->
+        <div style="margin: auto;">
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            학교 인증하기
+          </button>
+
+          <!-- Modal -->
+          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="exampleModalLabel">학교 인증하기</h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <p>
+                    학생증이나 재학증명서를 업로드해주세요.
+                  </p>
+                  <input class="form-control" type="file" name="shcool" id="shcool">
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <button type="submit" class="btn btn-primary">Save changes</button>
+                </div>
               </div>
             </div>
           </div>
+
         </div>
-  
 
       </div>
-      
 
     </div>
-    
-  </div>
-  <!-- 자기소개 -->
-  <div class="introduction">
-    <div class="">
-      <div class="mb-3">
-        <label for="introduction" class="form-label"><h5>자기소개</h5></label>
-        <textarea class="form-control" id="introduction" name="introduction" rows="3">{{con_profile.self_introducing}}</textarea>
+    <!-- 자기소개 -->
+    <div class="introduction">
+      <div class="">
+        <div class="mb-3">
+          <label for="introduction" class="form-label">
+            <h5>자기소개</h5>
+          </label>
+          <textarea class="form-control" id="introduction" name="introduction" rows="3">{{con_profile.self_introducing}}</textarea>
+        </div>
       </div>
     </div>
-  </div>
 
-  <div class="consulting_info" >
-    <h5> 컨설팅 정보 </h5>
+    <div class="consulting_info">
+      <h5>
+        컨설팅 정보
+      </h5>
 
-    
       <div class="input-group mb-3">
         <label class="input-group-text" for="inputGroupSelect01">컨설팅 분야</label>
-        <select class="form-select" name="request_field" id="request_field" required aria-label="Default select example"> 
-          <option selected value="marketing">마케팅</option>
-          <option value="control_cost">원가 관리</option>
-          <option value="account_book">회계 장부</option>
-          <option value="labor">노무</option>
-          <option value="tax">절세</option>
-          <option value="sns">SNS</option>
-          <option value="branding">창업브랜딩</option>
-          <option value="logo_design">로고 디자인</option>
-          <option value="interior">인테리어</option>
+        <select class="form-select" name="request_field" id="request_field" required="required" aria-label="Default select example">
+          {% for tag in tags %}
+            <option {% if user.get_tag == tag %} selected="selected" {% endif %} value="{{tag.id}}">{{tag.name}}</option>
+          {% endfor %}
         </select>
       </div>
 
       <div>
         <div class="input-group mb-3">
           <span class="input-group-text" id="inputGroup-sizing-default">연락 가능 시간</span>
-          <input type="time" name="start_time"  value="08:00" min="00:00" max="23:00" step="300" required class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-          <input type="time" name="end_time" value="23:00" min="00:00" max="23:00" step="300" required class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-          
+          <input type="time" name="start_time" value="08:00" min="00:00" max="23:00" step="300" required="required" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+          <input type="time" name="end_time" value="23:00" min="00:00" max="23:00" step="300" required="required" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+
         </div>
         <div class="form-check">
-          <input class="form-check-input" type="checkbox" id="gridCheck">
-          <label class="form-check-label"style="margin-bottom: 1rem;" for="gridCheck">
+          <input class="form-check-input" value="언제나" name="anytime" type="checkbox" id="gridCheck">
+          <label class="form-check-label" style="margin-bottom: 1rem;" for="gridCheck">
             언제든지 가능
           </label>
         </div>
       </div>
 
-      
-
-      
-      <div class="input-group mb-3">
-        <span class="input-group-text" id="inputGroup-sizing-default">컨설팅 횟수</span>
-        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-      </div>
-   
-    
       <div class="col-auto">
-       <button type="submit" class="btn btn-primary mb-3 store_profile">프로필 저장</button>
+        <button type="submit" class="btn btn-primary mb-3 store_profile">프로필 저장</button>
       </div>
-    <!-- <input type="submit" class="store_profile" name="submit" value="프로필 저장"/> -->
-  </div>
+      <!-- <input type="submit" class="store_profile" name="submit" value="프로필 저장"/> -->
+    </div>
 
+  </form>
 
-</form>
+  {{con_profile.birth.year|json_script:"year"}}
+  {{con_profile.birth.month|json_script:"month"}}
+  {{con_profile.birth.day|json_script:"day"}}
+  <script>
+    const year = JSON.parse(document.getElementById("year").textContent);
+    const month = (JSON.parse(document.getElementById("month").textContent))
+      .toString()
+      .padStart(2, "0");
+    const day = (JSON.parse(document.getElementById("day").textContent))
+      .toString()
+      .padStart(2, "0");
+
+    const birthInput = document.getElementById('birth');
+    const value = `${year}-${month}-${day}`;
+    birthInput.value = (value)
+    console.log(value)
+
+    function readURL(input) {
+      if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+          document
+            .getElementById('preview')
+            .src = e.target.result;
+        };
+        reader.readAsDataURL(input.files[0]);
+      } else {
+        document
+          .getElementById('preview')
+          .src = "";
+      }
+    }
+  </script>
 {% endblock %}

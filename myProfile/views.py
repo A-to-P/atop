@@ -1,11 +1,11 @@
 from django.shortcuts import render, redirect
 from django.db import models
 from django.contrib.auth.decorators import login_required
-from account.models import RestaurantProfile, ConsultantProfile, User
+from account.models import RestaurantProfile, ConsultantProfile, User, Tag
 from django.urls import reverse
 
 # Create your views here.
-
+@login_required
 def myProfie(request):
     if request.user.job == "consultant":
         return redirect(reverse('consultantProfile'))
@@ -30,46 +30,65 @@ def restaurantProfile(request):
 def editConsultProfile(request):
     if request.user.job != "consultant":
         return redirect('home')
+    
+    tags = Tag.objects.filter(job="consultant")
     con_profile, created = ConsultantProfile.objects.get_or_create(user=request.user)
     user = request.user
     if request.method == "POST":
         con_profile.name = request.POST.get('name')
-        con_profile.image = request.FILES.get('profile_image')
-        User.email = request.POST.get('email')
-        con_profile.birth = request.POST.get('age')
+        image =  request.FILES.get('profile_image')
+        if image is not None: # 파일 업로드 안하면 수정 안함
+            con_profile.image = image
+        user.tag.clear()
+        user.tag.add(request.POST.get('request_field'))
+        user.email = request.POST.get('email')
+        user.save()
+        con_profile.birth = request.POST.get('birth')
         con_profile.education = request.POST.get('school') 
         con_profile.self_introducing = request.POST.get('introduction')
-        # con_profile.contact_at = request.POST.get('inputGroup-sizing-default')
+        if request.POST.get('anytime'): # '언제나' 체크되있다면
+            con_profile.contact_at = request.POST.get('anytime')
+        else:
+            con_profile.contact_at = f"{request.POST.get('start_time')} ~ {request.POST.get('end_time')}"
         con_profile.save()
         # 컨설팅 분야
 
         # 컨설팅 횟수
 
         return redirect('consultantProfile')
-    return render(request, "editConsultProfile.html", {'con_profile' : con_profile})
+    return render(request, "editConsultProfile.html", {'con_profile' : con_profile, "tags":tags})
 
 @login_required
 def editRestProfile(request):
     if request.user.job != "restaurant":
         return redirect('home')
+    
+    tags = Tag.objects.filter(job="restaurant")
     res_profile, created = RestaurantProfile.objects.get_or_create(user=request.user)
     user = request.user
     if request.method == "POST":
 
         res_profile.name = request.POST.get('name')
-        res_profile.image = request.FILES.get('profile_image')
-        User.email = request.POST.get('email')
-        res_profile.birth = request.POST.get('age')
+        image =  request.FILES.get('profile_image')
+        if image is not None:
+            res_profile.image = image
+        user.tag.clear()
+        user.tag.add(request.POST.get('restaurant_field'))
+        user.email = request.POST.get('email')
+        user.save()
+        res_profile.birth = request.POST.get('birth')
         res_profile.career = request.POST.get('career') 
         res_profile.self_introducing = request.POST.get('introduction')
-        # contact_at 에러남 -> "IntegrityError, Not NULL constraint failed"
-        # res_profile.contact_at = request.POST.get('inputGroup-sizing-default')
+        if request.POST.get('anytime'): # '언제나' 체크되있다면
+            res_profile.contact_at = request.POST.get('anytime')
+        else:
+            res_profile.contact_at = f"{request.POST.get('start_time')} ~ {request.POST.get('end_time')}"
         res_profile.menu = request.POST.get('sig_menu')
         res_profile.location = request.POST.get('location')
         res_profile.area = request.POST.get('size')
         res_profile.save()
         return redirect('restaurantProfile')
-    return render(request, "editRestProfile.html", {'res_profile' : res_profile})
+    return render(request, "editRestProfile.html", {'res_profile' : res_profile, "tags":tags})
 
 def profile_template(request):
     return render(request, "profile_template.html")
