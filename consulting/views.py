@@ -10,3 +10,7 @@ def consultingSpace(request):
 
 def consultingHistory(request):
     return render(request, 'consultingHistory.html')
+
+
+def consultingPortfolio(request):
+    return render(request, 'consultingPortfolio.html')
