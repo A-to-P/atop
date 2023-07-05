@@ -40,6 +40,10 @@ class User( AbstractBaseUser, PermissionsMixin):
     
     def __lt__(self, other):
         return self.count_consulting() < other.count_consulting()
+    
+    # 딕셔너리형태로 반환
+    def get_tag(self):
+        return list(self.tag.all().values())[0]
 
 
 class Tag(models.Model):

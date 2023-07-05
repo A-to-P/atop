@@ -6,15 +6,15 @@ class Request(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     # 요식업자 정보
     user = models.ForeignKey("account.User", on_delete=models.CASCADE)
-    name = models.CharField(max_length=20, default="", blank=True)
-    age = models.IntegerField(default=0, blank=True)
-    career = models.TextField(max_length=50, default="" , blank=True)
+    # name = models.CharField(max_length=20, default="", blank=True)
+    # age = models.IntegerField(default=0, blank=True)
+    # career = models.TextField(max_length=50, default="" , blank=True)
     
     # 요식업분야, 주메뉴, 가게위치, 가게규모, 월평균매출
     rest_tags = models.ManyToManyField("account.Tag", related_name='restaurant', blank=True)
-    menu = models.CharField(max_length=25, default="", blank=True)
-    location = models.CharField(max_length=25, default="", blank=True)
-    area = models.CharField(max_length=25, default="", blank=True)
+    # menu = models.CharField(max_length=25, default="", blank=True)
+    # location = models.CharField(max_length=25, default="", blank=True)
+    # area = models.CharField(max_length=25, default="", blank=True)
     monthly_avg_rev = models.IntegerField(default=0, blank=True)
     
 

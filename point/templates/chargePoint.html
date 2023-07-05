@@ -1,80 +1,82 @@
 {% extends 'base.html' %}
-   {% load static %}
-    {% block static %} 
-      <link rel="stylesheet" href="{% static 'css\point.css' %}"> 
-    {% endblock %}
-   
-    <!-- 요식업자 포인트 충전 페이지 -->
-    {% block title %}chargePoint{% endblock %}
- 
+{% load static %}
+{% block static %}
+  <link rel="stylesheet" href="{% static 'css\point.css' %}">
+{% endblock %}
 
-    {% block content %} 
-    <div class="main_content">
-      <div class="main_content_header">
-        <h2 class="title"> {% block point_title %}충전하기{% endblock%}</h2>
+<!-- 요식업자 포인트 충전 페이지 -->
+{% block title %}chargePoint{% endblock %}
+
+{% block content %}
+  <div class="main_content">
+    <div class="main_content_header">
+      <h2 class="title">
+        {% block point_title %}충전하기{% endblock%}</h2>
         <hr>
-        <h6 class="info"> 충전금액을 선택해주세요.</h6>
+        <h6 class="info">
+          충전금액을 선택해주세요.</h6>
       </div>
       <div class="current_point">
-        {{user.username}}님의 현재 point <span style="color:red">{{user.point}}p</span>
+        {{user.username}}님의 현재 point
+        <span style="color:red">{{user.point}}p</span>
       </div>
-      
+
       <!-- 포인트 선택 -->
-      
+
       <form id="chargePoint" action="{% url 'chargePoint' %}" class="point_container" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         <input type="hidden" name="_method" value="PUT"/>
-        <input type="radio"  class="btn-check non-click " name="point" value="1000" id="option1" autocomplete="off" >
+        <input type="radio" class="btn-check non-click " name="point" value="1000" id="option1" autocomplete="off">
         <label class="btn btn-secondary point_field non-click " for="option1">1000</label>
-        <input type="radio" class="btn-check non-click " name="point" value="5000" id="option2" autocomplete="off" >
+        <input type="radio" class="btn-check non-click " name="point" value="5000" id="option2" autocomplete="off">
         <label class="btn btn-secondary point_field non-click " for="option2">5000</label>
-        <input type="radio" class="btn-check non-click" name="point" value="10000" id="option3" autocomplete="off" >
+        <input type="radio" class="btn-check non-click" name="point" value="10000" id="option3" autocomplete="off">
         <label class="btn btn-secondary point_field non-click" for="option3">10000</label>
       </form>
-
 
       <!-- 결제하기 -->
       <!-- Button trigger modal -->
       <div class="pay">
-      <button type="submit" form="chargePoint" class="btn non-activate" id="pay_btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-        결제하기
-      </button>
+        <button type="button" class="btn non-activate" id="pay_btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+          결제하기
+        </button>
 
-      <!-- Modal -->
-      <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-          <div class="modal-content">
-            <div class="modal-header">
-              <!-- <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1> -->
-              <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
-            </div>
-            <div class="modal-body" style="text-align:center; font-weight:bold;">
-              <p>기존 포인트 : {{user.point}}</p>
-              <p>선택된 포인트 : <span id="choiced_point">{{plus}}</span> </p>
-              <p>충전 후 포인트 : 
-              {% if plus == 1000 %}
-              {{user.point|add:"1000"}}
-              {% elif plus == 5000 %}
-              {{user.point|add:"5000"}}
-              {% else %}
-              {{user.point|add:"10000"}}
-              {% endif %}
-              </p>
-            </div>
-            <div class ="modal-footer" style="display:flex; justify-content:center;">
-              <button type="button" class="btn btn-primary" style="width:110px; border-radius:15px;">결제하기</button>
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"  style="width:110px; border-radius:15px;">닫기</button>
+        <!-- Modal -->
+        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <!-- <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1> -->
+                <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
+              </div>
+              <div class="modal-body" style="text-align:center; font-weight:bold;">
+                <p>기존 포인트 :
+                  {{user.point}}</p>
+                <p>선택된 포인트 :
+                  <span id="choiced_point"></span>
+                </p>
+                <p>충전 후 포인트 :
+                  <span id="after_point"></span>
+                </p>
+              </div>
+              <div class="modal-footer" style="display:flex; justify-content:center;">
+                <button type="submit" form="chargePoint" class="btn btn-primary" style="width:110px; border-radius:15px;">결제하기</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="width:110px; border-radius:15px;">닫기</button>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-    </div>
 
-    {% endblock %}
-    
-    {% block js %}<script src="{% static 'js/point.js' %}"></script>
-    {% endblock %}
-    
-  </body>
+    {{ user.point|json_script:"user_point" }}
+
+  {% endblock %}
+
+  {% block js %}
+    <script src="{% static 'js/point.js' %}"></script>
+  {% endblock %}
+
+</body>
+
 </html>
