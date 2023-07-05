@@ -13,7 +13,10 @@ class Consulting(models.Model):
         "account.User", related_name='consultant', on_delete=models.CASCADE)
     restaurant = models.ForeignKey(
         "account.User", related_name='restaurant', on_delete=models.CASCADE)
-    final_report = models.FileField(upload_to='final_report', null=True, max_length=100, blank=True)
+    done = models.BooleanField(default=False, blank=True)
+    # final_report = models.FileField(upload_to='final_report', null=True, max_length=100, blank=True)
+    final_report_filename = models.CharField(max_length=50, default="", blank=True)
+    final_report_base64URL = models.TextField(default="", blank=True)
 
     # 태그 객체들의 리스트로 반환
     @property

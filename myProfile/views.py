@@ -2,8 +2,15 @@ from django.shortcuts import render, redirect
 from django.db import models
 from django.contrib.auth.decorators import login_required
 from account.models import RestaurantProfile, ConsultantProfile, User
+from django.urls import reverse
 
 # Create your views here.
+
+def myProfie(request):
+    if request.user.job == "consultant":
+        return redirect(reverse('consultantProfile'))
+    else:
+        return redirect(reverse('restaurantProfile'))
 
 @login_required
 def consultantProfile(request):

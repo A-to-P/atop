@@ -14,6 +14,8 @@ urlpatterns = [
     path('editRestProfile/', views.editRestProfile, name="editRestProfile"),
     path('profile_template/', views.profile_template, name="profile_template"),
     
+    path('myProfile/', views.myProfie, name="myProfile"),
+    
 
   
 ]
