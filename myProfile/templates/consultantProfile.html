@@ -24,9 +24,9 @@
   
 
 {% endblock %}
-
-
-
+<!-- 좌측 프로필 이름,분야 -->
+{% block profile_name %} {{con_profile.name}} {% endblock %}
+{% block profile_field %} {{con_field}} {% endblock %}
 
 {% block maincontent %}
 
@@ -135,7 +135,16 @@
 
 
     <!-- 리뷰 더보기 -->
-    <div class="more">더보기</div>
+    <!-- 페이지네이션 -->
+    <nav aria-label="...">
+      <ul class="pagination pagination-sm justify-content-center">
+        <li class="page-item active" aria-current="page">
+          <span class="page-link">1</span>
+        </li>
+        <li class="page-item"><a class="page-link" href="#">2</a></li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
+      </ul>
+    </nav>
   </div>
 
 </div>

@@ -22,7 +22,7 @@
 
 {% block menu %} 
 <p class="menu">
-  <a href="" >현재 컨설팅</a>
+  <a href="{% url 'consultingSpace' %}" >현재 컨설팅</a>
 </p>
 <p class="menu"  style="background-color: gray; ">
   <a href="{% url 'consultingPortfolio' %}" >컨설팅 포트폴리오</a>
@@ -101,7 +101,7 @@
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content delete-content">
 
-          <div class="modal-body check " style="">
+          <div class="modal-body check ">
             정말로 컨설팅 기록을 삭제하시겠습니까?
           </div>
           <div class="modal-footer">
@@ -171,7 +171,7 @@
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content delete-content">
 
-          <div class="modal-body check " style="">
+          <div class="modal-body check ">
             정말로 컨설팅 기록을 삭제하시겠습니까?
           </div>
           <div class="modal-footer">
@@ -241,7 +241,7 @@
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content delete-content">
 
-          <div class="modal-body check " style="">
+          <div class="modal-body check ">
             정말로 컨설팅 기록을 삭제하시겠습니까?
           </div>
           <div class="modal-footer">
@@ -258,7 +258,7 @@
 
 </div>
 
-
+<!-- 페이지네이션 -->
 <nav aria-label="...">
   <ul class="pagination pagination-sm justify-content-center">
     <li class="page-item active" aria-current="page">
