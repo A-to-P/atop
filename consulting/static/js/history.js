@@ -6,7 +6,7 @@ const ulDOM = document.getElementById("history-list");
 
 const init = () => {
   if (history_list.length == 0) {
-    ulDOM.innerHTML = `<li class="history-list-item" style="border:none;"><div class="list-content">컨설팅 내역이 없습니다.</div></li>`;
+    ulDOM.innerHTML = `<li class="history-list-item" style="border:none;"><div class="list-content" style="border:none;">컨설팅 내역이 없습니다.</div></li>`;
     return;
   }
   history_list.forEach((history) => {
