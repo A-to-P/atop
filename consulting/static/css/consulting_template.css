@@ -140,3 +140,9 @@ div[class^="consultant_"]:not(.consultant_img){  /*~로 시작하는 속성 선�
     padding: 0.5rem 1rem;
     background-color: white;
 }
+
+.info-btn{
+    padding: 1rem 0.3rem;
+    display: flex;
+    justify-content: space-between;
+}
