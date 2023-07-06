@@ -137,3 +137,6 @@ def edit_info(request):
         elif user.job == "consultant":
             return redirect ('consultant_info')
     return render(request, "edit_info.html")
+
+def changePassword(request):
+    return render(request, 'changePassword.html')
