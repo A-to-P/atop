@@ -21,7 +21,7 @@ Consulting Space
 
 {% block menu %} 
 <p class="menu">
-  <a href="" >현재 컨설팅</a>
+  <a href="{% url 'consultingSpace' %}" >현재 컨설팅</a>
 </p>
 <p class="menu" >
   <a href="{% url 'consultingPortfolio' %}">컨설팅 포트폴리오</a>
@@ -38,3 +38,60 @@ Consulting Space
 
   
 
+{% block info_btn %}
+
+
+          <div>
+            <!-- 신고하기 -->
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#declaration">
+              신고하기
+            </button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="declaration" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">신고 글 작성</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <form>
+                      <div class="mb-3">
+                        <label for="declaration-info" class="col-form-label">증빙 자료</label>
+                        <input type="text" class="form-control" id="declaration-info" name="declaration-info">
+                      </div>
+                      <div class="mb-3">
+                        <label for="declaration_content" class="col-form-label">신고 내용</label>
+                        <textarea class="form-control" id="declaration_content" name="declaration_info" rows="3" placeholder="신고글을 입력해주세요. (최대 200자)"></textarea>
+                      </div>
+                    </form>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#submit_check">
+                      제출하기
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 신고 재확인 모달창  -->
+            <div class="modal fade" id="submit_check" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">신고 글 작성</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    신고가 정상적으로 접수되었습니다. 
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+
+        </div>
+{% endblock %}

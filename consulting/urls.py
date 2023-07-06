@@ -9,4 +9,5 @@ urlpatterns = [
     path('consultingHistory/', views.consultingHistory, name="consultingHistory"),  
     
     path('consultingPortfolio/', views.consultingPortfolio, name="consultingPortfolio"), 
+    
 ]
