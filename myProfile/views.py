@@ -12,19 +12,26 @@ def myProfie(request):
     else:
         return redirect(reverse('restaurantProfile'))
 
+def render_con_profile(request, con_profile, user):
+    return render(request, "consultantProfile.html", {'con_profile' : con_profile, 'con_user':user})
+
+def render_res_profile(request, res_profile, user):
+    return render(request, "restaurantProfile.html", {'res_profile' : res_profile, 'res_user':user})
+
+
 @login_required
 def consultantProfile(request):
     if request.user.job != "consultant":
         return redirect('home')
     con_profile, created = ConsultantProfile.objects.get_or_create(user=request.user)
-    return render(request, "consultantProfile.html", {'con_profile' : con_profile})
+    render_con_profile(request, con_profile, request.user)
 
 @login_required
 def restaurantProfile(request):
     if request.user.job != "restaurant":
         return redirect('home')
     res_profile, created = RestaurantProfile.objects.get_or_create(user=request.user)
-    return render(request, "restaurantProfile.html", {'res_profile' : res_profile})
+    render_res_profile(request, res_profile, request.user)
 
 @login_required
 def editConsultProfile(request):
@@ -96,6 +103,17 @@ def profile_template(request):
 def consultProfile(request):
     return render(request, "myProfile.html")
 
-def profie(request, user_id):    
-    # return render(request)
-    pass
+def profie(request, user_id):
+    user = User.objects.filter(id=user_id).first()
+    if user is None:
+        # 해상하는 유저 없음
+        return redirect('home')
+
+    if user.job == "consultant":
+        con_profile, created = ConsultantProfile.objects.get_or_create(user=user)
+        # 컨설팅횟수 ? 
+        render_con_profile(request, con_profile, user)
+    else:
+        res_profile, created = RestaurantProfile.objects.get_or_create(user=user)
+        render_res_profile(request, res_profile, user)
+    
