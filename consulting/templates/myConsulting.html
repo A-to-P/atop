@@ -56,14 +56,34 @@
                     ...
                   </div>
                   <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#consulting_review">예</button>
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#review_choice">예</button>
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">아니요</button>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-              <!-- 리뷰 창으로 이동  -->
+          <!-- 컨설팅 리뷰 쓸지 말지 선택 -->
+          <!-- Modal -->
+          <div class="modal fade" id="review_choice" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="staticBackdropLabel">컨설팅 후기를 작성하시겠습니까? </h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" style="padding: 2rem">
+                  ...
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#consulting_review">예</button>
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">아니요</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+              <!-- 리뷰 작성하는 모달창  -->
               <!-- Modal -->
           <div>
               <div class="modal fade" id="consulting_review" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
