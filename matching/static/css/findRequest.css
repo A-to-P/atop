@@ -1,0 +1,123 @@
+.content_wrapper{
+    display: flex;
+    margin: 0 auto;
+    width: 90%;
+    height: 45rem;
+}
+
+.category_container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    width: 13rem;
+    height: fit-content;
+    background-color: skyblue;
+
+}
+
+.category_list_container{
+
+}
+
+.category_container, .request_list_wrapper{
+    margin: 1rem;
+}
+
+.radio {
+    margin: 1rem;
+}
+
+.request_list_wrapper{
+    width: 80%;
+    padding: 1rem;
+    background-color: gray;
+}
+
+.single_request_wrapper{
+    clear: both;
+}
+
+.single_request {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 1rem;
+    height: fit-content;
+    background-color: skyblue;
+}
+
+div[class^="title_"]{  /*~로 시작하는 속성 선택*/
+    /* margin: 1rem 0; */
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.request_filter{
+    float: right;
+    display: flex;
+    margin-bottom: 1rem;
+    width: fit-content;
+    background-color: white;
+}
+
+.single_filter{
+    padding: 0.5rem;
+}
+
+
+/* 의뢰글 내부 */
+.request_top_wrapper{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.request_info_wrapper{
+    display: flex;
+    justify-content: space-between;
+    margin: 1rem 0;
+    width: 31rem;
+}
+
+.request_date {
+    height: fit-content;
+    padding: 0.5rem 1rem;
+    background-color: blue;
+    color: white;
+}
+
+.request_title{
+    display: flex;
+    align-items: center;
+    margin: 0 1rem;
+    padding: 0.5rem;
+    width: 60%;
+    height: 2rem;
+    background-color: white;
+}
+
+div[class^="request_info__"]{  /*~로 시작하는 속성 선택*/
+    padding: 0.5rem 1rem;
+    background-color: rgb(128, 156, 241);
+}
+
+.detail_button {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    background-color: pink;
+    color: white;
+}
+
+.request_content{
+    padding: 0 1rem;
+    background-color: white;
+
+    overflow: hidden;
+    white-space: normal;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;   /* 말줄임표로 보이는 라인 수*/
+    -webkit-box-orient: vertical;
+}
