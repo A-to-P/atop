@@ -64,7 +64,6 @@
         <div class="modal-footer">
           <form action="{% url 'deleteConsulting' %}" method="POST">
             {% csrf_token %}
-            <input type="hidden" name="_method" value="DELETE"/>
             <input type="hidden" name="consulting_id" id="consulting_id_input"/>
             <button type="submit" class="btn btn-primary delete-check">예</button>
           </form>

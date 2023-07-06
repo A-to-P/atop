@@ -71,7 +71,7 @@ def consultingPortfolio(request):
 # 컨설팅 삭제
 @login_required
 def deleteConsulting(request):
-    if request.POST.get('_method') == "DELETE":
+    if request.method=="POST":
         consulting_id = request.POST.get('consulting_id')
         print(consulting_id)
         consulting_obj = Consulting.objects.filter(id=consulting_id).first()
