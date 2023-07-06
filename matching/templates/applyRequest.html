@@ -1,54 +1,68 @@
-{% extends 'base.html' %} 
+{% extends 'base.html' %}
 {% load static %}
 {% block static %}
-  <!-- <link rel="stylesheet" href="{% static 'css/profile.css' %}" >   -->
-  <link rel="stylesheet" href="{% static 'css/applyRequest.css' %}" >  
+  <!-- <link rel="stylesheet" href="{% static 'css/profile.css' %}" > -->
+  <link rel="stylesheet" href="{% static 'css/applyRequest.css' %}">
 {% endblock %}
 
 {% block title %}applyRequest{% endblock %}
 
 {% block content %}
-<div class="request_wrapper">
+  <div class="request_wrapper">
     <div class="request_text">컨설팅 의뢰 글 내용</div>
     <div class="request_container">
-        <div class="request_info_title"> {{req.title}} </div>
-        <div class="restaurant_wrapper">
-            <div class="request_text">
-                요식업자 정보
-                <a href="{% url 'consultantProfile' %}" >(프로필 보러가기)</a>
-            </div>
-            <div class="restaurant_info_wrapper">
-                <div class="request_info_name">이름(나이) {{res_info.name}}({{res_info.age}}세)</div>
-                <div class="request_info_category">요식업 분야 {{req.rest_tags}}</div>
-                <div class="request_info_sales">월 평균 매출  {{req.monthly_avg_rev}}원</div>
-            </div>            
+      <div class="request_info_title">
+        {{req.title}}
+      </div>
+      <div class="restaurant_wrapper">
+        <div class="request_text">
+          요식업자 정보
+          <a href="{% url 'consultantProfile' %}">(프로필 보러가기)</a>
         </div>
-        <div class="consulting_wrapper">
-            <div class="request_text">컨설팅 정보</div>
-            <div class="consulting_info_wrapper">
-                <div class="request_info_category">컨설팅 분야 {{req.consult_tags}}</div>
-                <div class="request_info_money">컨설팅비 {{req.fee}}원</div>
-            </div>
+        <div class="restaurant_info_wrapper">
+          <div class="request_info_name">이름(나이)
+            {{res_info.name}}({{res_info.age}}세)</div>
+          <div class="request_info_category">요식업 분야
+            {{req.rest_tag.name}}</div>
+          <div class="request_info_sales">월 평균 매출
+            {{req.monthly_avg_rev}}원</div>
         </div>
-        <div class="request_info_content">{{req.content}}</div>
+      </div>
+      <div class="consulting_wrapper">
+        <div class="request_text">컨설팅 정보</div>
+        <div class="consulting_info_wrapper">
+          <div class="request_info_category">컨설팅 분야
+            {{req.consult_tag.name}}</div>
+          <div class="request_info_money">컨설팅비
+            {{req.fee}}원</div>
+        </div>
+      </div>
+      <div class="request_info_content">{{req.content}}</div>
     </div>
-</div>
+  </div>
 
-<div class="application_wrapper">
+  <div class="application_wrapper">
     <div class="application_text">컨설팅 기획안</div>
     <div class="application_container">
+      <form action="{% url 'applyRequest' req.id %}" method="POST" id="applyForm">
+        {% csrf_token %}
         <textarea class="application_input_content" name="proposal" id="" placeholder="지원서를 작성해주세요."></textarea>
-        <div class="consultant_wrapper">
-            <div class="application_text">컨설턴트 정보 입력</div>
-            <div class="application_input_name">이름: {{con_info.name}}</div>
-            <div class="application_input_age">나이: {{con_info.age}}세</div>
-            <div class="application_input_education">학력: {{con_info.education}}</div>
-            <div class="application_input_category">컨설팅 분야: </div>
-            <input type="submit" value="전송하기" class="submit_button">
+      </form>
+      <div class="consultant_wrapper">
+        <div class="application_text">컨설턴트 정보 입력</div>
+        <div class="application_input_name">이름:
+          {{con_info.name}}</div>
+        <div class="application_input_age">나이:
+          {{con_info.age}}세</div>
+        <div class="application_input_education">학력:
+          {{con_info.education}}</div>
+        <div class="application_input_category">컨설팅 분야:
+          {{user.get_tag.name}}
         </div>
-        
+        <input type="submit" value="전송하기" class="submit_button" form="applyForm">
+      </div>
 
     </div>
-</div>
+  </div>
 
 {% endblock content %}

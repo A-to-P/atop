@@ -36,6 +36,14 @@ class Request(models.Model):
     def __str__(self):
         return f"{self.title}"
     
+    @property
+    def rest_tag(self):
+        return list(self.rest_tags.all().values())[0]
+    
+    @property
+    def consult_tag(self):
+        return list(self.consult_tags.all().values())[0]
+    
 class Application(models.Model):
     req = models.ForeignKey("matching.Request", on_delete=models.CASCADE, default=None)
     user = models.ForeignKey("account.User", on_delete=models.CASCADE)

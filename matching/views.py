@@ -57,17 +57,28 @@ def detailedRequest(request):
 #     return render(request, "applyRequest.html")
 
 def applyRequest(request, req_id):
-    apply = Application()
-    con_info = ConsultantProfile.objects.get(user=request.user)
+    if request.user.job != "consultant":
+        return redirect('home')
+    
+    # TODO: 해당 의뢰가 없을경우 (404) 핸들
     req = get_object_or_404(Request, pk=req_id)
+    
+    # TODO: 이미 지원한적 있을경우.. 핸들
+    
+    con_info = ConsultantProfile.objects.get(user=request.user)
     res_info = RestaurantProfile.objects.get(user=req.user)
-    apply.req = req
-    apply.user = request.user
-    apply.proposal = request.POST.get('proposal')
-    # apply.save()
+        
+    if request.method == "GET":
+        return render(request, "applyRequest.html", {'con_info' : con_info, 'res_info' : res_info, 'req' : req})
 
-
-    return render(request, "applyRequest.html", {'con_info' : con_info, 'res_info' : res_info, 'req' : req})
+    if request.method == "POST":
+        apply = Application()
+        apply.req = req
+        apply.user = request.user
+        apply.proposal = request.POST.get('proposal')
+        apply.save()
+        return redirect('consultingSpace')
+        
 
 # Json data로 만들기 위한 함수
 def requestDictionary(request_list):
