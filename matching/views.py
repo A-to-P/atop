@@ -1,7 +1,7 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http import JsonResponse 
-from account.models import RestaurantProfile, Tag
-from .models import Request
+from account.models import ConsultantProfile, RestaurantProfile, Tag
+from .models import Request, Application
 import datetime
 # Create your views here.
 
@@ -53,8 +53,21 @@ def postRequest(request):
 def detailedRequest(request):
     return render(request, "detailedRequest.html")
 
-def applyRequest(request):
-    return render(request, "applyRequest.html")
+# def applyRequest(request):
+#     return render(request, "applyRequest.html")
+
+def applyRequest(request, req_id):
+    apply = Application()
+    con_info = ConsultantProfile.objects.get(user=request.user)
+    req = get_object_or_404(Request, pk=req_id)
+    res_info = RestaurantProfile.objects.get(user=req.user)
+    apply.req = req
+    apply.user = request.user
+    apply.proposal = request.POST.get('proposal')
+    # apply.save()
+
+
+    return render(request, "applyRequest.html", {'con_info' : con_info, 'res_info' : res_info, 'req' : req})
 
 # Json data로 만들기 위한 함수
 def requestDictionary(request_list):
