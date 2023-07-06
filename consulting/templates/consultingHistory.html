@@ -49,36 +49,18 @@
   </div>
 
   <div class="history-conatiner">
-    <ul class="history-list">
-      <li class="history-list-item">
-        <div class="list-content">컨설팅 종료일자</div>
-        <div class="list-content">컨설턴트</div>
-        <div class="list-content">컨설팅 분야</div>
-        <div class="list-content">컨설팅 비용</div>
-      </li>
-      <li class="history-list-item">
-        <div class="list-content">컨설팅 종료일자</div>
-        <div class="list-content">컨설턴트</div>
-        <div class="list-content">컨설팅 분야</div>
-        <div class="list-content">컨설팅 비용</div>
-      </li>
+    <ul id="history-list">
+      <!--<li class="history-list-item"> <div class="list-content">컨설팅 종료일자</div> <div class="list-content">컨설턴트</div> <div class="list-content">컨설팅 분야</div> <div class="list-content">컨설팅 비용</div> </li>-->
     </ul>
   </div>
 
   <nav aria-label="...">
-    <ul class="pagination pagination-sm justify-content-center">
-      <li class="page-item active" aria-current="page">
-        <span class="page-link">1</span>
-      </li>
-      <li class="page-item">
-        <a class="page-link" href="#">2</a>
-      </li>
-      <li class="page-item">
-        <a class="page-link" href="#">3</a>
-      </li>
-    </ul>
+    <ul id="pagination" class="pagination pagination-sm justify-content-center"></ul>
   </nav>
 
   {{ user.id|json_script:"user_id" }}
+  {{ history_list|json_script:"history_list" }}
+  {{ paginator|json_script:"paginator" }}
+
   <script src="{% static 'js/history.js' %}"></script>
 {% endblock %}
