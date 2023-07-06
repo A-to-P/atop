@@ -34,9 +34,14 @@
   <a href="{% url 'consultingSpace' %}" > Consulting Space </a>
   <a href=""> 알람 </a>
   <a href="{% url 'consultantProfile' %}">마이프로필</a>
-  
-
 {% endblock %}
+
+<!-- 좌측 프로필 사진, 이름, 분야 -->
+{% block profile_img %}
+  <img class="img" {% if con_profile.image %} src="{{con_profile.image.url}}" {% endif %}  src="{% static '\image\basic_profile.png' %}" alt="프로필 사진">
+{% endblock %}
+{% block profile_name %} {{con_profile.name}} {% endblock %}
+{% block profile_field %} {% endblock %}
 
 
 {% block maincontent %}
@@ -44,7 +49,7 @@
 <h5 class="portfolio-title"> 과거 진행한 컨설팅 </h5>
 
 <div class="portfolio-conatiner">
-  <!-- 포트폴리오 리스트 한 개 -->
+  <!-- 포트폴리오 리스트 첫번째 -->
   <ul class="list-bar">
     <li class="portfolio-list">
       <div class="list-content">
@@ -114,7 +119,7 @@
     </li>
   </ul>
 
-  <!-- 포트폴리오 리스트 한 개 -->
+  <!-- 포트폴리오 리스트 두 번째 -->
   <ul class="list-bar">
     <li class="portfolio-list">
       <div class="list-content">
@@ -184,7 +189,7 @@
     </li>
   </ul>
   
-  <!-- 포트폴리오 리스트 한 개 -->
+  <!-- 포트폴리오 리스트 3번째 -->
   <ul class="list-bar">
     <li class="portfolio-list">
       <div class="list-content">

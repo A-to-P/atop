@@ -24,6 +24,9 @@
     <div class="profile_space">
       <div class="profile"> 
         <div class="img">
+          {% block profile_img %}
+          <img class="img" src="{% static '\image\basic_profile.png' %}"/>
+          {% endblock %}   
         </div>
         <div class="profile_summary">
           <div>이름: {% block profile_name %}  {% endblock %} </div>

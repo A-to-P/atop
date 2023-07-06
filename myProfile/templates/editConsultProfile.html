@@ -20,11 +20,17 @@
     알람
   </a>
   <a href="{% url 'consultantProfile' %}">마이프로필</a>
-
 {% endblock %}
 
-{% block maincontent %}
+<!-- 좌측 프로필 사진, 이름, 분야 -->
+{% block profile_img %}
+<img class="img" {% if con_profile.image %} src="{{con_profile.image.url}}" {% endif %}  src="{% static '\image\basic_profile.png' %}" alt="프로필 사진">
+{% endblock %}
+{% block profile_name %} {{con_profile.name}} {% endblock %}
+{% block profile_field %} {% endblock %}
 
+
+{% block maincontent %}
   <form method="POST" action="" class="profile_container" enctype="multipart/form-data">
     {% csrf_token %}
 
@@ -34,14 +40,17 @@
         <label for="name" class="form-lagel ">이름</label>
         <input class="form-control" type="text" name="name" id="name" value="{{con_profile.name}}" valueplaceholder="이름을 입력해주세요." aria-label="default input example">
       </div>
-      <img id="preview" class="img" {% if con_profile.image %} src="{{con_profile.image.url}}" {% endif %}/>
+      <img id="preview" class="img" {% if con_profile.image %} src="{{con_profile.image.url}}" {% endif %}  src="{% static '\image\basic_profile.png' %}"/>
       <div class="mb-3 ">
         <label for="formFile" class="form-label">프로필 사진</label>
         <input class="form-control" type="file" accept="image/*" name="profile_image" id="formFile" onchange="readURL(this);">
+        <!-- <label>
+          <input type="checkbox" name="remove_image"> 사진 삭제
+        </label> -->
       </div>
       <div class="mb-3 ">
         <label for="birth" class="form-lagel ">생년월일</label>
-        <input class="form-control" type="date" name="birth" id="birth" aria-label="default input example">
+        <input class="form-control" type="date" name="birth" id="birth" aria-label="default input example" required>
       </div>
 
       <div class="mb-3">
@@ -78,8 +87,8 @@
                   <input class="form-control" type="file" name="shcool" id="shcool">
                 </div>
                 <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                  <button type="submit" class="btn btn-primary">Save changes</button>
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+                  <button type="submit" class="btn btn-primary">업로드</button>
                 </div>
               </div>
             </div>
