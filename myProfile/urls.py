@@ -15,7 +15,7 @@ urlpatterns = [
     path('profile_template/', views.profile_template, name="profile_template"),
     
     path('myProfile/', views.myProfie, name="myProfile"),
-    path('profile/', views.profie, name="profile"),
+    path('profile/<int:user_id>', views.profie, name="profile"),
 
   
 ]
