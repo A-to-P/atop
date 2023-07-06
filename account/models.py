@@ -52,7 +52,13 @@ class User( AbstractBaseUser, PermissionsMixin):
             return ConsultantProfile.objects.get(user=self).name
         else:
             return RestaurantProfile.objects.get(user=self).name
-
+        
+    @property
+    def image(self):
+        if self.job == "consultant":
+            return ConsultantProfile.objects.get(user=self).image
+        else:
+            return RestaurantProfile.objects.get(user=self).image
 
 class Tag(models.Model):
     name = models.CharField(max_length=20)
