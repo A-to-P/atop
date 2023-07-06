@@ -44,3 +44,6 @@ def consultingHistory(request):
 # 컨설턴트의 포트폴리오 페이지
 def consultingPortfolio(request):
     return render(request, 'consultingPortfolio.html')
+
+
+# 파일 다운로드 

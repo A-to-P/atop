@@ -8,7 +8,7 @@
 {% endblock %}
 
 {% block title %}
-  마이 컨설팅
+  요식업자의 마이 컨설팅 공간
 {% endblock %}
 
 {% block profile_title %}
@@ -23,6 +23,14 @@
     <a href="">내 의뢰 목록</a>
   </p>
   <p class="menu">
-    <a href="">컨설팅 히스토리</a>
+    <a href="{% url 'consultingHistory' %}">컨설팅 히스토리</a>
   </p>
 {% endblock menu %}
+
+
+<!-- 좌측 프로필 사진, 이름, 분야 -->
+{% block profile_img %}
+  <img class="img" {% if con_profile.image %} src="{{con_profile.image.url}}" {% endif %}  src="{% static '\image\basic_profile.png' %}" alt="프로필 사진">
+{% endblock %}
+{% block profile_name %} {{con_profile.name}} {% endblock %}
+{% block profile_field %} {% endblock %} 
