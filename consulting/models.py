@@ -24,6 +24,13 @@ class Consulting(models.Model):
         return list(self.req.consult_tags.all())
     
     @property
+    def res_tag(self):
+        return self.req.rest_tag
+    @property
+    def con_tag(self):
+        return self.req.consult_tag
+    
+    @property
     def fee(self) -> int:
         return self.req.fee
 
