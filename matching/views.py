@@ -58,7 +58,7 @@ def detailedRequest(request):
     
     # 현재 진행중인 컨설팅이 있다면
     if Consulting.objects.filter(restaurant=user, done=False).exists():
-        print(0)
+        print("이미 컨설팅이 진행중입니다.")
         return redirect('consultingSpace')
     # 현재 의뢰중인 의뢰
     curr_req = Request.current_req(user.id)
@@ -125,3 +125,18 @@ def findRequest(request):
     #     }
     #     return JsonResponse(data)
     return render(request, "findRequest.html")
+
+
+def deleteRequest(request):
+    user = request.user
+    if user.job != "restaurant":
+        return redirect('home')
+    
+    if request.method == "POST":
+        req_id = request.POST.get('req_id')
+        if req_id is None:
+            redirect('detailedRequest') # error
+        req = Request.objects.filter(id=req_id).first() 
+        if req is not None:
+            req.delete()
+    return redirect('detailedRequest')
