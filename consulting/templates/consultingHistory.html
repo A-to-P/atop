@@ -6,7 +6,6 @@
   <link rel="stylesheet" href="{% static 'css/Myprofile.css' %}">
   <link rel="stylesheet" href="{% static 'css/history.css' %}">
 {% endblock %}
- 
 
 {% block title %}요식업자의 컨설팅 히스토리{% endblock %}
 
@@ -14,6 +13,16 @@
   My Consulting
 {% endblock %}
 
+{% block menu %}
+  <p class="menu">
+    <a href="">현재 컨설팅</a>
+  </p>
+  <p class="menu">
+    <a href="">내 의뢰글</a>
+  </p>
+  <p class="menu" style="background-color: gray; ">
+    <a href="{% url 'consultingHistory' %}">컨설팅 포트폴리오</a>
+  </p>
 
 {% block menu %} 
 <p class="menu">
@@ -28,14 +37,19 @@
 {% endblock %}
 
 {% block nav_right %}
-<a href="{% url 'myConsulting' %}" > My Consulting </a>
-<a href=""> 알람 </a>
-<a href="{% url 'restaurantProfile' %}">마이프로필</a>
-  
+  <a href="{% url 'myConsulting' %}">
+    My Consulting
+  </a>
+  <a href="">
+    알람
+  </a>
+  <a href="{% url 'restaurantProfile' %}">마이프로필</a>
 
 {% endblock %}
 
 {% block maincontent %}
+<div> 과거 진행한 컨설팅 </div> 
+
 <div class="history-header"> 
   <div class="header-title">컨설팅 종료일자</div>
   <div class="header-title">컨설턴트</div>
@@ -43,23 +57,15 @@
   <div class="header-title">컨설팅 비용</div>
 </div> 
 
-<div class="history-conatiner">
-  <ul >
-    <li class="history-list">
-      <div class="list-content">컨설팅 종료일자</div>
-      <div class="list-content">컨설턴트</div>
-      <div class="list-content">컨설팅 분야</div>
-      <div class="list-content">컨설팅 비용</div>
-    </li>
-    <li class="history-list">
-      <div class="list-content">컨설팅 종료일자</div>
-      <div class="list-content">컨설턴트</div>
-      <div class="list-content">컨설팅 분야</div>
-      <div class="list-content">컨설팅 비용</div>
-    </li>
-  </ul>
-</div>
+  <div class="history-conatiner">
+    <ul id="history-list">
+      <!--<li class="history-list-item"> <div class="list-content">컨설팅 종료일자</div> <div class="list-content">컨설턴트</div> <div class="list-content">컨설팅 분야</div> <div class="list-content">컨설팅 비용</div> </li>-->
+    </ul>
+  </div>
 
+  <nav aria-label="...">
+    <ul id="pagination" class="pagination pagination-sm justify-content-center"></ul>
+  </nav>
 <!-- 페이지네이션 -->
 <nav aria-label="..." class="more">
   <ul class="pagination pagination-sm justify-content-center">
@@ -71,7 +77,9 @@
   </ul>
 </nav>
 
-
   {{ user.id|json_script:"user_id" }}
+  {{ history_list|json_script:"history_list" }}
+  {{ paginator|json_script:"paginator" }}
+
   <script src="{% static 'js/history.js' %}"></script>
 {% endblock %}

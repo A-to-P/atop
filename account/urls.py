@@ -14,6 +14,8 @@ urlpatterns = [
     # 요식업자 개인정보
     path('restaurant_info/', views.restaurant_info, name="restaurant_info"),
     path('info_template/', views.info_template, name="info_template"),
-    path('edit_info/', views.edit_info, name="edit_info"),
+    # path('edit_info/', views.edit_info, name="edit_info"),
+    
+    path("changePassword/", views.changePassword, name="changePassword")
     
 ]

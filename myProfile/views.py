@@ -95,3 +95,7 @@ def profile_template(request):
 
 def consultProfile(request):
     return render(request, "myProfile.html")
+
+def profie(request, user_id):    
+    # return render(request)
+    pass

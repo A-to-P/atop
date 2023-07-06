@@ -45,7 +45,20 @@ class User( AbstractBaseUser, PermissionsMixin):
     # 딕셔너리형태로 반환
     def get_tag(self):
         return list(self.tag.all().values())[0]
-
+    
+    @property
+    def name(self):
+        if self.job == "consultant":
+            return ConsultantProfile.objects.get(user=self).name
+        else:
+            return RestaurantProfile.objects.get(user=self).name
+        
+    @property
+    def image(self):
+        if self.job == "consultant":
+            return ConsultantProfile.objects.get(user=self).image
+        else:
+            return RestaurantProfile.objects.get(user=self).image
 
 class Tag(models.Model):
     name = models.CharField(max_length=20)

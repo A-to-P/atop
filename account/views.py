@@ -1,8 +1,9 @@
+# from django.contrib import auth
 from django.contrib.auth import authenticate,login as auth_login, logout as auth_logout
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from .models import User, Tag, ConsultantProfile, RestaurantProfile
-from django.contrib.auth.hashers import make_password
+from django.contrib.auth.hashers import make_password, check_password
 
 # Create your views here.
 
@@ -121,19 +122,42 @@ def info_template(request):
     return render(request, "info_template.html") 
 
 
+# @login_required
+# def edit_info(request):
+#     if request.method == "POST":
+#         user = request.user
+#         user.username = request.POST['user_id']
+#         user.email = request.POST['email']
+#         user.point = request.POST['point']
+#         new_password = request.POST['user_pw']
+#         user.set_password(new_password)
+#         user.save()
+#         auth_login(request, user)
+#         if user.job == "restaurant":
+#             return redirect ('restaurant_info')
+#         elif user.job == "consultant":
+#             return redirect ('consultant_info')
+#     return render(request, "edit_info.html")
+
 @login_required
-def edit_info(request):
+def changePassword(request):
     if request.method == "POST":
         user = request.user
-        user.username = request.POST['user_id']
-        user.email = request.POST['email']
-        user.point = request.POST['point']
-        new_password = request.POST['user_pw']
-        user.set_password(new_password)
-        user.save()
-        auth_login(request, user)
-        if user.job == "restaurant":
-            return redirect ('restaurant_info')
-        elif user.job == "consultant":
-            return redirect ('consultant_info')
-    return render(request, "edit_info.html")
+        origin_password = request.POST["origin_password"]
+        if check_password(origin_password, user.password):
+            new_password = request.POST["new_password"]
+            confirm_password = request.POST["confirm_password"]
+            if new_password == confirm_password:
+                user.set_password(new_password)
+                user.save()
+                auth_login(request, user)
+                if user.job == "restaurant":
+                    return redirect ('restaurant_info')
+                elif user.job == "consultant":
+                    return redirect ('consultant_info')
+            else:
+                return render(request, 'changePassword.html', {'error':'비밀번호가 같지 않습니다'})
+        else:
+            return render(request, 'changePassword.html', {'error':'비밀번호가 틀렸습니다'})
+    else:
+        return render(request, 'changePassword.html')
