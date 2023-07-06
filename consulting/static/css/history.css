@@ -1,28 +1,28 @@
-.history-header{
+.history-header {
   display: flex;
-  justify-content: space-between;
   width: 44rem;
+  padding: 0.7rem 3rem;
+  margin: 3rem auto 1.5rem auto;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  justify-content: space-between;
   background-color: rgb(75, 126, 255);
   border-radius: 0.5rem;
-  text-align: center;
-  padding: 0.7rem 3rem;
-  color: white;
   vertical-align: middle;
-  font-weight: bold;
-  margin: 3rem auto 1.5rem auto;
 }
-ul{
-  margin: 0;
+#history-list {
   padding: 0;
+  margin: 0;
 }
-.history-list{
-  margin: 0 auto 1rem auto;
-  text-align: center;
+.history-list-item {
   display: flex;
-  justify-content: space-between;
-  border: solid black 1px;
   width: 44rem;
   height: 3rem;
   padding: 0.7rem 3rem;
+  margin: 0 auto 1rem auto;
+  border: solid black 1px;
+  text-align: center;
+  justify-content: space-between;
   list-style-type: none;
 }
