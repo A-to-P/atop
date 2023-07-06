@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.http import JsonResponse 
 from account.models import ConsultantProfile, RestaurantProfile, Tag
 from .models import Request, Application
+from consulting.models import Consulting
 import datetime
 # Create your views here.
 
@@ -51,7 +52,21 @@ def postRequest(request):
 
 
 def detailedRequest(request):
-    return render(request, "detailedRequest.html")
+    user = request.user
+    if user.job != "restaurant":
+        return redirect('home') # TODO: home?
+    
+    # 현재 진행중인 컨설팅이 있다면
+    if Consulting.objects.filter(restaurant=user, done=False).exists():
+        print(0)
+        return redirect('consultingSpace')
+    # 현재 의뢰중인 의뢰
+    curr_req = Request.current_req(user.id)
+    # 현재 의뢰중인 의뢰가 없다면
+    if curr_req is None:
+        return render(request, 'detailedRequest.html', {'error':'의뢰글이 없습니다.'})
+    
+    return render(request, "detailedRequest.html", {'req':curr_req})
 
 # def applyRequest(request):
 #     return render(request, "applyRequest.html")
