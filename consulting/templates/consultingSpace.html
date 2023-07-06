@@ -8,7 +8,7 @@
 {% endblock %}
 
 {% block title %}
-  컨설팅 스페이스 
+  컨설턴트의 컨설팅 스페이스 
 {% endblock %}
 
 
@@ -27,5 +27,14 @@ Consulting Space
   <a href="{% url 'consultingPortfolio' %}">컨설팅 포트폴리오</a>
 </p>
 {% endblock %}
+
+
+<!-- 좌측 프로필 사진, 이름, 분야 -->
+{% block profile_img %}
+  <img class="img" {% if con_profile.image %} src="{{con_profile.image.url}}" {% endif %}  src="{% static '\image\basic_profile.png' %}" alt="프로필 사진">
+{% endblock %}
+{% block profile_name %} {{con_profile.name}} {% endblock %}
+{% block profile_field %} {% endblock %}
+
   
 
