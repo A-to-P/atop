@@ -62,8 +62,13 @@
           정말로 컨설팅 기록을 삭제하시겠습니까?
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-primary delete-check">예</button>
-          <button type="button" class="btn btn-secondary delete-check" id="yes" data-bs-dismiss="modal">아니요</button>
+          <form action="{% url 'deleteConsulting' %}" method="POST">
+            {% csrf_token %}
+            <input type="hidden" name="_method" value="DELETE"/>
+            <input type="hidden" name="consulting_id" id="consulting_id_input"/>
+            <button type="submit" class="btn btn-primary delete-check">예</button>
+          </form>
+          <button type="button" class="btn btn-secondary delete-check close-modal" id="yes" data-bs-dismiss="modal">아니요</button>
         </div>
       </div>
     </div>

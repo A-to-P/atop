@@ -47,20 +47,18 @@ ulDOM.onclick = function (e) {
   fileDownload(file_data);
 };
 
-const init = () => {
+const init = (cb) => {
   if (history_list.length == 0) {
-    ulDOM.innerHTML = `<li class="portfolio-list-item" style="border:none;"><div class="list-content">컨설팅 내역이 없습니다.</div></li>`;
+    ulDOM.innerHTML = `<li class="portfolio-list-item" style="border:none;">
+    <div class="list-content" style="border:none;">컨설팅 내역이 없습니다.</div></li>`;
     return;
   }
 
-  const deleteBtn = `<button type="button" class="btn btn-primary delete_btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle" viewbox="0 0 16 16">
-    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-    <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
-  </svg>
-</button>`;
-
   history_list.forEach((history) => {
+    const deleteBtn = `<button type="button" class="btn btn-primary delete_btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+    <span class="d-none">${history.consulting_id}</span>
+  </button>`;
+
     const result = `<li class="portfolio-list-item" key="${
       history.consulting_id
     }"><div class="list-content">
@@ -98,38 +96,35 @@ const init = () => {
         </a>
       </li>`;
   }
-};
 
-init();
+  cb();
+};
 
 /*
 모달 js
 */
-var btn = document.querySelectorAll("button.modal-custom-button");
-var modals = document.querySelectorAll(".modal-custom");
-var spans = document.getElementsByClassName("close-modal");
+function modal_init() {
+  var btn = document.querySelectorAll(".delete_btn");
+  var modals = document.querySelectorAll("#staticBackdrop");
 
-for (var i = 0; i < btn.length; i++) {
-  btn[i].onclick = function (e) {
-    e.preventDefault();
-    modal = document.querySelector(e.target.getAttribute("href"));
-    modal.style.display = "block";
-  };
+  const deleteInputDOM = document.getElementById("consulting_id_input");
 
-  spans[i].onclick = function () {
-    for (var index in modals) {
-      if (typeof modals[index].style !== "undefined")
-        modals[index].style.display = "none";
+  for (var i = 0; i < btn.length; i++) {
+    btn[i].onclick = function (e) {
+      e.preventDefault();
+      deleteInputDOM.value = e.target.children[0].innerText;
+    };
+  }
+
+  // When the user clicks anywhere outside of the modal, close it
+  window.onclick = function (event) {
+    if (event.target.classList.contains("modal-custom")) {
+      for (var index in modals) {
+        if (typeof modals[index].style !== "undefined")
+          modals[index].style.display = "none";
+      }
     }
   };
 }
 
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function (event) {
-  if (event.target.classList.contains("modal-custom")) {
-    for (var index in modals) {
-      if (typeof modals[index].style !== "undefined")
-        modals[index].style.display = "none";
-    }
-  }
-};
+init(modal_init);

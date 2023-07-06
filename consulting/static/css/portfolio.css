@@ -57,6 +57,10 @@ ul {
   --bs-btn-disabled-color: unset;
   --bs-btn-disabled-bg: unset;
   --bs-btn-disabled-border-color: unset;
+
+  background-image: url("./../img/x_circle.svg");
+  background-position: center;
+  background-repeat: no-repeat;
 }
 .delete-content {
   height: 20rem;

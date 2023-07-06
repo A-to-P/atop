@@ -46,7 +46,7 @@ def consultingPortfolio(request):
         return redirect('home')
     
     if request.method =="GET":
-        history_list = Consulting.objects.filter(consultant=user, done=True)
+        history_list = Consulting.objects.filter(consultant=user, done=True, deleted=False)
         result = []
         paginator = Paginator(history_list, 8) # 한 페이지에 최대 8개
         page_number = int(request.GET.get('page', 1))
@@ -68,6 +68,18 @@ def consultingPortfolio(request):
     return render(request, 'consultingPortfolio.html')
 
 
-# 파일 다운로드 
-
-
+# 컨설팅 삭제
+@login_required
+def deleteConsulting(request):
+    if request.POST.get('_method') == "DELETE":
+        consulting_id = request.POST.get('consulting_id')
+        print(consulting_id)
+        consulting_obj = Consulting.objects.filter(id=consulting_id).first()
+        
+        if request.user != consulting_obj.consultant:
+            return redirect('home') # TODO: 홈으로가기? 
+        
+        # 삭제하면 안됨.. 컨설턴트에게 보이지 않게만 하기        
+        consulting_obj.deleted = True
+        consulting_obj.save()        
+    return redirect('consultingPortfolio')

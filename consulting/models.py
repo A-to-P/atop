@@ -17,6 +17,8 @@ class Consulting(models.Model):
     # final_report = models.FileField(upload_to='final_report', null=True, max_length=100, blank=True)
     final_report_filename = models.CharField(max_length=50, default="", blank=True)
     final_report_base64URL = models.TextField(default="", blank=True)
+    
+    deleted=models.BooleanField(default=False, blank=True)
 
     # 태그 객체들의 리스트로 반환
     @property
