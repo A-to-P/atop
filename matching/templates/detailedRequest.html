@@ -61,24 +61,25 @@
   </div>
 
   <div class="applicant_wrapper">
-    <div class="applicant_text">지원한 컨설턴트 (n명)</div>
-    <div class="applicant_single_wrapper">
-      <div class="applicant_container">
-        <div class="applicant_name">컨설턴트 이름</div>
-        <div class="bar_line"></div>
-        <div class="applicant_application">
-          <a href="">지원서 확인</a>
-        </div>
-        <div class="bar_line"></div>
-        <div class="applicant_profile">
-          <a href="{% url 'consultantProfile' %}">세부 프로필 확인</a>
-        </div>
-      </div>
-      <input type="button" value="매칭 신청" class="matching_button">
-    </div>
 
-    <div class="applicant_more">
-      지원자 더보기
-    </div>
+    <div class="applicant_text">지원한 컨설턴트 (n명)</div>
+    {% for application in applications %}
+      <div class="applicant_single_wrapper">
+        <div class="applicant_container">
+          <div class="applicant_name">{{application.user.name}}</div>
+          <div class="bar_line"></div>
+          <div class="applicant_application">
+            <a href="">지원서 확인</a>
+          </div>
+          <div class="bar_line"></div>
+          <div class="applicant_profile">
+            <a href="{% url 'profile' application.user.id %}">세부 프로필 확인</a>
+          </div>
+        </div>
+        <input type="button" value="매칭 신청" class="matching_button">
+      </div>
+    {% endfor %}
+
+    <!--<div class="applicant_more"> 지원자 더보기 </div>-->
   </div>
 {% endblock maincontent %}

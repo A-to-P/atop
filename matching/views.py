@@ -66,7 +66,10 @@ def detailedRequest(request):
     if curr_req is None:
         return render(request, 'detailedRequest.html', {'error':'의뢰글이 없습니다.'})
     
-    return render(request, "detailedRequest.html", {'req':curr_req})
+    applications = curr_req.applications
+    if not applications.exists():
+        applications = None 
+    return render(request, "detailedRequest.html", {'req':curr_req, 'applications':applications})
 
 # def applyRequest(request):
 #     return render(request, "applyRequest.html")
