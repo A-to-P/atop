@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-from .models import Consulting
+from .models import Consulting, Accusation, Review
+from account.models import User
 from django.core.paginator import Paginator
 # Create your views here.
 
@@ -46,4 +47,19 @@ def consultingPortfolio(request):
 
 # 파일 다운로드 
 
+# 신고
+def accuse(request):
+    print(1)
+    if request.method == "POST":
+        user = request.user
+        if user.job == "restaurant":
+            consulting = Consulting.objects.get(restaurant=user, done=False)
+            accusation = Accusation()
+            accusation.complainant = request.user
+            accusation.defendant = consulting.consultant
+            accusation.evidence = request.FILES.get('declaration-info')
+            accusation.comment = request.POST.get('declaration-content')
+            accusation.save()
+
+        return redirect('myConsulting')
 

@@ -79,19 +79,20 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
                   <div class="modal-body">
-                    <form>
+                    <form action="{% url 'accuse' %}" method="POST" id="accuseForm" enctype="multipart/form-data">
+                    {% csrf_token %}
                       <div class="mb-3">
                         <label for="declaration-info" class="col-form-label">증빙 자료</label>
-                        <input type="text" class="form-control" id="declaration-info" name="declaration-info">
+                        <input type="file" class="form-control" id="declaration-info" name="declaration-info">
                       </div>
                       <div class="mb-3">
                         <label for="declaration_content" class="col-form-label">신고 내용</label>
-                        <textarea class="form-control" id="declaration_content" name="declaration_info" rows="3" placeholder="신고글을 입력해주세요. (최대 200자)"></textarea>
+                        <textarea class="form-control" id="declaration_content" name="declaration_content" rows="3" placeholder="신고글을 입력해주세요. (최대 200자)"></textarea>
                       </div>
                     </form>
                   </div>
                   <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#submit_check">
+                    <button type="submit" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#submit_check" form="accuseForm">
                       제출하기
                     </button>
                   </div>
