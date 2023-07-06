@@ -8,8 +8,11 @@
 {% endblock %}
 
 {% block title %}
-  요식업자의 컨설팅 스페이스 
+  컨설턴트의 컨설팅 스페이스 
 {% endblock %}
+
+
+
 
 
 {% block profile_title %}  
@@ -18,10 +21,10 @@ Consulting Space
 
 {% block menu %} 
 <p class="menu">
-  <a href="" >현재 컨설팅</a>
+  <a href="{% url 'consultingSpace' %}" >현재 컨설팅</a>
 </p>
 <p class="menu" >
-  <a href="{% url 'consultingHistory' %}">컨설팅 포트폴리오</a>
+  <a href="{% url 'consultingPortfolio' %}">컨설팅 포트폴리오</a>
 </p>
 {% endblock %}
 
@@ -33,33 +36,10 @@ Consulting Space
 {% block profile_name %} {{con_profile.name}} {% endblock %}
 {% block profile_field %} {% endblock %}
 
+  
 
 {% block info_btn %}
-          <div>
-            <!-- 컨설팅 끝내기  -->
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#finish_consulting">
-              컨설팅 끝내기
-            </button>
 
-            <!-- Modal -->
-            <div class="modal fade" id="finish_consulting" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-              <div class="modal-dialog">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="staticBackdropLabel">컨설팅을 끝내겠습니까? </h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                  </div>
-                  <div class="modal-body">
-                    ...
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Understood</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
 
           <div>
             <!-- 신고하기 -->
@@ -114,4 +94,4 @@ Consulting Space
 
 
         </div>
-        {% endblock %}
+{% endblock %}
