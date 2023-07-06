@@ -59,6 +59,13 @@ class User( AbstractBaseUser, PermissionsMixin):
             return ConsultantProfile.objects.get(user=self).image
         else:
             return RestaurantProfile.objects.get(user=self).image
+        
+    @property
+    def age(self):
+        if self.job == "consultant":
+            return ConsultantProfile.objects.get(user=self).age
+        else:
+            return RestaurantProfile.objects.get(user=self).age
 
 class Tag(models.Model):
     name = models.CharField(max_length=20)
