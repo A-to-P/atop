@@ -1,5 +1,5 @@
 .portfolio-title{
-  width: 48rem;
+  width: 50rem;
   padding: 0.7rem 0;
   margin: 3rem auto 1rem auto;
   font-weight: bold;
@@ -78,4 +78,7 @@ ul{
 }
 .delete-check{
   width : 10rem;
+}
+.final-report{
+  border: none;
 }

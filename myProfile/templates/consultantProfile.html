@@ -23,6 +23,13 @@
 
 {% endblock %}
 
+<!-- 좌측 프로필 사진, 이름, 분야 -->
+{% block profile_img %}
+  <img class="img" {% if con_profile.image %} src="{{con_profile.image.url}}" {% endif %}  src="{% static '\image\basic_profile.png' %}" alt="프로필 사진">
+{% endblock %}
+{% block profile_name %} {{con_profile.name}} {% endblock %}
+{% block profile_field %} {% endblock %}
+
 {% block maincontent %}
 
   <div class="profile_container">
@@ -88,7 +95,10 @@
       <h5>
         컨설팅 정보
       </h5>
-      <!--<div class="consult_info" id="consult_field"> <div class="consult_info_title">컨설팅 분야</div> <div class="consult_info_content"> {{con_field}} </div> </div>-->
+      <div class="consult_info" id="consult_field"> 
+        <div class="consult_info_title">컨설팅 분야</div> 
+        <div class="consult_info_content">{{con_field}} {{user.tag}}</div> 
+      </div>
       <div class="consult_info" id="contact">
         <div class="consult_info_title">연락 가능 시간</div>
         <div class="consult_info_content">
@@ -125,9 +135,18 @@
         </div>
       </div>
 
-      <!-- 리뷰 더보기 -->
-      <div class="more">더보기</div>
-    </div>
+
+    <!-- 리뷰 더보기 페이지네이션 -->
+        <nav aria-label="...">
+      <ul class="pagination pagination-sm justify-content-center">
+        <li class="page-item active" aria-current="page">
+          <span class="page-link">1</span>
+        </li>
+        <li class="page-item"><a class="page-link" href="#">2</a></li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
+      </ul>
+    </nav>
+  </div>
 
   </div>
 

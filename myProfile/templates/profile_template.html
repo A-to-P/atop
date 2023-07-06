@@ -1,50 +1,61 @@
 <!-- base.html 상속 -->
-{% extends 'base.html' %}
+{% extends 'base.html' %}  
 {% load static %}
 
 {% block static %}
-  <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+  <link rel="stylesheet" href="{% static 'css/profile.css' %}" >  
 {% endblock %}
+
 
 {% block title %}
   좌측 프로필 바 템플릿
 {% endblock %}
 
-{% block content %}
 
-  <div class="template_container">
 
-    <!-- 왼쪽 사이드 : 프로필, 메뉴바 -->
-    <div class="content  left_content  ">
-      <div class="profile_space">
-        <div class="profile">
-          <img class="img" {% if user.image %} src="{{user.image.url}}" {% endif %} id="profile-nav-img"></img>
-          <div class="profile_summary">
-            <div>이름:
-              {{user.name}}
-            </div>
-            <div>분야:
-              {{user.get_tag.name}}
-            </div>
-          </div>
+
+{% block content %} 
+
+
+<div class="template_container">
+
+  <!-- 왼쪽 사이드 : 프로필, 메뉴바 -->
+  <div class="content  left_content  ">
+    <div class="profile_space">
+      <div class="profile"> 
+        <div class="img">
+          {% block profile_img %}
+          <img class="img" src="{% static '\image\basic_profile.png' %}"/>
+          {% endblock %}   
+        </div>
+        <div class="profile_summary">
+          <div>이름: {% block profile_name %}  {% endblock %} </div>
+          <div>분야: {% block profile_field %}   {% endblock %} </div>
         </div>
       </div>
-
-      <div class="profile_title">
-        <h3 style="font-weight: bold;">
-          {% block profile_title %}{% endblock %}
-        </h3>
-      </div>
-
-      <div class="menu_bar">
-        {% block menu %}{% endblock %}
-      </div>
+    </div>
+    
+    
+    <div class="profile_title">
+      <h3 style="font-weight: bold;">{% block profile_title %}{% endblock %}</h3>
     </div>
 
-    <!-- 오른쪽 영역 -->
-    <div class="content right_content">
-      {% block maincontent %}{% endblock %}
+
+    <div class="menu_bar">
+      {% block menu %}
+        
+      {% endblock %}
     </div>
   </div>
+
+
+  <!-- 오른쪽 영역  -->
+    <div class="content right_content">
+      {% block maincontent %}
+        
+      {% endblock %}
+    </div>
+</div>
+
 
 {% endblock %}

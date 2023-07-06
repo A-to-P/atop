@@ -13,16 +13,16 @@
   My Consulting
 {% endblock %}
 
-{% block menu %}
-  <p class="menu">
-    <a href="">현재 컨설팅</a>
-  </p>
-  <p class="menu">
-    <a href="">내 의뢰글</a>
-  </p>
-  <p class="menu" style="background-color: gray; ">
-    <a href="{% url 'consultingHistory' %}">컨설팅 포트폴리오</a>
-  </p>
+{% block menu %} 
+<p class="menu">
+  <a href="" >현재 컨설팅</a>
+</p>
+<p class="menu">
+  <a href="" >내 의뢰글</a>
+</p>
+<p class="menu"  style="background-color: gray; ">
+  <a href="{% url 'consultingHistory' %}" >컨설팅 히스토리</a>
+</p>
 {% endblock %}
 
 {% block nav_right %}
@@ -33,20 +33,26 @@
     알람
   </a>
   <a href="{% url 'restaurantProfile' %}">마이프로필</a>
-
 {% endblock %}
 
-{% block maincontent %}
-  <div>
-    과거 진행한 컨설팅
-  </div>
 
-  <div class="history-header">
-    <div class="header-title">컨설팅 종료일자</div>
-    <div class="header-title">컨설턴트</div>
-    <div class="header-title">컨설팅 분야</div>
-    <div class="header-title">컨설팅 비용</div>
-  </div>
+<!-- 좌측 프로필 사진, 이름, 분야 -->
+{% block profile_img %}
+  <img class="img" {% if con_profile.image %} src="{{con_profile.image.url}}" {% endif %}  src="{% static '\image\basic_profile.png' %}" alt="프로필 사진">
+{% endblock %}
+{% block profile_name %} {{con_profile.name}} {% endblock %}
+{% block profile_field %} {% endblock %}
+
+
+{% block maincontent %}
+<div> 과거 진행한 컨설팅 </div> 
+
+<div class="history-header"> 
+  <div class="header-title">컨설팅 종료일자</div>
+  <div class="header-title">컨설턴트</div>
+  <div class="header-title">컨설팅 분야</div>
+  <div class="header-title">컨설팅 비용</div>
+</div> 
 
   <div class="history-conatiner">
     <ul id="history-list">
@@ -57,6 +63,16 @@
   <nav aria-label="...">
     <ul id="pagination" class="pagination pagination-sm justify-content-center"></ul>
   </nav>
+<!-- 페이지네이션 -->
+<nav aria-label="..." class="more">
+  <ul class="pagination pagination-sm justify-content-center">
+    <li class="page-item active" aria-current="page">
+      <span class="page-link">1</span>
+    </li>
+    <li class="page-item"><a class="page-link" href="#">2</a></li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+  </ul>
+</nav>
 
   {{ user.id|json_script:"user_id" }}
   {{ history_list|json_script:"history_list" }}

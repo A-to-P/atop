@@ -21,11 +21,10 @@
   text-align: center;
 }
 .img {
-  margin: 0.3rem auto;
+  margin : 0 auto;
   height: 5rem;
   width: 5rem;
   border-radius: 100%;
-  background-color: blue;
   object-fit: cover;
 }
 .profile_space {
