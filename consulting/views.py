@@ -57,9 +57,14 @@ def accuse(request):
             accusation = Accusation()
             accusation.complainant = request.user
             accusation.defendant = consulting.consultant
-            accusation.evidence = request.FILES.get('declaration-info')
-            accusation.comment = request.POST.get('declaration_content')
-            accusation.save()
+        elif user.job == "consultant":
+            consulting = Consulting.objects.get(consultant=user, done=False)
+            accusation = Accusation()
+            accusation.complainant = request.user
+            accusation.defendant = consulting.restaurant
+        accusation.evidence = request.FILES.get('declaration-info')
+        accusation.comment = request.POST.get('declaration_content')
+        accusation.save()
 
         return HttpResponse('ok')
 

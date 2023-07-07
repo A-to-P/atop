@@ -39,8 +39,6 @@ Consulting Space
   
 
 {% block info_btn %}
-
-
           <div>
             <!-- 신고하기 -->
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#declaration">
@@ -95,4 +93,19 @@ Consulting Space
 
 
         </div>
+
+<script>
+  const submitAccusation = (e) => {
+    const payload = new FormData(e.target)
+    e.preventDefault();
+    fetch('http://127.0.0.1:8000/accuse/',{
+     method:"POST",
+    body: payload,
+    }).then(res=>console.log(res)).catch(err=>console.log(err))
+  }
+  const form = document.querySelector("#accuseForm")
+  form.submit = false
+  form.addEventListener('submit',submitAccusation)
+</script>
+
 {% endblock %}
