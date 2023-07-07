@@ -11,4 +11,5 @@ urlpatterns = [
     # 127.0.0.1:8000/findRequest
     path('findRequest/', views.findRequest, name="findRequest"),
     path('deleteRequest', views.deleteRequest, name="deleteRequest"),
+    path("create_matching/", views.create_matching, name="create_matching")
 ]

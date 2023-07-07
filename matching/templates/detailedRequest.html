@@ -87,7 +87,13 @@
 
             </div>
           </div>
-          <input type="button" value="매칭 신청" class="matching_button">
+          <form method="POST" action="{% url 'create_matching' %}">
+            {% csrf_token %}
+            <input type="hidden" value="{{req.id}}" name="req_id" class=""/>
+            <input type="hidden" value="{{application.user.id}}" name="con_id" class=""/>
+            <input type="hidden" value="{{application.id}}" name="application_id" class=""/>
+            <input type="submit" value="매칭 신청" class="matching_button">
+          </form>
         </div>
       {% endfor %}
 
