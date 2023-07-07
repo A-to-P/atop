@@ -3,7 +3,8 @@ from django.http import JsonResponse
 from account.models import ConsultantProfile, RestaurantProfile, Tag
 from .models import Request, Application
 from consulting.models import Consulting
-import datetime
+from django.utils import timezone
+from datetime import datetime
 # Create your views here.
 
 
@@ -98,33 +99,36 @@ def applyRequest(request, req_id):
         return redirect('consultingSpace')
         
 
-# Json data로 만들기 위한 함수
-def requestDictionary(request_list):
-    output = {}
-    output["title"] = request_list.title
-    output["rest_tag"] = request_list.rest_tag
-    output["fee"] = request_list.fee
-    # 지원자 수 고민해보기
-    output["content"] = request_list.content
-    return output
-
 def findRequest(request):
-    tag_list = list(Tag.objects.filter(job="consultant"))
-
+    tag_list = Tag.objects.filter(job="consultant")
+    categorys = list(map(int, request.GET.getlist('categorys'))) # 태그 아이디. 0이면 '전체'
+    query = categorys
+    
+    # [0] 이거나 []인경우
+    if (len(query)==1 and query[0]==0) or len(query)==0 :
+        req_list=Request.objects.all()
+    else:        
+        req_list = Request.objects.filter(consult_tags__in=query).distinct()
+        
+    print(req_list)
+    result = []
     # 태그 별 출력
-    # for tag in tag_list:
-    #     tmp = []
-    #     request_list = Request.objects.filter(consult_tag=tag)
-    #     for i in range(len(request_list)):
-    #         tmp.append(requestDictionary(request_list[i]))
+    for req in req_list:
+        tmp = {}
+        tmp['req_id'] = req.id
+        tmp['title'] = req.title
+        tmp['rest_tag'] = req.rest_tag['name']
+        tmp['consult_tag'] = req.consult_tag['name']
+        tmp['fee'] = req.fee
+        tmp['application_count'] = len(req.applications)
+        tmp['content']=req.content
+
+        now = timezone.now()
+        diff =  now - req.deadline
+        tmp['deadline']=diff.days # "-7"
         
-    #     request_list = tmp
-        
-    #     data = {
-    #         "request_list" : request_list
-    #     }
-    #     return JsonResponse(data)
-    return render(request, "findRequest.html")
+        result.append(tmp)
+    return render(request, "findRequest.html", {'tags':tag_list, "categorys":categorys, 'req_list': result})
 
 
 def deleteRequest(request):
