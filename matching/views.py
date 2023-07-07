@@ -1,10 +1,12 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import JsonResponse 
-from account.models import ConsultantProfile, RestaurantProfile, Tag
+from account.models import ConsultantProfile, RestaurantProfile, Tag, User
 from .models import Request, Application
 from consulting.models import Consulting
 from django.utils import timezone
 from datetime import datetime
+
+from chat.services.chat_room_service import creat_an_chat_room, get_an_chat_room
 # Create your views here.
 
 
@@ -144,3 +146,30 @@ def deleteRequest(request):
         if req is not None:
             req.delete()
     return redirect('detailedRequest')
+
+def create_matching(request):
+    if request.user.job != "restaurant":
+        redirect('home')
+    
+    if request.method=="POST":
+        # 컨설팅 객체 생성
+        req_id = request.POST.get('req_id')
+        con_id = request.POST.get('con_id')
+        
+        req = Request.objects.filter(id=req_id).first()
+        consultant = User.objects.get(id=con_id)
+        
+        created = Consulting(req=req,
+                             consultant=consultant, restaurant=request.user)
+        print(created)
+        created.save()
+        
+        # application 객체 selected=True 해주기
+        application_id =request.POST.get('application_id')
+        application = Application.objects.get(id=application_id)
+        application.selected = True
+        application.save()
+        
+        new_room = creat_an_chat_room(consult_id=consultant, rest_id=request.user)
+        print(new_room)
+        return redirect('chat')
