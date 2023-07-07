@@ -1,10 +1,10 @@
-.right_content{
-  background-color: rgb(243 243 243);
- 
-}
+
 .profile_container{
-  /* height: 80rem; */
-  padding: 4rem 5rem;
+  width: fit-content;
+  background-color: rgba(193, 211, 240, 0.25 ); 
+  border-radius: 2rem;
+  padding: 2rem 3rem;
+  margin: 2rem auto;
 }
 .edit_btn{
   display: block;
@@ -22,11 +22,13 @@
   padding: 0.3rem 1rem;
   margin-bottom: 0.3rem;
   width: 35rem;
-  background-color: #d3d3d3;
+  border-radius: 0.5rem;
+  background-color: #ffffff;
 }
 .check{
   display: flex;
   justify-content: left;
+  /* background-color: rgba(193, 211, 240, 10 ); */
   /* margin-right: 5rem; */
 }
 .badge{
@@ -38,22 +40,32 @@
 
 /* 간단 정보 부분 */
 .information{
+  border-radius: 0.5rem;
+  padding: 1.5rem 2rem;
+  background-color: rgba(193, 211, 240, 0.25 );
   margin-bottom: 2rem;
 }
 
 /* 자기 소개 부분 */
 .introduction{
-  margin-bottom: 3rem;
+  border-radius: 0.5rem;
+  padding: 1.5rem 2rem;
+  background-color: rgba(193, 211, 240, 0.25 );
+  margin-bottom: 2rem;
 }
 .intro_content{
   padding: 1rem;
   height: fit-content;
-  background-color: #d3d3d3;
+  border-radius: 0.5rem;
+  background-color: #ffffff;
 }
 
 /* 컨설팅 정보 */
 .consulting_info{
-  margin-bottom: 3rem;
+  border-radius: 0.5rem;
+  padding: 1.5rem 2rem;
+  background-color: rgba(193, 211, 240, 0.25 );
+  margin-bottom: 2rem;
 }
 .consult_info{
   display: flex;
@@ -61,7 +73,8 @@
   padding: 0.3rem 1rem 0.3rem 0;
   margin-bottom: 0.3rem;
   height: fit-content;
-  background-color: #d3d3d3;
+  border-radius: 0.5rem;
+  background-color: #ffffff;
 }
 .consult_info_title{
   width: 10rem;
@@ -80,7 +93,8 @@
 .review{
   padding: 0.3rem;
   height:fit-content;
-  background-color: #d3d3d3;
+  background-color: rgba(193, 211, 240, 0.25 ); 
+  border-radius: 0.5rem;
   margin-bottom: 1rem;
 }
 
@@ -91,14 +105,15 @@
 }
 .review_info{
   width:fit-content;
-  border: solid black 1px;
+
   padding: 0.3rem;
   text-align: center;
 }
 .review_content{
   margin: 0 1rem 1rem;
   padding: 0.5rem;
-  border: solid black 1px;
+  border-radius: 0.5rem;
+  background-color: white;
 }
 
 
@@ -108,14 +123,30 @@
 }
 
 
-
+#career{
+  width :23rem;
+}
 .store_info{
-  width: 100%;
-
-  margin-bottom: 1rem;
+  border-radius: 0.5rem;
+  padding: 1.5rem 2rem;
+  background-color: rgba(193, 211, 240, 0.25 );
+  margin-bottom: 2rem;
 }
 
 .school_check{
   display: flex;
   justify-content: space-between;
+}
+
+.btn-primary{
+  --bs-btn-bg: rgb( 116 169 255 );
+  --bs-btn-border-color: none;
+  color: black;
+  font-weight: bold;
+}
+.store-info-content{
+  margin:1rem 0;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  background-color: white;
 }

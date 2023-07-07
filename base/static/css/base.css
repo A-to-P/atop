@@ -9,7 +9,7 @@ html, body {
   max-width: 80rem;
   min-width: 60rem;
   min-height: 60rem;
-  background-color: grey;
+  /* background-color: grey; */
 }
 
 .content {
@@ -77,7 +77,10 @@ a:visited{
   top: 5%;
   right: 15%;
 }
-.dropdwon-toggle::after{
+.dropdwon-toggle{
+  display: none;
+}
+.dropdown-toggle::after {
   display: none;
 }
 .btn-show{
@@ -87,3 +90,25 @@ a:visited{
 
   width: fit-content;
 }
+#nav-profile-img{
+  width: 2.5rem;
+  height: 2.5rem;
+  object-fit: cover;
+  /* 이미지 비율을 맞춰줌 */
+  border-radius: 2.5rem; 
+}
+
+.btn-primary{
+  --bs-btn-bg: rgb( 116 169 255 );
+  --bs-btn-border-color: none;
+  color: black;
+  font-weight: bold;
+}
+
+#nav_profile{
+  --bs-btn-bg: unset;
+  --bs-btn-border-color: unset;
+  margin: 0;
+  padding: 0;
+}
+
