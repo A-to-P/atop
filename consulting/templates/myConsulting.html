@@ -20,11 +20,7 @@
     <a href="{% url 'myConsulting' %}">현재 컨설팅</a>
   </p>
   <p class="menu">
-<<<<<<< HEAD
     <a href="{% url 'detailedRequest' %}">내 의뢰 목록</a>
-=======
-    <a href="{% url 'postRequest' %}">내 의뢰 글</a>  <!--의뢰글 작성 페이지로 일단 넘김-->
->>>>>>> 9594ea7450f14d22d353fbefc728b67a9baa3df3
   </p>
   <p class="menu">
     <a href="{% url 'consultingHistory' %}">컨설팅 히스토리</a>
@@ -37,7 +33,7 @@
   <img class="img"  {% if user.image %} src="{{user.image.url}}" {% endif %}  src="{% static '\image\basic_profile.png' %}" alt="프로필 사진">
 {% endblock %}
 {% block profile_name %} {{user.name}} {% endblock %}
-{% block profile_field %} {{user.field}} {% endblock %} 
+{% block profile_field %} {{user.get_tag.name}} {% endblock %} 
 
 
 

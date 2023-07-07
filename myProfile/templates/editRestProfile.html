@@ -18,8 +18,8 @@
 {% block profile_img %}
   <img class="img" {% if res_profile.image %} src="{{res_profile.image.url}}" {% endif %}  src="{% static '\image\basic_profile.png' %}" alt="프로필 사진">
 {% endblock %}
-{% block profile_name %} {{res_profile.name}} {% endblock %}
-{% block profile_field %} {% endblock %}
+{% block profile_name %} {{user.name}} {% endblock %}
+{% block profile_field %}{{user.get_tag.name}}{% endblock %}
 
 {% block maincontent %}
 
