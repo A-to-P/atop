@@ -20,7 +20,7 @@
   <p class="menu">
     <a href="{% url 'detailedRequest' %}">내 의뢰글</a>
   </p>
-  <p class="menu" style="background-color: gray; ">
+  <p class="menu" style="background-color: rgb(75, 126, 255); ">
     <a href="{% url 'consultingHistory' %}">컨설팅 히스토리</a>
   </p>
 {% endblock %}
@@ -31,10 +31,7 @@
 {% block profile_img %}
   <img class="img"  {% if user.image %} src="{{user.image.url}}" {% endif %} src="{% static 'image\basic_profile.png' %}" alt="프로필 사진">
 {% endblock %}
-{% block profile_name %}
-  {{user.name}}
-{% endblock %}
-{% block profile_field %}{{user.get_tag.name}}{% endblock %}
+
 
 <!-- 오른쪽 메인 페이지 -->
 {% block maincontent %}

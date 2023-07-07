@@ -17,7 +17,7 @@
   <p class="menu">
     <a href="{% url 'consultingSpace' %}">현재 컨설팅</a>
   </p>
-  <p class="menu" style="background-color: gray; ">
+  <p class="menu" style="background-color: rgb(75, 126, 255); ">
     <a href="{% url 'consultingPortfolio' %}">컨설팅 포트폴리오</a>
   </p>
 {% endblock %}
@@ -28,9 +28,6 @@
 {% block profile_img %}
   <img class="img"  {% if user.image %} src="{{user.image.url}}"  {% endif %}  src="{% static '\image\basic_profile.png' %}" alt="프로필 사진">
 {% endblock %}
-{% block profile_name %} {{user.name}} {% endblock %}
-{% block profile_field %}{{user.get_tag.name}}{% endblock %}
-
 {% block maincontent %}
 
   <h5 class="portfolio-title">

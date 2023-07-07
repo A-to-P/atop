@@ -56,10 +56,11 @@ h4 {
   margin: 1rem auto;
   width: 10rem;
   padding: 0.3rem;
-  border: solid black;
+  box-shadow: 4px 7px rgb(193 211 240 );  
+  border: solid rgb(193 211 240 ) 1px;
 }
 .menu:hover {
-  background-color: gray;
+  background-color: rgb(193 211 240 ); 
   transform: scale(1.4);
 }
 

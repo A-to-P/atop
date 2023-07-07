@@ -5,3 +5,13 @@ textarea{
 .review_content{
   margin-top: 2rem;
 }
+
+/* 오른쪽 프로필 모달 */
+
+.btn-primary{
+  --bs-btn-bg: rgb( 116 169 255 );
+  --bs-btn-border-color: none;
+  color: black;
+  font-weight: bold;
+}
+ 

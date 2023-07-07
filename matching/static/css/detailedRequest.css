@@ -109,3 +109,11 @@ div[class^="request_info_"]:not(.request_info_title, .request_info_content) {
   margin: 1rem auto;
   width: fit-content;
 }
+
+
+.btn-primary{
+  --bs-btn-bg: rgb( 116 169 255 );
+  --bs-btn-border-color: none;
+  color: black;
+  font-weight: bold;
+}
