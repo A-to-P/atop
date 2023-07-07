@@ -18,7 +18,7 @@
 }
 
 .row-box {
-  border: gray 0.2rem solid;
+  border: rgb(116,169,255) 0.2rem solid;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -43,7 +43,7 @@
 
 textarea {
   width: 100%;
-  border: gray 0.2rem solid;
+  border: rgb(116,169,255) 0.2rem solid;
   resize: none;
 }
 

@@ -26,7 +26,7 @@ div[class^="request_info_"]{  /*~로 시작하는 속성 선택*/
     margin: 0.5rem 0.5rem;
     padding: 0.5rem 1.5rem;
     max-height: 15rem;
-    border : gray 0.2rem solid;
+    border : rgb(116,169,255) 0.2rem solid;
     background-color: white;
 }
 
@@ -34,7 +34,7 @@ div[class^="application_input_"]{  /*~로 시작하는 속성 선택*/
     margin: 1rem 0.5rem;
     padding: 0.5rem 1.5rem;
     max-height: 15rem;
-    /* border : gray 0.2rem solid; */
+    /* border : rgb(116,169,255) 0.2rem solid; */
     background-color: white;
 }
 

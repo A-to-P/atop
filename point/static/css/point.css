@@ -91,7 +91,7 @@ body {
 
 .non-activate{
   pointer-events: none; 
-  background-color: gray;
+  background-color: rgb(116,169,255);
 }
 .activate{
   background-color: red;
