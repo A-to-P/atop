@@ -9,12 +9,12 @@ from queue import PriorityQueue
 def home(request):
     # 분야별 컨설팅 횟수에 따라 리스트 가져오기
     tag_list = list(Tag.objects.filter(job="consultant"))
-    ranking = {}
+    ranking = []
     
     for tag in tag_list:
         # 최대 5명 우선순위큐
         que = PriorityQueue(maxsize=5)
-        user_list = User.objects.filter(tag=tag)
+        user_list = User.objects.filter(tag__in=[tag])
         for user in user_list:
             cnt = len(Consulting.objects.filter(consultant=user))
             # 컨설팅 횟수 내림차순으로 우선순위큐에 추가
@@ -29,5 +29,17 @@ def home(request):
         for _ in range(iter):
             ranking_list.append(que.get()[1])
         
-        ranking[tag] = ranking_list
+        if len(ranking_list):
+            lst = []
+            order=0
+            for user in ranking_list:
+                tmp={}
+                tmp['order']=0
+                tmp['id'] = user.id
+                tmp['name'] = user.name
+                lst.append(tmp)
+                order+=1
+            ranking.append({'key':tag.name, 'value':lst})
+        
+    print(ranking)
     return render(request, 'home.html', {'ranking':ranking})

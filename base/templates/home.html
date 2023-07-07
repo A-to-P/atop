@@ -22,20 +22,25 @@
     <div class="wrapper">
       <div class="title">컨설턴트 랭킹</div>
       <div class="rank_container">
-        <div class="slide">
-          <div class="category_text">마케팅</div>
+        {% for field in ranking %}
+          <div class="slide">
+            <div class="category_text">{{field.key}}</div>
+            {% for value in field.value %}
+              <div class="rank_number">
+                {% if value.order == 0 %}1st{% endif %}
+                {% if value.order == 1 %}2nd{% endif %}
+                {% if value.order == 2 %}3rd{% endif %}
+                {% if value.order == 3 %}4th{% endif %}
+                {% if value.order == 4 %}5th{% endif %}
+              </div>
+              <div class="rank_name" onclick="location.href='{% url 'profile' value.id %}'">{{value.name}}
+                컨설턴트
+              </div>
+            {% endfor %}
 
-          <div class="rank_number">1st</div>
-          <div class="rank_name" onclick="location.href='consultantProfile'">ㅁㅁ컨설턴트</div>
-          <!--컨설턴트 이름 누르면 프로필 페이지 넘어감-->
+          </div>
 
-          <div class="rank_number">2nd</div>
-          <div class="rank_number">3rd</div>
-          <div class="rank_number">4th</div>
-          <div class="rank_number">5th</div>
-        </div>
-        <div class="slide">원가관리</div>
-        <div class="slide">SNS</div>
+        {% endfor %}
       </div>
     </div>
     <div class="wrapper">
