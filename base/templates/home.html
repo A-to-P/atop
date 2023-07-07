@@ -35,10 +35,10 @@
                 {% if value.order == 3 %}4th{% endif %}
                 {% if value.order == 4 %}5th{% endif %}
               </div>
-              <div class="rank_name" onclick="location.href='{% url 'profile' value.id %}'">{{value.name}}
+              <div class="rank_name" onclick="location.href='{% url 'profile' value.id %}';">{{value.name}}
                 컨설턴트
               </div>
-            {% endfor %}
+            {% endfor %} 
 
           </div>
 

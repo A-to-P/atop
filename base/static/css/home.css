@@ -18,7 +18,7 @@
     box-sizing: border-box;
     border-radius: 1rem;
     background-color: white;
-    border : 0.2rem solid rgb(193, 211, 240)
+    box-shadow: 0 4px 10px rgb(193 211 240 );  
 }
 
 .title {
@@ -177,3 +177,9 @@
 
     width: fit-content;
 }
+.btn-primary{
+    --bs-btn-bg: rgb( 116 169 255 );
+    --bs-btn-border-color: none;
+    color: black;
+    font-weight: bold;
+  }
