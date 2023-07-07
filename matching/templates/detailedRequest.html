@@ -87,7 +87,9 @@
 
             </div>
           </div>
-          <input type="button" value="매칭 신청" class="matching_button">
+          <form method="POST" action="{% url 'create_matching' %}">
+            <input type="button" value="매칭 신청" class="matching_button">
+          </form>
         </div>
       {% endfor %}
 

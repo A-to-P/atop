@@ -144,3 +144,10 @@ def deleteRequest(request):
         if req is not None:
             req.delete()
     return redirect('detailedRequest')
+
+def create_matching(request):
+    if request.user.job != "restaurant":
+        redirect('home')
+    
+    if request.method=="POST":
+        return render()

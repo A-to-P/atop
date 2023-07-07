@@ -62,9 +62,16 @@ def room(request, room_name):
         else:
             user_profile = RestaurantProfile.objects.get(user=request.user).image
 
-        return render(request, "room.html", {"room_name": room_name, "message": message, "user_profile": user_profile})
+        return render_room(request, {"room_name": room_name, "message": message, "user_profile": user_profile})
 
     except Exception as e:
         print('예외가 발생했습니다.', e)
-        return redirect(("/chat"))
+        return redirect(("home"))
 
+
+def render_room(request, payload):
+    if request.user.job=="consultant":
+        payload['baseHTML']="consultingSpace.html"
+    else:
+        payload['baseHTML']='myConsulting.html'
+    return render(request, "room.html", payload)
