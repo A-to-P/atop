@@ -63,7 +63,7 @@
               <!-- 프로필 모달 -->
               <span class="dropdown">
                 <a id="nav_profile" class="btn btn-secondary dropdown-toggle nav-profile" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  <img id="nav-profile-img" {% if con_profile.image %} src="{{con_profile.image.url}}" {% endif %}  src="{% static '\image\basic_profile.png' %}" alt="프로필 사진">
+                  <img id="nav-profile-img" {% if user.image %} src="{{user.image.url}}" {% endif %}  src="{% static '\image\basic_profile.png' %}" alt="프로필 사진">
                 </a>
                 <ul class="dropdown-menu">
                   {% if user.job == 'consultant' %} 

@@ -13,28 +13,28 @@
   My Consulting
 {% endblock %}
 
-{% block menu %} 
-<p class="menu">
-  <a href="{% url 'myConsulting' %}" >현재 컨설팅</a>
-</p>
-<p class="menu">
-  <a href="{% url 'postRequest' %}" >내 의뢰글</a>
-</p>
-<p class="menu"  style="background-color: gray; ">
-  <a href="{% url 'consultingHistory' %}" >컨설팅 히스토리</a>
-</p>
+{% block menu %}
+  <p class="menu">
+    <a href="{% url 'myConsulting' %}">현재 컨설팅</a>
+  </p>
+  <p class="menu">
+    <a href="{% url 'detailedRequest' %}">내 의뢰글</a>
+  </p>
+  <p class="menu" style="background-color: gray; ">
+    <a href="{% url 'consultingHistory' %}">컨설팅 히스토리</a>
+  </p>
 {% endblock %}
 
 
 
 <!-- 좌측 프로필 사진, 이름, 분야 -->
 {% block profile_img %}
-  <img class="img" {% if con_profile.image %}  {% endif %} src="{% static 'image\basic_profile.png' %}" alt="프로필 사진">
+  <img class="img"  {% if user.image %} src="{{user.image.url}}" {% endif %} src="{% static 'image\basic_profile.png' %}" alt="프로필 사진">
 {% endblock %}
 {% block profile_name %}
-  {{con_profile.name}}
+  {{user.name}}
 {% endblock %}
-{% block profile_field %}{% endblock %}
+{% block profile_field %}{{user.get_tag.name}}{% endblock %}
 
 <!-- 오른쪽 메인 페이지 -->
 {% block maincontent %}

@@ -13,27 +13,20 @@
 
 {% block menu %}{% endblock %}
 
-{% block nav_right %}
-  <a href="{% url 'myConsulting' %}">마이 컨설팅</a>
-  <a href="">알람</a>
-  <!-- 컨설턴트냐, 요식업자냐에 따라 -->
-  <!-- 요식업자 마이프로필 -->
-  <a href="{% url 'restaurantProfile' %}">마이프로필</a>
-{% endblock %}
+
 
 
 <!-- 좌측 프로필 사진, 이름, 분야 -->
 {% block profile_img %}
   <img class="img" {% if res_profile.image %} src="{{res_profile.image.url}}" {% endif %}  src="{% static '\image\basic_profile.png' %}" alt="프로필 사진">
 {% endblock %}
-{% block profile_name %} {{res_profile.name}} {% endblock %}
-{% block profile_field %} {{res_user.tag}} {% endblock %}
+
 
 
 {% block maincontent %}
 
   <div class="profile_container">
-    {% if user == con_profile.user %}
+    {% if user == res_profile.user %}
 
       <a class="edit_btn" href="{% url 'editRestProfile'  %}">
         수정하기

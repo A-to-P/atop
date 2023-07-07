@@ -18,8 +18,7 @@
 {% block profile_img %}
 <img class="img" {% if con_profile.image %} src="{{con_profile.image.url}}" {% endif %}  src="{% static '\image\basic_profile.png' %}" alt="프로필 사진">
 {% endblock %}
-{% block profile_name %} {{con_profile.name}} {% endblock %}
-{% block profile_field %} {% endblock %}
+
 
 
 {% block maincontent %}
