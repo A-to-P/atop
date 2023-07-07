@@ -25,6 +25,13 @@
         <div class="nav_right">
         {% block nav_right %}
           {% if user.is_authenticated %}
+            {% if user.job == 'restaurant' %}
+            <a href="{% url 'restaurantProfile' %}">요식업자프로필</a>
+            <a href="{% url 'myConsulting' %}" > 마이컨설팅 </a> 
+            {% else %}
+            <a href="{% url 'consultantProfile' %}">컨설턴트프로필</a>
+            <a href="{% url 'consultingSpace' %}" > 컨설팅스페이스 </a> 
+            {% endif %}
           <a href="{% url 'logout' %}" > 로그아웃 </a>
           {% else %}
           <a href="{% url 'login' %}" > 로그인 </a>

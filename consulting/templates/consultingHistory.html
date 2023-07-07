@@ -44,9 +44,8 @@
 {% block profile_field %} {% endblock %}
 
 
+<!-- 오른쪽 메인 페이지 -->
 {% block maincontent %}
-<div> 과거 진행한 컨설팅 </div> 
-
 <div class="history-header"> 
   <div class="header-title">컨설팅 종료일자</div>
   <div class="header-title">컨설턴트</div>
@@ -76,6 +75,7 @@
 
   {{ user.id|json_script:"user_id" }}
   {{ history_list|json_script:"history_list" }}
+
   {{ paginator|json_script:"paginator" }}
 
   <script src="{% static 'js/history.js' %}"></script>
