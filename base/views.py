@@ -44,12 +44,12 @@ def home(request):
     reviews = []
     review_list = Review.objects.all().order_by('-created_at')[:4]
     for review in review_list:
-        con = User.objects.filter(user=review.consultant)
-        res = User.objects.filter(user=review.restaurant)
+        con = review.consulting.consultant
+        res = review.consulting.restaurant
         print (review)
     #     # cnt = len(Consulting.objects.filter(consultant=user))
     #     # 컨설팅 횟수 내림차순으로 우선순위큐에 추가
-        reviews.append({'con' : con.name, 'res' : res.name, 'score' : review.rating})
+        reviews.append({'con' : con.name, 'res' : res.name, 'score' : review.rating, 'tag' : con.tag, 'comment' : review.comment})
         
     print(ranking)
-    return render(request, 'home.html', {'ranking':ranking})
+    return render(request, 'home.html', {'ranking':ranking, 'reviews': reviews})
