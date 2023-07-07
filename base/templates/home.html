@@ -17,7 +17,9 @@
         <div class="text">아마추어 컨설턴트에서 전문가로<br>아마추어 그룹에서 전문가 그룹으로<br>영세 자영업자에서 맛집 주인으로</div><br>
         <div class="text bold_text">정상을 향한 동반자 AtoP</div>
       </div>
-      <div class="img_container">사진</div>
+      <div class="img_container">
+        <!-- <img class="img" {% if con_profile.image %} src="{{con_profile.image.url}}" {% endif %}  src="{% static '\image\basic_profile.png' %}" alt="프로필 사진"> -->
+      </div>
     </div>
     <div class="wrapper">
       <div class="title">컨설턴트 랭킹</div>
@@ -61,17 +63,34 @@
       </div>
     </div>
     <div class="wrapper text_wrapper">
+      {% if user.job == 'restaurant' %}
+      <!--요식업자 입장 : 의뢰글 작성페이지 바로가기-->
+      <div class="text_container">
+        <div class="text bold_text">
+          <b>컨설턴트 도움을 받고 싶으신가요?</b>
+        </div><br>
+        <div class="text">컨설팅 의뢰글을 작성해서 <br>대학생 컨설턴트들의 도움을 받아보세요.</div><br>
+        <div class="text">#마케팅 #원가관리 #SNS</div>
+      </div>
+      <div class="img_container postRequest" onclick="location.href='postRequest'">
+        <span class="findRequest_text">컨설팅 요청하기 →
+        </span>
+      </div>
+
+      {% else %}
+      <!--컨설턴트 입장 : 의뢰글 찾기 바로가기 -->
       <div class="text_container">
         <div class="text bold_text">
           <b>요식업자들에게 컨설팅을 해주고 싶으신가요?</b>
         </div><br>
-        <div class="text">도움이 필요한 요식업자들에게 컨설팅을 제공하면서<br>자신만의 커리어를 만들어가보세요</div><br>
+        <div class="text">도움이 필요한 요식업자들에게 컨설팅을 제공하면서<br>자신만의 커리어를 만들어가보세요.</div><br>
         <div class="text">#한식 #양식 #중식 #일식</div>
       </div>
       <div class="img_container findRequest" onclick="location.href='findRequest'">
         <span class="findRequest_text">요식업자 의뢰 찾기 →
         </span>
       </div>
+      {% endif %}
     </div>
   </div>
 
