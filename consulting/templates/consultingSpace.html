@@ -31,8 +31,11 @@ Consulting Space
 
 <!-- 좌측 프로필 사진, 이름, 분야 -->
 {% block profile_img %}
-  <img class="img" {% if con_profile.image %} src="{{con_profile.image.url}}" {% endif %}  src="{% static '\image\basic_profile.png' %}" alt="프로필 사진">
+  <img class="img"  {% if user.image %} src="{{user.image.url}}" {% endif %}  src="{% static '\image\basic_profile.png' %}" alt="프로필 사진">
 {% endblock %}
+{% block profile_name %} {{user.name}} {% endblock %}
+{% block profile_field %} {{user.get_tag.name}}{% endblock %}
+
   
 
 {% block info_btn %}

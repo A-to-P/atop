@@ -19,6 +19,8 @@
 <img class="img" {% if con_profile.image %} src="{{con_profile.image.url}}" {% endif %}  src="{% static '\image\basic_profile.png' %}" alt="프로필 사진">
 {% endblock %}
 
+
+
 {% block maincontent %}
   <form method="POST" action="" class="profile_container" enctype="multipart/form-data">
     {% csrf_token %}

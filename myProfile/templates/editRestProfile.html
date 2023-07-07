@@ -12,21 +12,13 @@
   Edit Profile
 {% endblock %}
 
-{% block nav_right %}
-  <a href="{% url 'consultingSpace' %}">
-    Consulting Space
-  </a>
-  <a href="">
-    알람
-  </a>
-  <a href="{% url 'restaurantProfile' %}">마이프로필</a>
 
-{% endblock %}
 
 <!-- 좌측 프로필 사진, 이름, 분야 -->
 {% block profile_img %}
   <img class="img" {% if res_profile.image %} src="{{res_profile.image.url}}" {% endif %}  src="{% static '\image\basic_profile.png' %}" alt="프로필 사진">
 {% endblock %}
+
 
 {% block maincontent %}
 
@@ -67,12 +59,12 @@
         <!-- 인증되어 있지 않으면 -->
         <!-- Button trigger modal -->
         <div class="check_btn">
-          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#shcool-check">
             학교 인증하기
           </button>
 
           <!-- Modal -->
-          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal fade" id="shcool-check" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
               <div class="modal-content">
                 <div class="modal-header">
