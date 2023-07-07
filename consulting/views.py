@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-from .models import Consulting
+from .models import Consulting, Accusation, Review
+from account.models import User
+from django.http import HttpResponse
 from django.core.paginator import Paginator
 # Create your views here.
 
@@ -68,6 +70,28 @@ def consultingPortfolio(request):
     return render(request, 'consultingPortfolio.html')
 
 
+# 파일 다운로드 
+
+# 신고
+def accuse(request):
+    if request.method == "POST":
+        user = request.user
+        if user.job == "restaurant":
+            consulting = Consulting.objects.get(restaurant=user, done=False)
+            accusation = Accusation()
+            accusation.complainant = request.user
+            accusation.defendant = consulting.consultant
+        elif user.job == "consultant":
+            consulting = Consulting.objects.get(consultant=user, done=False)
+            accusation = Accusation()
+            accusation.complainant = request.user
+            accusation.defendant = consulting.restaurant
+        accusation.evidence = request.FILES.get('declaration-info')
+        accusation.comment = request.POST.get('declaration_content')
+        accusation.save()
+
+        return HttpResponse('ok')
+
 # 컨설팅 삭제
 @login_required
 def deleteConsulting(request):
@@ -83,3 +107,4 @@ def deleteConsulting(request):
         consulting_obj.deleted = True
         consulting_obj.save()        
     return redirect('consultingPortfolio')
+
