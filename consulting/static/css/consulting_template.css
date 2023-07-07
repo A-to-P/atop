@@ -146,3 +146,36 @@ div[class^="consultant_"]:not(.consultant_img){  /*~로 시작하는 속성 선�
     display: flex;
     justify-content: space-between;
 }
+
+/* 오른쪽 프로필 모달 */
+.btn{
+    --bs-btn-border-radius: 3rem;
+  }
+  .nav-profile{
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 2.5rem;
+  }
+  .dropdown-menu[data-bs-popper]{
+    top: unset;
+    left:unset;
+    right: 0;
+  }
+  .btn-primary{
+    position : relative;
+  }
+  .modal-dialog-scrollable{
+    position: absolute;
+    top: 5%;
+    right: 15%;
+  }
+.dropdwon-toggle::after{
+    display: none;
+}
+.btn-show{
+    display: none;
+}
+.dropdown-item{
+
+    width: fit-content;
+}

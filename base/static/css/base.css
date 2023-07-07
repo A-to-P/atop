@@ -34,8 +34,6 @@ padding: 10px;
 .navbar a{
 margin-left: 15px;
 display: inline-block;
-height: 20px;
-width:fit-content; 
 padding: 10px;
 }
 
@@ -54,4 +52,38 @@ a{
 }
 a:visited{
   color:black;
+}
+
+
+/* 오른쪽 프로필 모달 */
+.btn{
+  --bs-btn-border-radius: 3rem;
+}
+.nav-profile{
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 2.5rem;
+}
+.dropdown-menu[data-bs-popper]{
+  top: unset;
+  left:unset;
+  right: 0;
+}
+.btn-primary{
+  position : relative;
+}
+.modal-dialog-scrollable{
+  position: absolute;
+  top: 5%;
+  right: 15%;
+}
+.dropdwon-toggle::after{
+  display: none;
+}
+.btn-show{
+  display: none;
+}
+.dropdown-item{
+
+  width: fit-content;
 }
