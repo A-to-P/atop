@@ -16,11 +16,11 @@
 {% endblock %}
 
 {% block menu %}
-  <p class="menu">
-    <a href="">현재 컨설팅</a>
+  <p class="menu" style="background-color: gray;">
+    <a href="{% url 'myConsulting' %}">현재 컨설팅</a>
   </p>
   <p class="menu">
-    <a href="">내 의뢰 목록</a>
+    <a href="{% url 'postRequest' %}">내 의뢰 글</a>  <!--의뢰글 작성 페이지로 일단 넘김-->
   </p>
   <p class="menu">
     <a href="{% url 'consultingHistory' %}">컨설팅 히스토리</a>

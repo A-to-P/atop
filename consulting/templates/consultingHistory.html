@@ -15,10 +15,10 @@
 
 {% block menu %} 
 <p class="menu">
-  <a href="" >현재 컨설팅</a>
+  <a href="{% url 'myConsulting' %}" >현재 컨설팅</a>
 </p>
 <p class="menu">
-  <a href="" >내 의뢰글</a>
+  <a href="{% url 'postRequest' %}" >내 의뢰글</a>
 </p>
 <p class="menu"  style="background-color: gray; ">
   <a href="{% url 'consultingHistory' %}" >컨설팅 히스토리</a>
