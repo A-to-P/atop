@@ -21,7 +21,7 @@ a:visited{
 
 
 .signup_container{
-  background-color: #d6d6d6;
+  background-color: rgba(193, 211, 240, 0.25);
   width: 33rem;
   height: 50rem;
   margin: 5rem auto;
@@ -47,6 +47,10 @@ a:visited{
 .signup_btn{
   width:100%;
   margin:2rem 0;
+  color: black;
+  font-weight: bold;
+  --bs-btn-bg: rgb(193 211 240 ); 
+  --bs-btn-border-color: unset;
 }
 .authenticate .signup_input{
   background-color: rgb(252, 252, 252);
