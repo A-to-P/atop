@@ -30,7 +30,7 @@
 .request_list_wrapper {
   width: 80%;
   padding: 1rem;
-  background-color: gray;
+  background-color: rgb(116,169,255);
 }
 
 .single_request_wrapper {

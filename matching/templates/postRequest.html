@@ -16,8 +16,12 @@
   <p class="menu">
     <a href="{% url 'myConsulting' %}">현재 컨설팅</a>
   </p>
-  <p class="menu" style="background-color: gray;">
-    <a href="{% url 'postRequest' %}">내 의뢰 글</a>  <!--의뢰글 작성 페이지로 일단 넘김-->
+  <p class="menu" style="background-color: rgb(116,169,255);">
+    {% if curr_req %}
+    <a href="{% url 'detailedRequest'%}">내 의뢰 글</a>
+    {% else %}
+    <a href="{% url 'postRequest' %}">내 의뢰 글</a>
+    {% endif %}
   </p>
   <p class="menu">
     <a href="{% url 'consultingHistory' %}">컨설팅 히스토리</a>

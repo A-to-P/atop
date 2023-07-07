@@ -27,13 +27,13 @@ h1{
 
 .id{
   height: 70px;
-  background-color: gray;
+  background-color: rgb(116,169,255);
   padding: 20px 0;
   margin-bottom: 40px;
 }
 .pw{
   height: 70px;
-  background-color: gray;
+  background-color: rgb(116,169,255);
   padding: 20px 0;
   margin-bottom: 40px;
 }

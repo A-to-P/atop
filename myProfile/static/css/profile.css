@@ -32,7 +32,6 @@
 }
 .profile {
   margin: 0 auto;
-  height: 10rem;
   width: 10rem;
   border-radius: 1rem;
   /* background-color: rgb(255, 255, 255); */
@@ -59,7 +58,7 @@ h4 {
   border: solid black;
 }
 .menu:hover {
-  background-color: gray;
+  background-color: rgb(116,169,255);
   transform: scale(1.4);
 }
 

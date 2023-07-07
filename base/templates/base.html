@@ -18,9 +18,11 @@
       {% block navbar %}
       <div class="navbar">
         <div class="nav_left">
-          <span> 카테고리 </span>
-          <a href="{% url 'home' %}"> AtoP로고 </a>
-          <a href=""> 소식 </a>
+          <!-- <span> 카테고리 </span> -->
+            <a href="{% url 'home' %}">
+              <img class="logo_img" src="../../static/img/AtoP_logo.png">
+            </a>
+          <!-- <a href=""> 소식 </a> -->
         </div>
         <div class="nav_right">
           {% block nav_right %}
