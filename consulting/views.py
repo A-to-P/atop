@@ -74,17 +74,20 @@ def consultingPortfolio(request):
 
 # 리뷰
 def review(request):
-    print(1)
     if request.method == "POST":
         user=request.user
         add_review = Review()
-        add_review.consulting = Consulting.objects.get(restaurant=user, done=True)
-        add_review.rating = list(map(int, len(request.GET.getlist('score'))))
-        print("rate: ", add_review.rating)
+        consulting = Consulting.objects.get(restaurant=user, done=False)
+        consulting.done = "True"
+        add_review.consulting = consulting
+        add_review.rating = len(request.POST.getlist('score'))
+        print(add_review.rating)
         add_review.comment = request.POST.get("review_content")
+        print(add_review.comment)
+        consulting.save()
         add_review.save()
 
-        return HttpResponse('ok')
+        return redirect('myConsulting')
 
 # 신고
 def accuse(request):
