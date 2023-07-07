@@ -26,7 +26,7 @@
 {% block maincontent %}
 
   <div class="profile_container">
-    {% if user == con_profile.user %}
+    {% if user == res_profile.user %}
 
       <a class="edit_btn" href="{% url 'editRestProfile'  %}">
         수정하기

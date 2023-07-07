@@ -8,15 +8,15 @@
 {% block title %}DetailedRequest{% endblock %}
 
 {% block profile_title %}
-  Profile
+  My Consulting
 {% endblock %}
 
 {% block menu %}
   <p class="menu">
-    <a href="">현재 컨설팅</a>
+    <a href="{% url 'myConsulting' %}">현재 컨설팅</a>
   </p>
   <p class="menu" style="background-color: gray; ">
-    <a href="">내 의뢰 글</a>
+    <a href="{% url 'detailedRequest' %}">내 의뢰 글</a>
   </p>
   <p class="menu">
     <a href="{% url 'consultingHistory' %}">컨설팅 포트폴리오</a>

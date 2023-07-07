@@ -20,7 +20,7 @@
   <img class="img" {% if con_profile.image %} src="{{con_profile.image.url}}" {% endif %}  src="{% static '\image\basic_profile.png' %}" alt="프로필 사진">
 {% endblock %}
 {% block profile_name %} {{con_profile.name}} {% endblock %}
-{% block profile_field %} {% endblock %}
+{% block profile_field %} {{user.field}} {% endblock %}
 
 {% block maincontent %}
 
@@ -87,10 +87,6 @@
     </h5>
     <div class="consulting_info">
      
-      <div class="consult_info" id="consult_field"> 
-        <div class="consult_info_title">컨설팅 분야</div> 
-        <div class="consult_info_content">{{con_field}}</div> 
-      </div>
       <div class="consult_info" id="contact">
         <div class="consult_info_title">연락 가능 시간</div>
         <div class="consult_info_content">

@@ -32,7 +32,7 @@
           {% endblock %}   
         </div>
         <div class="profile_summary">
-          <div>이름: {% block profile_name %}  {% endblock %} </div>
+          <div>이름: {% block profile_name %} {{user.name}} {% endblock %} </div>
           <div>분야: {% block profile_field %}   {% endblock %} </div>
         </div>
       </div>
