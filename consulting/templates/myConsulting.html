@@ -79,7 +79,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
                   <div class="modal-body">
-                    <form action="{% url 'accuse' %}" method="POST" id="accuseForm" enctype="multipart/form-data">
+                    <form method="POST" submit="" id="accuseForm" enctype="multipart/form-data">
                     {% csrf_token %}
                       <div class="mb-3">
                         <label for="declaration-info" class="col-form-label">증빙 자료</label>
@@ -92,7 +92,7 @@
                     </form>
                   </div>
                   <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#submit_check" form="accuseForm">
+                    <button type="submit"  class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#submit_check" form="accuseForm">
                       제출하기
                     </button>
                   </div>
@@ -118,4 +118,19 @@
 
 
         </div>
+
+<script>
+  const submitAccusation = (e) => {
+    const payload = new FormData(e.target)
+    e.preventDefault();
+    fetch('http://127.0.0.1:8000/accuse/',{
+     method:"POST",
+    body: payload,
+    }).then(res=>console.log(res)).catch(err=>console.log(err))
+  }
+  const form = document.querySelector("#accuseForm")
+  form.submit = false
+  form.addEventListener('submit',submitAccusation)
+</script>
+
 {% endblock %}
