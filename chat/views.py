@@ -27,18 +27,26 @@ def chat(request):
         else:
             chat_room_list = get_an_chat_room_list(request.user.id, job="restaurant")
 
-        chat_info = {}
-        for chat_room in chat_room_list:
-            room_id = chat_room.id
-            # 채팅방에 참여중인 유저 list
-            username_list = [chat_room.consultant.username, chat_room.restaurant.username]
-            # chat_info 변수에 딕셔너리 형태로 저장
-            chat_info[room_id] = username_list
+        # chat_info = {}
+        # for chat_room in chat_room_list:
+        #     room_id = chat_room.id
+        #     # 채팅방에 참여중인 유저 list
+        #     username_list = [chat_room.consultant.username, chat_room.restaurant.username]
+        #     # chat_info 변수에 딕셔너리 형태로 저장
+        #     chat_info[room_id] = username_list
 
-        if chat_info == {}:
-            chat_info = None
+        # if chat_info == {}:
+        #     chat_info = None
 
-        return render(request, "chat.html", {'chat_info': chat_info})
+        # return render(request, "chat.html", {'chat_info': chat_info})
+        
+        # 가장 최근에 만들어진 room 가져오기
+        room = chat_room_list.last()
+        room_id = room.id
+        # 룸으로 이동하기
+        return redirect(f'/room/{room_id}')
+        
+        
     # 사용자가 없으면 로그인화면
     else:
         return redirect(("login"))
