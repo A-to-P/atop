@@ -2,8 +2,10 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from .models import Consulting, Accusation, Review
 from account.models import User
+from chat.models import Message
 from django.http import HttpResponse
 from django.core.paginator import Paginator
+from django.utils import timezone
 # Create your views here.
 
 
@@ -13,6 +15,9 @@ def myConsulting(request):
 
 def consultingSpace(request):
     return render(request, 'consultingSpace.html')
+
+def render_consulting(reqest):
+    return redirect('chat')
 
 # 요식업자의 포트폴리오 페이지
 @login_required
@@ -125,3 +130,15 @@ def deleteConsulting(request):
         consulting_obj.save()        
     return redirect('consultingPortfolio')
 
+def doneConsulting(request):
+    message_id = int(request.POST.get('final_report')) # value=해당 파일이 들어있는 message 객체의 id
+    message_obj = Message.objects.get(id=message_id)
+    consulting = Consulting.objects.filter(restaurant=request.user).last()
+    consulting.end = timezone.now()
+    consulting.done = True
+    consulting.final_report_filename = message_obj.filename
+    consulting.final_report_base64URL= message_obj.base64URL
+    
+    print(consulting)
+    consulting.save()
+    return redirect('myConsulting') 

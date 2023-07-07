@@ -42,6 +42,11 @@ def chat(request):
         
         # 가장 최근에 만들어진 room 가져오기
         room = chat_room_list.last()
+        if room is None:
+            if request.user.job =="consultant":
+                return redirect('findRequest')
+            else:
+                return redirect('postRequest')
         room_id = room.id
         # 룸으로 이동하기
         return redirect(f'/room/{room_id}')

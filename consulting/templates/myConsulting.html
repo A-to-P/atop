@@ -27,173 +27,180 @@
   </p>
 {% endblock menu %}
 
-
 <!-- 좌측 프로필 사진, 이름, 분야 -->
 {% block profile_img %}
-  <img class="img"  {% if user.image %} src="{{user.image.url}}" {% endif %}  src="{% static '\image\basic_profile.png' %}" alt="프로필 사진">
+  <img class="img" {% if user.image %} src="{% static '\image\basic_profile.png' %}" {% endif %} alt="프로필 사진">
 {% endblock %}
-{% block profile_name %} {{user.name}} {% endblock %}
-{% block profile_field %} {{user.get_tag.name}} {% endblock %} 
-
-
+{% block profile_name %}
+  {{user.name}}
+{% endblock %}
+{% block profile_field %}
+  {{user.get_tag.name}}
+{% endblock %}
 
 {% block info_btn %}
-          <div class="finish">
-            <!-- 컨설팅 끝내기  -->
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#finish_consulting">
-              컨설팅 끝내기
+  <div class="finish">
+    <!-- 컨설팅 끝내기 -->
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#finish_consulting">
+      컨설팅 끝내기
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="finish_consulting" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="staticBackdropLabel">컨설팅을 끝내겠습니까?
+            </h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          {% comment %} <div class="modal-body" style="padding: 2rem">
+            ...
+          </div> {% endcomment %}
+          <div class="modal-footer">
+            <button type="button" form="doneConsultingForm" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#review_choice">예</button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">아니요</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- 컨설팅 리뷰 쓸지 말지 선택 -->
+  <!-- Modal -->
+  <div class="modal fade" id="review_choice" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="staticBackdropLabel">컨설팅 후기를 작성하시겠습니까?
+          </h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body" style="padding: 2rem">
+          ...
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#consulting_review">예</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">아니요</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 리뷰 작성하는 모달창 -->
+  <!-- Modal -->
+  <div>
+    <div class="modal fade" id="consulting_review" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="staticBackdropLabel">컨설팅 리뷰 작성
+            </h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form action="{% url 'review' %}" method="POST" submit="" id="reviewForm" enctype="multipart/form-data">
+              {% csrf_token %}
+              <span>
+                컨설턴트 별점 :
+              </span>
+              <div class=" form-check-inline">
+                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" name="score" value="option1">
+              </div>
+              <div class="form-check-inline">
+                <input class="form-check-input" type="checkbox" id="inlineCheckbox2" name="score" value="option2">
+              </div>
+              <div class="form-check-inline">
+                <input class="form-check-input" type="checkbox" id="inlineCheckbox3" name="score" value="option3">
+              </div>
+              <div class="form-check-inline">
+                <input class="form-check-input" type="checkbox" id="inlineCheckbox4" name="score" value="option4">
+              </div>
+              <div class="form-check-inline">
+                <input class="form-check-input" type="checkbox" id="inlineCheckbox5" name="score" value="option5">
+              </div>
+
+              <!-- 컨설턴트 리뷰 내용 -->
+              <div class="review_content">
+                <textarea maxlength="100" id="review_content" name="review_content" placeholder="컨설턴트에 관한 리뷰를 남겨보세요.(최대 100자)"></textarea>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-primary" form="reviewForm">리뷰 저장하기</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <!-- 신고하기 -->
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#declaration">
+      신고하기
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="declaration" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="staticBackdropLabel">신고 글 작성</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form action="{% url 'review' %}" method="POST" submit="" id="accuseForm" enctype="multipart/form-data">
+              {% csrf_token %}
+              <div class="mb-3">
+                <label for="declaration-info" class="col-form-label">증빙 자료</label>
+                <input type="file" class="form-control" id="declaration-info" name="declaration-info">
+              </div>
+              <div class="mb-3">
+                <label for="declaration_content" class="col-form-label">신고 내용</label>
+                <textarea class="form-control" id="declaration_content" name="declaration_content" rows="3" placeholder="신고글을 입력해주세요. (최대 200자)"></textarea>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#submit_check" form="accuseForm">
+              제출하기
             </button>
-
-            <!-- Modal -->
-            <div class="modal fade" id="finish_consulting" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-              <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="staticBackdropLabel">컨설팅을 끝내겠습니까? </h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                  </div>
-                  <div class="modal-body" style="padding: 2rem">
-                    ...
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#review_choice">예</button>
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">아니요</button>
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
-          <!-- 컨설팅 리뷰 쓸지 말지 선택 -->
-          <!-- Modal -->
-          <div class="modal fade" id="review_choice" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" >
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h1 class="modal-title fs-5" id="staticBackdropLabel">컨설팅 후기를 작성하시겠습니까? </h1>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body" style="padding: 2rem">
-                  ...
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#consulting_review">예</button>
-                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">아니요</button>
-                </div>
-              </div>
-            </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 신고 재확인 모달창 -->
+    <div class="modal fade" id="submit_check" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="staticBackdropLabel">신고 글 작성</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
-
-              <!-- 리뷰 작성하는 모달창  -->
-              <!-- Modal -->
-          <div>
-              <div class="modal fade" id="consulting_review" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h1 class="modal-title fs-5" id="staticBackdropLabel">컨설팅 리뷰 작성 </h1>
-                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                      <form action= "{% url 'review' %}" method="POST" submit="" id="reviewForm" enctype="multipart/form-data">
-                        {% csrf_token %}
-                          <span> 컨설턴트 별점 : </span>
-                          <div class=" form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" name="score" value="option1">
-                          </div>
-                          <div class="form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" name="score" value="option2">
-                          </div>
-                          <div class="form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="inlineCheckbox3" name="score" value="option3">
-                          </div>
-                          <div class="form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="inlineCheckbox4" name="score" value="option4">
-                          </div>
-                          <div class="form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="inlineCheckbox5" name="score" value="option5">
-                          </div>
-
-                          <!-- 컨설턴트 리뷰 내용 -->
-                          <div class="review_content">
-                            <textarea maxlength="100" id="review_content" name="review_content" placeholder="컨설턴트에 관한 리뷰를 남겨보세요.(최대 100자)"></textarea>
-                          </div>
-                      </form>
-                    </div>
-                    <div class="modal-footer">
-                      <button type="submit" class="btn btn-primary" form="reviewForm">리뷰 저장하기</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
+          <div class="modal-body">
+            신고가 정상적으로 접수되었습니다.
           </div>
-
-          <div>
-            <!-- 신고하기 -->
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#declaration">
-              신고하기
-            </button>
-
-            <!-- Modal -->
-            <div class="modal fade" id="declaration" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-              <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="staticBackdropLabel">신고 글 작성</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                  </div>
-                  <div class="modal-body">
-                    <form action="{% url 'review' %}" method="POST" submit="" id="accuseForm" enctype="multipart/form-data">
-                    {% csrf_token %}
-                      <div class="mb-3">
-                        <label for="declaration-info" class="col-form-label">증빙 자료</label>
-                        <input type="file" class="form-control" id="declaration-info" name="declaration-info">
-                      </div>
-                      <div class="mb-3">
-                        <label for="declaration_content" class="col-form-label">신고 내용</label>
-                        <textarea class="form-control" id="declaration_content" name="declaration_content" rows="3" placeholder="신고글을 입력해주세요. (최대 200자)"></textarea>
-                      </div>
-                    </form>
-                  </div>
-                  <div class="modal-footer">
-                    <button type="submit"  class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#submit_check" form="accuseForm">
-                      제출하기
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- 신고 재확인 모달창  -->
-            <div class="modal fade" id="submit_check" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-              <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="staticBackdropLabel">신고 글 작성</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                  </div>
-                  <div class="modal-body">
-                    신고가 정상적으로 접수되었습니다. 
-                  </div>
-
-                </div>
-              </div>
-            </div>
-
 
         </div>
+      </div>
+    </div>
 
-<script>
-  const submitAccusation = (e) => {
-    const payload = new FormData(e.target)
-    e.preventDefault();
-    fetch('http://127.0.0.1:8000/accuse/',{
-     method:"POST",
-    body: payload,
-    }).then(res=>console.log(res)).catch(err=>console.log(err))
-  }
-  const form = document.querySelector("#accuseForm")
-  form.submit = false
-  form.addEventListener('submit',submitAccusation)
-</script>
+  </div>
+
+  <script>
+    const submitAccusation = (e) => {
+      const payload = new FormData(e.target)
+      e.preventDefault();
+      fetch('http://127.0.0.1:8000/accuse/', {
+        method: "POST",
+        body: payload
+      })
+        .then(res => console.log(res))
+        .catch(err => console.log(err))
+      }
+    const form = document.querySelector("#accuseForm")
+    form.submit = false
+    form.addEventListener('submit', submitAccusation)
+  </script>
 
 {% endblock %}

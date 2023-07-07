@@ -19,9 +19,11 @@
 
         <div class="card" id="chat2" style="width:100%">
 
-          {% comment %} {% csrf_token %} 혹시 오류나면 이거 써보기 {% endcomment %}
-          
-          <div id="chat-log" class="card-body p-1 pt-3" style="position: relative;  height:30rem; overflow-y:scroll"></div>
+          {% csrf_token %}
+          <form id="doneConsultingForm" action="{% url 'doneConsulting'%}" method="POST">
+            {% csrf_token %}
+            <div id="chat-log" class="card-body p-1 pt-3" style="position: relative;  height:30rem; overflow-y:scroll"></div>
+          </form>
           <!--최종 레포트 선택하는 radio input name=final_report, value=해당 파일이 들어있는 message 객체의 id-->
 
           <div class="card-footer text-muted d-flex flex-column justify-content-start align-items-start p-1">
