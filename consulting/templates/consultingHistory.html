@@ -13,6 +13,7 @@
   My Consulting
 {% endblock %}
 
+<<<<<<< HEAD
 {% block menu %}
   <p class="menu">
     <a href="{% url 'myConsulting' %}">현재 컨설팅</a>
@@ -23,6 +24,18 @@
   <p class="menu" style="background-color: gray; ">
     <a href="{% url 'consultingHistory' %}">컨설팅 히스토리</a>
   </p>
+=======
+{% block menu %} 
+<p class="menu">
+  <a href="{% url 'myConsulting' %}" >현재 컨설팅</a>
+</p>
+<p class="menu">
+  <a href="{% url 'postRequest' %}" >내 의뢰글</a>
+</p>
+<p class="menu"  style="background-color: gray; ">
+  <a href="{% url 'consultingHistory' %}" >컨설팅 히스토리</a>
+</p>
+>>>>>>> 9594ea7450f14d22d353fbefc728b67a9baa3df3
 {% endblock %}
 
 
@@ -36,14 +49,15 @@
 {% endblock %}
 {% block profile_field %}{% endblock %}
 
+<!-- 오른쪽 메인 페이지 -->
 {% block maincontent %}
 
-  <div class="history-header">
-    <div class="header-title">컨설팅 종료일자</div>
-    <div class="header-title">컨설턴트</div>
-    <div class="header-title">컨설팅 분야</div>
-    <div class="header-title">컨설팅 비용</div>
-  </div>
+<div class="history-header"> 
+  <div class="header-title">컨설팅 종료일자</div>
+  <div class="header-title">컨설턴트</div>
+  <div class="header-title">컨설팅 분야</div>
+  <div class="header-title">컨설팅 비용</div>
+</div> 
 
   <div class="history-conatiner">
     <ul id="history-list">
@@ -57,6 +71,7 @@
 
   {{ user.id|json_script:"user_id" }}
   {{ history_list|json_script:"history_list" }}
+
   {{ paginator|json_script:"paginator" }}
 
   <script src="{% static 'js/history.js' %}"></script>
