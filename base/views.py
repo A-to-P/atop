@@ -1,8 +1,8 @@
 from django.shortcuts import render
 from account.models import User, Tag
-from consulting.models import Consulting
+from consulting.models import Consulting, Review
 
-from queue import PriorityQueue
+from queue import PriorityQueue, Queue
 
 # Create your views here.
 
@@ -40,6 +40,16 @@ def home(request):
                 lst.append(tmp)
                 order+=1
             ranking.append({'key':tag.name, 'value':lst})
+    
+    reviews = []
+    review_list = Review.objects.all().order_by('-created_at')[:4]
+    for review in review_list:
+        con = User.objects.filter(user=review.consultant)
+        res = User.objects.filter(user=review.restaurant)
+        print (review)
+    #     # cnt = len(Consulting.objects.filter(consultant=user))
+    #     # 컨설팅 횟수 내림차순으로 우선순위큐에 추가
+        reviews.append({'con' : con.name, 'res' : res.name, 'score' : review.rating})
         
     print(ranking)
     return render(request, 'home.html', {'ranking':ranking})
