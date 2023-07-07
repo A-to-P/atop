@@ -25,7 +25,7 @@ def postRequest(request):
         profile = list(RestaurantProfile.objects.filter(
             user=request.user).values())[0]
         # 나이계산
-        profile["age"] = datetime.datetime.today().year - profile['birth'].year +1
+        profile["age"] = datetime.today().year - profile['birth'].year +1
         return render(request, "postRequest.html", {"user":request.user,"profile": profile,'self_tag':self_tag, 'tags':all_con_tags})
     
     elif request.method=="POST":

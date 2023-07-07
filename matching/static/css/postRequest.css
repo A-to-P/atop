@@ -5,9 +5,9 @@
 #request_form {
   position: relative;
 
-  background-color: lightgray;
+  background-color: white;
   padding: 1.5rem 2rem;
-  border: #74a9ff 0.1rem solid;
+  border: #74a9ff 0.2rem solid;
   border-radius: 1.4rem;
 }
 .col-box {
