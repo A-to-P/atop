@@ -18,6 +18,7 @@
     box-sizing: border-box;
     border-radius: 1rem;
     background-color: white;
+    border : 0.2rem solid rgb(193, 211, 240)
 }
 
 .title {
@@ -40,7 +41,8 @@
     display: flex;
     justify-content: space-between;
     padding: 1rem 3rem;
-    background-color: skyblue;
+    height: 15rem;
+    background-color: rgb(193, 211, 240);
 }
 
 .img_container{
@@ -48,8 +50,19 @@
     justify-content: center;
     align-items: flex-end;
     width: 25rem;
-    padding: 1rem;
+    border-radius: 2rem;
     background-color: black;
+    background-image: url(../../static/img/AtoP_main_img.png);
+    background-size: cover;
+    background-position: center;
+}
+
+.findRequest {
+    background-image: url(../../static/img/find_request.png);
+}
+
+.postRequest {
+    background-image: url(../../static/img/post_request.png);
 }
 
 .rank_container {
@@ -112,9 +125,23 @@
 }
 
 .findRequest_text{
-    color: white;
+    margin: 1rem;
+    padding: 0.5rem;
+    border-radius: 1rem;
+    background-color: rgba(255,255,255, 0.5);
     font-size: 2rem;
     font-weight: 600;
+}
+
+.findRequest_text:hover{
+    cursor: pointer;
+    text-decoration: underline;
+} 
+
+.text_container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 
