@@ -32,7 +32,7 @@ class Request(models.Model):
     
     @property
     def summary(self):
-        return self.content[:100]
+        return f"{self.user.name}: {self.content[:100]}"
 
     def __str__(self):
         return f"{self.title}"
