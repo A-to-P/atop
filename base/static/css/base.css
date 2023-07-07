@@ -19,7 +19,7 @@ html, body {
 
 /* 내비게이션 바 */
 .navbar{
-  background-color: rgb(224, 224, 224);
+  /* background-color: rgb(224, 224, 224); */
   padding:10px 30px;
   display: flex;
   justify-content: space-between;
@@ -44,7 +44,7 @@ padding: 10px;
   display:flex;
   justify-content: space-between;
   box-sizing: border-box;
-  background-color: rgb(224, 224, 224);
+  /* background-color: rgb(224, 224, 224); */
 }
 
 a{

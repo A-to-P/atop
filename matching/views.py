@@ -62,7 +62,7 @@ def detailedRequest(request):
     # 현재 진행중인 컨설팅이 있다면
     if Consulting.objects.filter(restaurant=user, done=False).exists():
         print("이미 컨설팅이 진행중입니다.")
-        return redirect('consultingSpace')
+        # return redirect('consultingSpace')
     # 현재 의뢰중인 의뢰
     curr_req = Request.current_req(user.id)
     # 현재 의뢰중인 의뢰가 없다면
@@ -145,6 +145,7 @@ def deleteRequest(request):
         req = Request.objects.filter(id=req_id).first() 
         if req is not None:
             req.delete()
+
     return redirect('detailedRequest')
 
 def create_matching(request):

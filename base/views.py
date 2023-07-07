@@ -50,6 +50,5 @@ def home(request):
     #     # cnt = len(Consulting.objects.filter(consultant=user))
     #     # 컨설팅 횟수 내림차순으로 우선순위큐에 추가
         reviews.append({'con' : con.name, 'res' : res.name, 'score' : review.rating, 'tag' : con.tag, 'comment' : review.comment})
-        
     print(ranking)
     return render(request, 'home.html', {'ranking':ranking, 'reviews': reviews})
