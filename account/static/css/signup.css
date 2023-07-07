@@ -26,11 +26,11 @@ a:visited{
   margin: 0 auto;
   border-radius: 2rem;
   padding: 3rem;
-  background-color: rgb(198, 198, 198);
+  background-color: rgba(193, 211, 240, 0.25);
 }
 .signup_title{
   text-align: center;
-  background-color:rgb(255, 255, 255);
+  /* background-color:rgb(255, 255, 255); */
   margin-bottom: 20px;
 }
 .choice{
@@ -40,6 +40,7 @@ a:visited{
   text-align: center;
 }
 .signup_choice{
+  font-weight: bold;
   display: flex;
   justify-content: center;
 }
@@ -51,6 +52,7 @@ h1{
 
 
 .restaurant_choice, .consultant_choice {
+  font-weight: bold;
   width: 13rem;
   height: 13rem;
   margin: 1rem;
@@ -58,4 +60,8 @@ h1{
   background-color: white;
   text-align: center;
   padding: 4rem 3rem;
+}
+
+h5{
+  font-weight: bold;
 }

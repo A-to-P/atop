@@ -5,7 +5,7 @@
   width: 40rem;
   margin: 1rem auto;
   padding: 3rem 5rem;
-  background-color: rgb(202, 202, 202);
+  background-color: rgba(193, 211, 240, 0.25 ); 
   border-radius: 2rem;
 }
 .info_title{
@@ -44,6 +44,10 @@ a:visited{
 /* 오른쪽 프로필 모달 */
 .btn{
   --bs-btn-border-radius: 3rem;
+  --bs-btn-bg: rgb( 116 169 255 );
+  --bs-btn-border-color: none;
+  color: black;
+  font-weight: bold;
 }
 .nav-profile{
   width: 2.5rem;
