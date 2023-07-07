@@ -48,17 +48,23 @@
     <div class="wrapper">
       <div class="title">컨설팅 이용 후기</div>
       <div class="review_container">
+      {% for review in reviews %}
         <div class="slide review_slide" onclick="location.href='myProfile'">
-          <div class="profile_img"></div>
+          <div class="profile_img">
+          {% block profile_img %}
+          <img class="profile_img" src="{% static '\image\basic_profile.png' %}"/>
+          {% endblock %}
+          </div>
           <!--생각해보니 컨설턴트가 아닌 요식업자 프로필이어야하는거 아닌지...-->
-          <div>OO사장님</div>
-          <div>★★★★★</div>
-          <div class="review_content">후기내용후기내용후기내용후기내용후기내용후기내용후기내용후기내용후기내용후기내용후기내용</div>
-          <div class="consultant_information">#마케팅<br>ㅁㅁ컨설턴트</div>
+          <div>{{review.res}}</div>
+          <div>★{{review.score}}</div>
+          <div class="review_content">{{review.comment}}</div>
+          <div class="consultant_information">#{{review.tag}}<br>{{review.con}}컨설턴트</div>
         </div>
-        <div class="slide review_slide">똑같은</div>
+        {% endfor %}
+        {% comment %} <div class="slide review_slide">똑같은</div>
         <div class="slide review_slide">내용이라</div>
-        <div class="slide review_slide">비워놨어요</div>
+        <div class="slide review_slide">비워놨어요</div> {% endcomment %}
 
       </div>
     </div>
