@@ -1,78 +1,99 @@
-{% extends 'profile_template.html' %} 
+{% extends 'profile_template.html' %}
 {% load static %}
 {% block static %}
-  <link rel="stylesheet" href="{% static 'css/profile.css' %}" >  
-  <link rel="stylesheet" href="{% static 'css/detailedRequest.css' %}" >  
+  <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+  <link rel="stylesheet" href="{% static 'css/detailedRequest.css' %}">
 {% endblock %}
 
 {% block title %}DetailedRequest{% endblock %}
-
 
 {% block profile_title %}
   Profile
 {% endblock %}
 
-{% block menu %} 
-<p class="menu">
-  <a href="" >현재 컨설팅</a>
-</p>
-<p class="menu"  style="background-color: gray; ">
-  <a href="" >내 의뢰 글</a>
-</p>
-<p class="menu">
-  <a href="{% url 'consultingHistory' %}" >컨설팅 포트폴리오</a>
-</p>
+{% block menu %}
+  <p class="menu">
+    <a href="">현재 컨설팅</a>
+  </p>
+  <p class="menu" style="background-color: gray; ">
+    <a href="">내 의뢰 글</a>
+  </p>
+  <p class="menu">
+    <a href="{% url 'consultingHistory' %}">컨설팅 포트폴리오</a>
+  </p>
 {% endblock %}
 
-
 {% block maincontent %}
-<div class="request_wrapper">
-  <div class="request_text">컨설팅 의뢰 글 내용</div>
-  <div class="request_container">
-      <div class="request_info_title">의뢰글 제목</div>
-      <div class="restaurant_wrapper">
+  {% if error %}
+    {{error}}
+  {% else %}
+
+    <div class="request_wrapper">
+      <div class="request_text">컨설팅 의뢰 글 내용</div>
+      <div class="request_container">
+        <div class="request_info_title">제목
+          {{req.title}}</div>
+        <div class="restaurant_wrapper">
           <div class="request_text">
-              요식업자 정보
-              <a href="{% url 'consultantProfile' %}" >(프로필 보러가기)</a>
+            요식업자 정보
+            <a href="{% url 'profile' req.user.id %}">(프로필 보러가기)</a>
           </div>
           <div class="restaurant_info_wrapper">
-              <div class="request_info_name">이름(나이) 아무개(35세)</div>
-              <div class="request_info_category">요식업 분야 양식</div>
-              <div class="request_info_sales">월 평균 매출 x,xxx,xxx원</div>
-          </div>            
-      </div>
-      <div class="consulting_wrapper">
+            <div class="request_info_name">이름(나이)
+              {{user.name}}({{user.age}}세)</div>
+            <div class="request_info_category">요식업 분야
+              {{req.rest_tag.name}}
+            </div>
+            <div class="request_info_sales">월 평균 매출
+              {{req.monthly_avg_rev}}</div>
+          </div>
+        </div>
+        <div class="consulting_wrapper">
           <div class="request_text">컨설팅 정보</div>
           <div class="consulting_info_wrapper">
-              <div class="request_info_category">컨설팅 분야 마케팅</div>
-              <div class="request_info_money">컨설팅비 xxx,xxx원</div>
+            <div class="request_info_category">컨설팅 분야
+              {{req.consult_tag.name}}</div>
+            <div class="request_info_money">컨설팅비
+              {{req.fee}}원
+            </div>
           </div>
+        </div>
+        <div class="request_info_content">{{req.content}}</div>
       </div>
-      <div class="request_info_content">의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용의뢰글내용</div>
-  </div>
-  <input type="button" value="삭제하기" class="delete_button">
-  <div class="temp"></div>
-</div>
-
-<div class="applicant_wrapper">
-  <div class="applicant_text">지원한 컨설턴트 (n명)</div>
-  <div class="applicant_single_wrapper">
-    <div class="applicant_container">
-      <div class="applicant_name">컨설턴트 이름</div>
-      <div class="bar_line"></div>
-      <div class="applicant_application">
-        <a href="">지원서 확인</a>
-      </div>
-      <div class="bar_line"></div>
-      <div class="applicant_profile">
-        <a href="{% url 'consultantProfile' %}" >세부 프로필 확인</a>
-      </div>
+      <form action="{% url 'deleteRequest' %}" method="POST">
+        {% csrf_token %}
+        <input type="hidden" name="req_id" value="{{req.id}}">
+        <input type="submit" value="삭제하기" class="delete_button">
+      </form>
+      <div class="temp"></div>
     </div>
-    <input type="button" value="매칭 신청" class="matching_button">
-  </div>
 
-  <div class="applicant_more">
-    지원자 더보기
-  </div>
-</div>
+    <div class="applicant_wrapper">
+
+      <div class="applicant_text">지원한 컨설턴트 ({{applications|length}}명)</div>
+      {% for application in applications %}
+        <div class="applicant_single_wrapper">
+          <div class="applicant_container">
+            <div class="applicant_name">{{application.user.name}}</div>
+            <div class="bar_line"></div>
+            <div class="applicant_application">
+              <a href="#">지원서 확인</a>
+              <!--지원서 확인은 시간상 미룸-->
+            </div>
+            <div class="bar_line"></div>
+            <div class="applicant_profile">
+
+              <a href="{% url 'profile' application.user.id %}">세부 프로필 확인</a>
+
+            </div>
+          </div>
+          <input type="button" value="매칭 신청" class="matching_button">
+        </div>
+      {% endfor %}
+
+      <!--<div class="applicant_more"> 지원자 더보기 </div>-->
+    </div>
+
+  {% endif %}
+
 {% endblock maincontent %}

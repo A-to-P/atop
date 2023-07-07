@@ -8,7 +8,6 @@ urlpatterns = [
     
     # 컨설팅 히스토리 페이지
     path('consultingHistory/', views.consultingHistory, name="consultingHistory"),  
-    
     path('consultingPortfolio/', views.consultingPortfolio, name="consultingPortfolio"), 
-    
+    path("deleteConsulting/", views.deleteConsulting, name="deleteConsulting"),
 ]
