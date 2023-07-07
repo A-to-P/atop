@@ -72,6 +72,20 @@ def consultingPortfolio(request):
 
 # 파일 다운로드 
 
+# 리뷰
+def review(request):
+    print(1)
+    if request.method == "POST":
+        user=request.user
+        add_review = Review()
+        add_review.consulting = Consulting.objects.get(restaurant=user, done=True)
+        add_review.rating = list(map(int, len(request.GET.getlist('score'))))
+        print("rate: ", add_review.rating)
+        add_review.comment = request.POST.get("review_content")
+        add_review.save()
+
+        return HttpResponse('ok')
+
 # 신고
 def accuse(request):
     if request.method == "POST":
